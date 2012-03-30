@@ -23,6 +23,8 @@ import org.apache.lucene.document.Field;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
@@ -30,6 +32,7 @@ import org.apache.lucene.index.TermFreqVector;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
@@ -59,11 +62,9 @@ public class CzechIndexer {
 	    
 		  try {
 			  File INDEX_DIR = new File(indexLocation);
-			  IndexWriter writer = new IndexWriter(FSDirectory.open(INDEX_DIR), 
-					new WordSpaceAnalyzer(Version.LUCENE_34), 
-					  							// non-word entries are filtered  (begin with non-word char)	
-					  true, 
-					  IndexWriter.MaxFieldLength.UNLIMITED);
+			  IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_34, new WordSpaceAnalyzer(Version.LUCENE_34));
+			  conf.setOpenMode(OpenMode.CREATE);
+			  IndexWriter writer = new IndexWriter(FSDirectory.open(INDEX_DIR),conf);
 //		      System.out.println("Indexing to directory '" +INDEX_DIR+ "'...");
 		      addSentencesFromFileToIndex(writer,docDir);
 		      writer.optimize();

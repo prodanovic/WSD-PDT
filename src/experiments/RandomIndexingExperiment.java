@@ -36,7 +36,7 @@ public class RandomIndexingExperiment {
 		Arguments.evaluationContextWindowSize = 3;
 		
 		Logger logger=Log.getLogger(Arguments.initLogName());
-		logger.fine(Arguments.getLogHeader());
+		logger.fine(Arguments.modelNameForLog());
 		long start = System.currentTimeMillis();
 		
 //		PDT1Reader.cleanPDTFile();

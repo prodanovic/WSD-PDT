@@ -100,7 +100,6 @@ public class Arguments {
 		if(stopWordsRemoval.equalsIgnoreCase("y"))name.append("STOP"+"+");
 		if(mergeLexicalVariants.equalsIgnoreCase("y"))name.append("MERGE"+"+");
 		if(lowercase.equalsIgnoreCase("y"))name.append("LOWCASE"+"+");
-		
 		if(name.length()==0)name.append("NO+");
 		String stringName = name.toString();
 		return stringName.substring(0,stringName.length()-1);
@@ -124,25 +123,32 @@ public class Arguments {
 	}
 	
 	public static String initLogName(){
-		
 		logName = matrixName()+"_"+preprocessingName()+"_"+documentName()+"_"+
 		evaluationContextWindowSize+"w_"+upBoarderForNumberOfMeanings+"m";
 		return logName;
 	}
 	
-	public static String getLogHeader(){
-		StringBuilder header=new StringBuilder();
-		header.append("Model: "+matrixName()+"\n");
-		header.append("==================\n");
-		header.append("Preprocessing:"+preprocessingName()+"\n");
-		header.append("Size of document in the matrix:\n");
-		header.append("\t number Of Sentences In Document:"+numberOfSentencesInLuceneDoc+"\n");
-		header.append("\t number Of Words In Document:"+numberOfWordsInDocument+"\n");
-		header.append("Evaluation:\n");
-		header.append("\t Up Threshold For Number Of Meanings:"+upBoarderForNumberOfMeanings+"\n");
-		header.append("\t Evaluation Context Window Size:"+evaluationContextWindowSize+"\n");
-		
-		return header.toString();
+	public static String modelNameForLog(){
+		StringBuilder logText=new StringBuilder();
+		logText.append("Model: "+matrixName());
+		return logText.toString();
+	}
+	
+	public static String preprocessingParamsForLog(){
+		StringBuilder logText=new StringBuilder();
+		logText.append("Preprocessing:"+preprocessingName()+"\n");
+		logText.append("Size of document in the matrix:\n");
+		logText.append("\t number Of Sentences In Document:"+numberOfSentencesInLuceneDoc+"\n");
+		logText.append("\t number Of Words In Document:"+numberOfWordsInDocument);
+		return logText.toString();
+	}
+	
+	public static String evaluationParamsForLog(){
+		StringBuilder logText=new StringBuilder();
+		logText.append("Evaluation:\n");
+		logText.append("\t Up Threshold For Number Of Meanings:"+upBoarderForNumberOfMeanings+"\n");
+		logText.append("\t Evaluation Context Window Size:"+evaluationContextWindowSize+"\n");
+		return logText.toString();
 	}
 	
 	public static void main(String []varg){
@@ -152,6 +158,6 @@ public class Arguments {
 		matrixType = 0;
 		lowercase = "y";
 //		System.out.println(	initLogName());
-		System.out.println(	getLogHeader());
+		System.out.println(	modelNameForLog());
 	}
 }

@@ -37,7 +37,7 @@ public class EvalContextWinSize {
 		
 		
 		Logger logger=Log.getLogger(Arguments.initLogName());
-		logger.fine(Arguments.getLogHeader());
+		logger.fine(Arguments.modelNameForLog());
 		long start = System.currentTimeMillis();
 		
 //		PDT1Reader.cleanPDTFile();
@@ -72,7 +72,7 @@ public class EvalContextWinSize {
 		StringBuilder sb3 = new StringBuilder();
 		for(int i=2; i<8 ; i++){
 			Arguments.upBoarderForNumberOfMeanings=i;
-			logger.fine(Arguments.getLogHeader());
+			logger.fine(Arguments.modelNameForLog());
 			Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
 			evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());

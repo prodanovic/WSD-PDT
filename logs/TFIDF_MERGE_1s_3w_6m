@@ -1,69 +1,43 @@
-mar 29, 2012 3:45:14 PM experiments.TfIdfExperiment main
+mar 30, 2012 3:15:03 PM experiments.TfIdfExperiment main
 FINE: Model: TFIDF
-==================
-Preprocessing:MERGE
+mar 30, 2012 3:15:08 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:MERGE
 Size of document in the matrix:
 	 number Of Sentences In Document:1
 	 number Of Words In Document:-1
-Evaluation:
-	 Up Threshold For Number Of Meanings:6
-	 Evaluation Context Window Size:3
-
-mar 29, 2012 3:45:16 PM experiments.TfIdfExperiment main
-FINE: 	====train and test====
-mar 29, 2012 3:45:21 PM disambiguate.Evaluator extractTestContext
-FINE: Extracting contexts for the test set..
-mar 29, 2012 3:45:21 PM experiments.TfIdfExperiment main
+mar 30, 2012 3:15:09 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:209.0
-	total number Of Test Contexts[ts instances]:3292.0
+	total number Of Test Meanings[ts cases]:200.0
+	total number Of Test Contexts[ts instances]:3850.0
 
-mar 29, 2012 3:45:26 PM experiments.TfIdfExperiment main
-FINE: Finished in 12 seconds.
-mar 29, 2012 3:45:26 PM experiments.TfIdfExperiment main
-FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):3292.0==3292.0
-	tp=189.0 fp=2.0 discarded=3101.0
-	Precision:98.95288 tp=189.0 fp=2.0
-	Recall:100.0 tp=189.0 fn=0.0
-	F-measure:99.47369
-	Random precision= 14.126121 (testInstances=191.0 ,invertSenseCount=26.98089)
+mar 30, 2012 3:15:14 PM experiments.TfIdfExperiment main
+FINE: Finished in 8 seconds.
 
-mar 29, 2012 3:45:29 PM disambiguate.Evaluator extractTestContext
-FINE: Extracting contexts for the test set..
-mar 29, 2012 3:45:29 PM experiments.TfIdfExperiment main
+mar 30, 2012 3:15:16 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:MERGE
+Size of document in the matrix:
+	 number Of Sentences In Document:3
+	 number Of Words In Document:-1
+mar 30, 2012 3:15:16 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:259.0
-	total number Of Test Contexts[ts instances]:4191.0
+	total number Of Test Meanings[ts cases]:159.0
+	total number Of Test Contexts[ts instances]:3461.0
 
-mar 29, 2012 3:46:21 PM experiments.TfIdfExperiment main
-FINE: Finished in 66 seconds.
-mar 29, 2012 3:46:21 PM experiments.TfIdfExperiment main
-FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):4191.0==4191.0
-	tp=1918.0 fp=74.0 discarded=2199.0
-	Precision:96.28514 tp=1918.0 fp=74.0
-	Recall:100.0 tp=1918.0 fn=0.0
-	F-measure:98.107414
-	Random precision= 9.237184 (testInstances=1992.0 ,invertSenseCount=184.0047)
+mar 30, 2012 3:15:59 PM experiments.TfIdfExperiment main
+FINE: Finished in 45 seconds.
 
-mar 29, 2012 3:46:23 PM disambiguate.Evaluator extractTestContext
-FINE: Extracting contexts for the test set..
-mar 29, 2012 3:46:23 PM experiments.TfIdfExperiment main
+mar 30, 2012 3:16:01 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:MERGE
+Size of document in the matrix:
+	 number Of Sentences In Document:5
+	 number Of Words In Document:-1
+mar 30, 2012 3:16:01 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:262.0
-	total number Of Test Contexts[ts instances]:4158.0
+	total number Of Test Meanings[ts cases]:102.0
+	total number Of Test Contexts[ts instances]:2240.0
 
-mar 29, 2012 3:47:28 PM experiments.TfIdfExperiment main
-FINE: Finished in 134 seconds.
-mar 29, 2012 3:47:28 PM experiments.TfIdfExperiment main
-FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):4158.0==4158.0
-	tp=2141.0 fp=86.0 discarded=1931.0
-	Precision:96.138306 tp=2141.0 fp=86.0
-	Recall:100.0 tp=2141.0 fn=0.0
-	F-measure:98.031136
-	Random precision= 9.1472845 (testInstances=2227.0 ,invertSenseCount=203.71004)
+mar 30, 2012 3:16:32 PM experiments.TfIdfExperiment main
+FINE: Finished in 32 seconds.
 
-mar 29, 2012 3:47:28 PM experiments.TfIdfExperiment main
-FINE: MERGE  & 98.95 & 100 & 96.29 & 100 & 96.14 & 100 & 9.1472845 \\
+mar 30, 2012 3:16:32 PM experiments.TfIdfExperiment main
+FINE: MERGE  & 95.31 & 100 & 95.44 & 100 & 97.51 & 100 & 8.950732 \\

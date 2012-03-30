@@ -94,13 +94,11 @@ public class Evaluator {
 	}
 	
 	public void extractTestContext(String testFilePath,int contextWindowSize) throws Exception{
-		logger.fine("Extracting contexts for the test set..");
-		if(isRI)System.err.println("RI");
-		else System.err.println("not RI");
-		
-		if(isPMI)System.err.println("PMI");
-		else System.err.println("TFIDF");
-		
+//		if(isRI)System.err.println("RI");
+//		else System.err.println("not RI");
+//		
+//		if(isPMI)System.err.println("PMI");
+//		else System.err.println("TFIDF");
 		CzechIndexer testIndexer = new CzechIndexer(testFilePath, 1,-1);
 		testIndexer.index("indexTest");
 		IndexReader indexReader = IndexReader.open(FSDirectory.open(new File("indexTest")));

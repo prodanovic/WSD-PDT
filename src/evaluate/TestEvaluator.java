@@ -2,7 +2,9 @@ package evaluate;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Map.Entry;
@@ -70,6 +72,7 @@ public class TestEvaluator {
 				Arguments.numberOfWordsInDocument);
 		ci.index("index");
 		int numberOfTrainPolysemes5 = 0;
+		evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
 		Iterator<String> ks5 = evaluator.meanings.keySet().iterator();
 		while(ks5.hasNext()){
 			numberOfTrainPolysemes5+=evaluator.meanings.get(ks5.next()).size();
@@ -77,7 +80,7 @@ public class TestEvaluator {
 		Assert.assertEquals(numberOfTrainPolysemes1, numberOfTrainPolysemes5);
 	}
 	
-	@Test
+//	@Test
 	public void testMeaningCountHasNotChangedBasedOnInputDocSizeWord() throws Exception, Exception{
 		CzechIndexer ci = new CzechIndexer("pdt1_0/train_", 1,1);
 		ci.index("index");
@@ -89,6 +92,7 @@ public class TestEvaluator {
 		}
 		ci = new CzechIndexer("pdt1_0/train_", 1,4);
 		ci.index("index");
+		evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
 		int numberOfTrainPolysemes4 = 0;
 		Iterator<String> ks5 = evaluator.meanings.keySet().iterator();
 		while(ks5.hasNext()){
@@ -97,4 +101,32 @@ public class TestEvaluator {
 		Assert.assertEquals(numberOfTrainPolysemes1, numberOfTrainPolysemes4);
 	}
 	
+	
+	@Test
+	public void testTestSetSizeHasNotChangedBasedOnInputDocSizeWord() throws Exception, Exception{
+		CzechIndexer ci = new CzechIndexer("pdt1_0/train_", 1,-1);
+		ci.index("index");
+		Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+		evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
+		Hashtable<String,EvaluationEntry> evaluationEntries = evaluator.evaluationEntries;
+		int numberOfTestPolysemes1 = evaluationEntries.size();
+		int numberOfTestContexts1 = 0;
+		Enumeration<EvaluationEntry> entries = evaluationEntries.elements();
+		while(entries.hasMoreElements()){
+			numberOfTestContexts1+=entries.nextElement().getContext().size();
+		}
+		ci = new CzechIndexer("pdt1_0/train_", 5,-1);
+		ci.index("index");
+		evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+		evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
+		evaluationEntries = evaluator.evaluationEntries;
+		int numberOfTestPolysemes5 = evaluationEntries.size();
+		int numberOfTestContexts5 = 0;
+		entries = evaluationEntries.elements();
+		while(entries.hasMoreElements()){
+			numberOfTestContexts5+=entries.nextElement().getContext().size();
+		}
+		Assert.assertEquals(numberOfTestPolysemes1, numberOfTestPolysemes5);
+		Assert.assertEquals(numberOfTestContexts1, numberOfTestContexts5);
+	}
 }

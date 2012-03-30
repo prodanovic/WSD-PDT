@@ -61,7 +61,7 @@ public class Preprocessing {
 			logger.fine("\t====train and test====");
 			CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 			ci.index("index");
-			logger.fine(Arguments.getLogHeader());
+			logger.fine(Arguments.modelNameForLog());
 			Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
 			evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());
@@ -87,7 +87,7 @@ public class Preprocessing {
 			logger.fine("\t====train and test====");
 			CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 			ci.index("index");
-			logger.fine(Arguments.getLogHeader());
+			logger.fine(Arguments.modelNameForLog());
 			Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
 			evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());

@@ -108,12 +108,15 @@ public class LinguisticPreprocessing {
 	
 	public static void main(String[] args) throws Exception {
 		long start = System.currentTimeMillis();
+		FileUtil.copyFile("pdt1_0/train", "pdt1_0/train_");
+		System.out.println("copy Time[s]: "+(System.currentTimeMillis()-start)/1000);
+		stopWordRemoval("pdt1_0/train_", "pdt1_0/_train_");
 //		lowercase("pdt1_0/pdt1_preprocessed", "pdt1_0/pdt1_preprocessed");
 //		stopWordRemoval("pdt1_0/pdt1_preprocessed", "pdt1_0/pdt1_preprocessed");
 //		mergeCzechTermVariants("pdt1_0/pdt1_preprocessed", "pdt1_0/pdt1_preprocessed");
 //		stemCzechTerms("pdt1_0/pdt1_preprocessed", "pdt1_0/pdt1_preprocessed");
 		System.out.println("Time[s]: "+(System.currentTimeMillis()-start)/1000);
-		removeNonWords("pdt1_0/pdt1_preprocessed", "pdt1_0/pdt1_preprocessed");
+		
 	}
 
 }

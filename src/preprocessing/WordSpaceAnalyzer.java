@@ -48,7 +48,7 @@ public class WordSpaceAnalyzer extends Analyzer {
 	}
 	
 	public TokenStream tokenStream(String fieldName, Reader reader) {
-		Tokenizer tokenizer =  new WhitespaceTokenizer(reader);
+		Tokenizer tokenizer =  new WhitespaceTokenizer(matchVersion,reader);
 //		TokenStream result = new WordFilter(tokenizer);
 		
 //		if(Arguments.lowercase.equalsIgnoreCase("y"))result=new LowerCaseFilter(result);
