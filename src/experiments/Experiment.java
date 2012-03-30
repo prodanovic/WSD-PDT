@@ -61,10 +61,10 @@ public class Experiment {
 		
 //......train and test
 		logger.fine("\t====train and test====");
-		CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
-		ci.index("index");
 		
-		Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+				Arguments.numberOfSentencesInLuceneDoc,
+				Arguments.upBoarderForNumberOfMeanings);
 		evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 		logger.fine(evaluator.testSetStatsForLog());
 		evaluator.predict();
@@ -76,9 +76,10 @@ public class Experiment {
 		logger.fine("\t====test on unseen data====");
 		
 		ep.mergeFiles("pdt1_0//train", "pdt1_0//testDev", "pdt1_0//train+testDev");
-		ci = new  CzechIndexer("pdt1_0//train+testDev", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
-		ci.index("index");
-		evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+		
+		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+				Arguments.numberOfSentencesInLuceneDoc,
+				Arguments.upBoarderForNumberOfMeanings);
 		evaluator.extractTestContext("pdt1_0//testFinal",Arguments.evaluationContextWindowSize);
 		logger.fine(evaluator.testSetStatsForLog());
 		evaluator.predict();

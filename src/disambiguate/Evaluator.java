@@ -53,21 +53,18 @@ public class Evaluator {
 	VectorStoreReaderLucene vecReader ;
 	LuceneUtils luceneUtils;
 	CzechIndexer czechIndexer;
-	
-//	List<String> tokenTestList;
 	public Map<String, ArrayList<String>> meanings ;
-//	Map<String, Double> cachedDistances;
 	public  Hashtable<String,EvaluationEntry> evaluationEntries ;
 	private Hashtable<String,Vector> termVectors; 
 	Logger logger ;
-	
 	int upBoarderForNumberOfMeanings;
 	public int similaritiesCalculated=0;
 	
 	boolean isRI = Arguments.matrixType==Arguments.MATRIX_TYPE.RI.ordinal();
 	boolean isPMI = Arguments.matrixType==Arguments.MATRIX_TYPE.PMI.ordinal();
 	
-	public Evaluator(int upBoarderForNumberOfMeanings) throws CorruptIndexException, IOException {
+	public Evaluator(int numberOfWordsInDocument, int numberOfSentencesInLuceneDoc,
+			int upBoarderForNumberOfMeanings) throws CorruptIndexException, IOException {
 		super();
 		try {
 			if(new File("termvectors.bin").exists())
@@ -87,7 +84,7 @@ public class Evaluator {
 //		cachedDistances = new HashMap<String, Double>();
 		this.upBoarderForNumberOfMeanings = upBoarderForNumberOfMeanings;
 		
-		czechIndexer = new CzechIndexer(Arguments.inputFilePath, 1, 1);
+		czechIndexer = new CzechIndexer(Arguments.inputFilePath,numberOfSentencesInLuceneDoc,numberOfWordsInDocument );
 		czechIndexer.loadMeaningsAndTokens();
 //		czechIndexer.pruneMeaningThatOccurLessThan(upBoarderForNumberOfMeanings);
 		meanings = czechIndexer.meanings;
@@ -432,7 +429,7 @@ public class Evaluator {
 //		System.out.println(evaluator.isToken(")"));
 //		System.out.println(evaluator.isToken("^a3344"));
 		
-		Evaluator evaluator = new Evaluator( 2);
+		Evaluator evaluator = new Evaluator(-1,1, 2);
 		String sentence = "aero-1 tedy nebude pri-1 vyrobe l-3 l-3 a-1 l-3 vazano na-1 jedineho dodavatele spickove avioniky";
 		evaluator.extractSentenceContext(sentence, 2);
 		evaluator.predict();

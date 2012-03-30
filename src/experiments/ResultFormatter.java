@@ -30,7 +30,9 @@ public class ResultFormatter {
 		Hashtable<String, Integer> table=new Hashtable<String, Integer>();
 		Evaluator evaluator;
 		try {
-			evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+			evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+					Arguments.numberOfSentencesInLuceneDoc,
+					Arguments.upBoarderForNumberOfMeanings);
 			evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
 			Set<Entry<String, EvaluationEntry>> set = evaluator.evaluationEntries.entrySet();
 			Iterator<Entry<String, EvaluationEntry>> it =set.iterator();

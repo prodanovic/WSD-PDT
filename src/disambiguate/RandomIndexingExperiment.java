@@ -109,7 +109,9 @@ public class RandomIndexingExperiment {
 		ts.printStatistics();
 		OldIndexer.getDocumentsFromLuceneIndex();
 				
-		Evaluator evaluator = new Evaluator( Arguments.upBoarderForNumberOfMeanings);
+		Evaluator evaluator = new Evaluator( Arguments.numberOfWordsInDocument,
+				Arguments.numberOfSentencesInLuceneDoc,
+				Arguments.upBoarderForNumberOfMeanings);
 		evaluator.extractTestContext("pdt1_0\\test",Arguments.evaluationContextWindowSize);
 //......prediction
 		List<String> predictedMeanings = evaluator.predict();

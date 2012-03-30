@@ -62,7 +62,9 @@ public class Preprocessing {
 			CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 			ci.index("index");
 			logger.fine(Arguments.modelNameForLog());
-			Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+					Arguments.numberOfSentencesInLuceneDoc,
+					Arguments.upBoarderForNumberOfMeanings);
 			evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());
 			evaluator.predict();
@@ -88,7 +90,9 @@ public class Preprocessing {
 			CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 			ci.index("index");
 			logger.fine(Arguments.modelNameForLog());
-			Evaluator evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
+			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+					Arguments.numberOfSentencesInLuceneDoc,
+					Arguments.upBoarderForNumberOfMeanings);
 			evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());
 			evaluator.predict();
