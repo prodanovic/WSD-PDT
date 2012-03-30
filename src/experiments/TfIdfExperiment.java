@@ -62,7 +62,7 @@ public class TfIdfExperiment {
 			
 			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 					Arguments.numberOfSentencesInLuceneDoc,
-					Arguments.upBoarderForNumberOfMeanings);
+					Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
 			evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());
 			

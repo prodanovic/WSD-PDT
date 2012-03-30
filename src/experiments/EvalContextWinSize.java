@@ -75,7 +75,7 @@ public class EvalContextWinSize {
 			logger.fine(Arguments.modelNameForLog());
 			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 					Arguments.numberOfSentencesInLuceneDoc,
-					Arguments.upBoarderForNumberOfMeanings);
+					Arguments.upBoarderForNumberOfMeanings, null);
 			evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 			logger.fine(evaluator.testSetStatsForLog());
 			evaluator.predict();

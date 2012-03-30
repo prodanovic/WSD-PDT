@@ -111,7 +111,7 @@ public class RandomIndexingExperiment {
 				
 		Evaluator evaluator = new Evaluator( Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, null);
 		evaluator.extractTestContext("pdt1_0\\test",Arguments.evaluationContextWindowSize);
 //......prediction
 		List<String> predictedMeanings = evaluator.predict();

@@ -30,12 +30,12 @@ public class TestEvaluator {
 
 
 	
-//	@Test
+	@Test
 	public void testExtractTestContext() throws IllegalArgumentException, IOException{
-		evaluator = new Evaluator(-1,1,2);
+		evaluator = new Evaluator(-1,1,2, "pdt1_0/train_");
 		String sentence = "pri-1 tedy nebude pri-1 vyrobe l-3 l-3 a-1 l-3 vazano na-1 jedineho dodavatele spickove avioniky-9";
 		System.err.println(sentence);
-		evaluator.extractSentenceContext(sentence, 0);
+		evaluator.extractSentenceContext(sentence, 1);
 //		evaluator.predict();
 		
 		Set<Entry<String, EvaluationEntry>> set = evaluator.evaluationEntries.entrySet();
@@ -64,7 +64,7 @@ public class TestEvaluator {
 		ci.index("index");
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
 		int numberOfTrainPolysemes1 = 0;
 		Iterator<String> ks = evaluator.meanings.keySet().iterator();
 		while(ks.hasNext()){
@@ -76,7 +76,7 @@ public class TestEvaluator {
 		int numberOfTrainPolysemes5 = 0;
 		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, null);
 		Iterator<String> ks5 = evaluator.meanings.keySet().iterator();
 		while(ks5.hasNext()){
 			numberOfTrainPolysemes5+=evaluator.meanings.get(ks5.next()).size();
@@ -89,7 +89,7 @@ public class TestEvaluator {
 		Arguments.numberOfSentencesInLuceneDoc=1;
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
 		int numberOfTrainPolysemes1 = 0;
 		Iterator<String> ks = evaluator.meanings.keySet().iterator();
 		while(ks.hasNext()){
@@ -98,7 +98,7 @@ public class TestEvaluator {
 		Arguments.numberOfSentencesInLuceneDoc=5;
 		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, null);
 		int numberOfTrainPolysemes4 = 0;
 		Iterator<String> ks5 = evaluator.meanings.keySet().iterator();
 		while(ks5.hasNext()){
@@ -108,12 +108,12 @@ public class TestEvaluator {
 	}
 	
 	
-	@Test
+//	@Test
 	public void testTestSetSizeHasNotChangedBasedOnInputDocSizeWord() throws Exception, Exception{
 		Arguments.numberOfWordsInDocument=1;
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
 		evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
 		Hashtable<String,EvaluationEntry> evaluationEntries = evaluator.evaluationEntries;
 		int numberOfTestPolysemes1 = evaluationEntries.size();
@@ -125,7 +125,7 @@ public class TestEvaluator {
 		Arguments.numberOfWordsInDocument=3;
 		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
 		evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
 		evaluationEntries = evaluator.evaluationEntries;
 		int numberOfTestPolysemes5 = evaluationEntries.size();

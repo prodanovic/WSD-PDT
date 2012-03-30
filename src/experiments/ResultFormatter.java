@@ -32,7 +32,7 @@ public class ResultFormatter {
 		try {
 			evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 					Arguments.numberOfSentencesInLuceneDoc,
-					Arguments.upBoarderForNumberOfMeanings);
+					Arguments.upBoarderForNumberOfMeanings, null);
 			evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
 			Set<Entry<String, EvaluationEntry>> set = evaluator.evaluationEntries.entrySet();
 			Iterator<Entry<String, EvaluationEntry>> it =set.iterator();

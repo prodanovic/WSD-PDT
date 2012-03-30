@@ -64,7 +64,7 @@ public class Experiment {
 		
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, null);
 		evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
 		logger.fine(evaluator.testSetStatsForLog());
 		evaluator.predict();
@@ -79,7 +79,7 @@ public class Experiment {
 		
 		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings);
+				Arguments.upBoarderForNumberOfMeanings, null);
 		evaluator.extractTestContext("pdt1_0//testFinal",Arguments.evaluationContextWindowSize);
 		logger.fine(evaluator.testSetStatsForLog());
 		evaluator.predict();
