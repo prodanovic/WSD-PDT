@@ -1,0 +1,69 @@
+mar 29, 2012 3:40:21 PM experiments.TfIdfExperiment main
+FINE: Model: TFIDF
+==================
+Preprocessing:LOWCASE
+Size of document in the matrix:
+	 number Of Sentences In Document:1
+	 number Of Words In Document:-1
+Evaluation:
+	 Up Threshold For Number Of Meanings:6
+	 Evaluation Context Window Size:3
+
+mar 29, 2012 3:40:23 PM experiments.TfIdfExperiment main
+FINE: 	====train and test====
+mar 29, 2012 3:40:27 PM disambiguate.Evaluator extractTestContext
+FINE: Extracting contexts for the test set..
+mar 29, 2012 3:40:27 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:220.0
+	total number Of Test Contexts[ts instances]:3406.0
+
+mar 29, 2012 3:41:12 PM experiments.TfIdfExperiment main
+FINE: Finished in 50 seconds.
+mar 29, 2012 3:41:12 PM experiments.TfIdfExperiment main
+FINE: Evaluation Statistics
+	Checksum(#test set=tp+fp+discarded):3406.0==3406.0
+	tp=2002.0 fp=50.0 discarded=1354.0
+	Precision:97.56335 tp=2002.0 fp=50.0
+	Recall:100.0 tp=2002.0 fn=0.0
+	F-measure:98.76665
+	Random precision= 11.395828 (testInstances=2052.0 ,invertSenseCount=233.84239)
+
+mar 29, 2012 3:41:14 PM disambiguate.Evaluator extractTestContext
+FINE: Extracting contexts for the test set..
+mar 29, 2012 3:41:14 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:269.0
+	total number Of Test Contexts[ts instances]:4218.0
+
+mar 29, 2012 3:42:29 PM experiments.TfIdfExperiment main
+FINE: Finished in 127 seconds.
+mar 29, 2012 3:42:29 PM experiments.TfIdfExperiment main
+FINE: Evaluation Statistics
+	Checksum(#test set=tp+fp+discarded):4218.0==4218.0
+	tp=2407.0 fp=108.0 discarded=1703.0
+	Precision:95.705765 tp=2407.0 fp=108.0
+	Recall:100.0 tp=2407.0 fn=0.0
+	F-measure:97.80576
+	Random precision= 7.660094 (testInstances=2515.0 ,invertSenseCount=192.65137)
+
+mar 29, 2012 3:42:31 PM disambiguate.Evaluator extractTestContext
+FINE: Extracting contexts for the test set..
+mar 29, 2012 3:42:31 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:273.0
+	total number Of Test Contexts[ts instances]:4186.0
+
+mar 29, 2012 3:43:48 PM experiments.TfIdfExperiment main
+FINE: Finished in 207 seconds.
+mar 29, 2012 3:43:48 PM experiments.TfIdfExperiment main
+FINE: Evaluation Statistics
+	Checksum(#test set=tp+fp+discarded):4186.0==4186.0
+	tp=2420.0 fp=120.0 discarded=1646.0
+	Precision:95.27559 tp=2420.0 fp=120.0
+	Recall:100.0 tp=2420.0 fn=0.0
+	F-measure:97.58065
+	Random precision= 7.3002257 (testInstances=2540.0 ,invertSenseCount=185.42574)
+
+mar 29, 2012 3:43:48 PM experiments.TfIdfExperiment main
+FINE: LOWCASE  & 97.56 & 100 & 95.71 & 100 & 95.28 & 100 & 7.3002257 \\

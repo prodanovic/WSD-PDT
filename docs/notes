@@ -1,0 +1,52 @@
+Possible extensions:
+
+1. disambiguation based only on POS and SUBPOS of neighboring words
+2. extending the context window (2++)
+3. experiments with tectogramatical roles (maybe not in PDT1)
+..
+n. automatic Semantic Role Labeling, on a different corpus: FrameNet, PropBank(as in CoNLL-2005)  etc
+determine the appropriatness of the verb meaning/semantic_role/case in the given word/pos/semantic_role context;
+experiment with different window sizes; experiment with the ratio between the word and sem_role and pos to get the
+best results; cross evaluate; 
+methodology: 
+identify the predicate in the sentence; get roleset for the predicate and try to match sentence constituents to roles 
+, such as Agent, Patient, or Instrument, and their adjuncts, such as Locative, Temporal, or Manner
+1. training: glue together token and its role. train term vectors on these. keep a list of all roles for one word in hash
+2. testing: identify predicate. get roleset (roles and adjuncts) that correspond to it. attempt matching:
+2.1. roles:   
+
+
+Statistics. 
+TextStatistics.printMeanings: 
+total = 400
+2mean = 314
+3mean = 52
+4mean = 18
+5mean = 8
+6mean = 5
+7mean = 1
+8mean = 2
+
+FIX-UPS:
+- pre-processing: - check with Jirka if the cleaned pdt should be really 8MB; re-check number of tokens and types 
+ 				  Number of tokens:1,457,827 (1,204,568 just words), in http://ufal.mff.cuni.cz/pdt/Corpora/PDT_1.0/Doc/PDT10_data.html
+ 				  says: 1,507,333 of syntactic-analytic tags
+ 				  
+ 				  - Preprocessing: morphological normalization (stemming). reason: reduces the number of word types in the data, 
+ 				  without affecting the number of word tokens
+ 				  
+ 				  
+- indexing phase: change analyzer: no lowercasing of tokens
+in the evaluation phase	- fix empty places, i.e. : " s-1,leteckou"
+						+ check why some chars are not showing in printout;  write to file to be sure
+						-dont consider special char. ") o-8,nastalé" ; you dont index them
+						-if semantic vector is not found (or == 0) abort measuring distance from other meanings
+						 as well;  
+						-check if distance for more than 2 words can be measured
+						-store measured distances in a hash<query,distance>-  takes too much time to 
+						recalculate 
+						
+			
+Evaluation measures. During the evaluation of WSD systems two main performance measures are used:
+Precision: the fraction of system assignments made that are correct
+Recall: the fraction of total word instances correctly assigned by a system			

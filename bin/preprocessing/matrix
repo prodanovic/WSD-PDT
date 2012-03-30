@@ -1,0 +1,31 @@
+ pøerušen sen v-1 latern magik-2 ja sad .||
+ ten nešastn-2 mozart je bio sad onako bas bas .||
+ na-1 stol leh kopi dvo dopis dopis dopis . ||
+ na-1 stol leh kopi dvo dopis . ||
+ rozhovor skonèil uder jedenact hodin .||
+
+bas:	0	2	0	0	0	
+bio:	0	1	0	0	0	
+dopis:	0	0	3	1	0	
+dvo:	0	0	1	1	0	
+hodin:	0	0	0	0	1	
+ja:	1	0	0	0	0	
+je:	0	1	0	0	0	
+jedenact:	0	0	0	0	1	
+kopi:	0	0	1	1	0	
+latern:	1	0	0	0	0	
+leh:	0	0	1	1	0	
+magik-2:	1	0	0	0	0	
+mozart:	0	1	0	0	0	
+na-1:	0	0	1	1	0	
+nešastn-2:	0	1	0	0	0	
+onako:	0	1	0	0	0	
+pøerušen:	1	0	0	0	0	
+rozhovor:	0	0	0	0	1	
+sad:	1	1	0	0	0	
+sen:	1	0	0	0	0	
+skonèil:	0	0	0	0	1	
+stol:	0	0	1	1	0	
+ten:	0	1	0	0	0	
+uder:	0	0	0	0	1	
+v-1:	1	0	0	0	0	
