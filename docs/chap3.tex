@@ -1,0 +1,160 @@
+\chapter{Word sense disambiguation}
+\section{Word sense(s)}
+A meaning of a word is a variable category, very much dependent on its surrounding context. In the field 
+of lexical semantics it is found that many words have overlapping or extended meanings (Kilgarriff 
+1997)\cite{kilgarriff1997}. ''Polysemy" of a word means that it has multiple, but related meanings. At a 
+more coarse grained level of meaning words that have the same spelling and pronunciation as each other but different meanings and origins are called \textit{homonyms}. Polysemy is a 
+feature of words while ''ambiguity" is a property of text. If there is uncertainty about  the meaning of a 
+word there is ambiguity about the whole text as well. 
+Probably the most well known example of an ambiguous word is the word \textit{bank}, which contains
+two homonyms: as a  as financial institution, and as a river bank. Bank as financial institution splits 
+further into the following cloud of related senses: the company or institution, the building itself, the 
+counter where money is exchanged, a fund or reserve of money, a money box (piggy bank), the funds in 
+a gambling house (WordNet 2.1)\footnote{http://wordnet.princeton.edu/}.
+Different words have different number of meanings.
+A view on the number of senses word might have is somewhat controversial. Some argue that task--
+independent senses simply cannot be enumerated in a list (Kilgarriff 1997)\cite{kilgarriff1997} while 
+others claim that words can have only a single, abstract meaning (Ruhl 1989)\cite{ruhl1989}.
+\newline
+\newline 
+WSD was first formulated as a distinct computational task during the early days of machine translation. It was Weaver
+ (1949)\cite{weaver1949} who noted in his memo on machine translation the importance of context in determining word sense(s), by conducting a simple experiment- observing words from a sentence in isolation, and trying to determine their meaning. (Zipf 
+1949)\cite{zipf1949_1} published his "Law of Meaning"  where he states  that more frequent words 
+have more senses than less frequent words in a power--law relationship. A valuable point worth noting 
+in any experiment with WSD. This was later confirmed for the British National Corpus (Edmonds 2005) 
+\cite{edmonds2005} as well.
+\\\\  
+Statistical and machine learning methods have been successfully applied to the WSD problem. Methods that train on manually sense--tagged corpora (like Penn Treebank, or Prague Dependency Treebank) are called supervised learning methods. Since models implemented in this thesis are trained on annotated corpus, they are as well supervised. Supervised methods have become in general the mainstream approach to WSD, with the best results in all tasks of the Senseval \footnote{http://www.senseval.org/} competitions.
+
+\section{Applications of WSD-- why is it important?}
+WSD's importance lies in the fact that it enables other tasks and applications of computational  linguistics (CL) and natural language processing (NLP) such as information retrieval(IR), parsing,  machine translation(MT), semantic interpretation, text mining, and (lexical) knowledge acquisition. Detail 
+applications of WSD to each of these fields is presented below. 
+\\\\ 
+\textbf{Machine translation (MT).} In MT, choice of the correct translation of a word is probably one of the hardest tasks in that 
+field. WSD originally introduced for lexical choice of words that have multiple translations depending on their context. For 
+example, in an English--French financial news translator, the English noun \textit{change} could translate to either 
+\textit{changement }('transformation') or \textit{monnaie} ('pocket money'). Nowadays, there is contrasting evidence that 
+WSD can benefit MT: for instance, (Carpuat and Wu 2005) claimed that WSD cannot be integrated into
+MT applications, while (Dagan and Itai 1994) show that the
+proper use of WSD leads to an increase in the translation performance.
+\\\\   
+\textbf{Information retrieval (IR).}In IR, documents retrieved depend on query terms, which are often ambiguous. For instance, given the query "depression" should the system return documents about illness, weather systems, or economics? Current IR systems do not use explicit WSD, and rely on the user typing enough context in the query to only retrieve documents relevant to the intended sense (i.e., "tropical depression"). (Sanderson 1994 )concluded that with 
+ queries containing large number of words, WSD cannot benefit IR. (Schutze and Pedersen 1995) have however demonstrated 
+that at a 90\% accuracy level of WSD, there is an IR performance improvement by about 4,3\%(from 29.9\% to 34.2\%).
+\\\\  
+\textbf{Information extraction (IE) and text mining.} WSD is required for the accurate analysis of text in many applications. For example if we wish to somehow mark the difference between \textit{medical drugs} and \textit{illegal drugs} we would need to have these phrases disambiguated first. More generally, the Semantic Web requires automatic annotation of documents according to a reference ontology: all textual references must be resolved to the right concepts and event structures in the ontology (Dill et al. 2003)\cite{dill2003} (Narayan et al. 2010) \cite{EventTwitterSPIM10}.
+\\\\  
+\textbf{Lexicography.} Modern lexicography is corpus--based, thus WSD and lexicography can work 
+for each other. WSD is providing empirical sense grouping and contextual indicators of sense to lexicographers, who 
+provide better sense inventories and sense--annotated corpora to enable better WSD. Some of the more famous examples are the 
+HECTOR project (Atkins 1993) and the Sketch Engine (Kilgarriff et al. 2004).
+\\\\ 
+ However it should be noted that explicit WSD by itself, has not always demonstrated decisive benefits in real 
+end--to--end applications (Navigli 2009:51). There have been isolated results that show some improvements,
+but just as often WSD can hurt performance, as is the case in one IR experiment (Sanderson 1994).
+
+\section{Classification of approaches to WSD}
+In a broad view, we can distinguish two main streams of approaches to WSD (Navigli 2009). First stream classifies WSD 
+approaches based on level of supervision it requires:
+\begin{enumerate}
+\item supervised:  use machine learning techniques to learn a classifier from labeled training sets of any kind
+\item unsupervised: employ mainly clustering techniques on unlabeled corpora, and do not employ a manually sense-tagged corpus to provide a sense choice for a word in context. 
+\end{enumerate} 
+Another way of viewing approaches to WSD is according to the nature of the resource used during training. Methods that rely primarily on dictionaries, thesauri, and knowledge bases (like ontologies), without using any corpus evidence, are called  \textit{dictionary--based} or \textit{knowledge--based}. Contrary to them there are methods that work directly with raw, unannotated corpora, and are termed as \textit{corpus--based methods}. 
+\\
+Senseval (later Semeval) is a competition among NLP practitioners devoted solely to WSD and WSD--
+related tasks. Two oldest variants of WSD task is based on the content of the test set used for evaluation
+of WSD systems entered in that competition:
+\begin{enumerate}
+\item Lexical sample task: a system is required to disambiguate a restricted set of target words usually occurring one per sentence.
+\item All-words WSD task: systems are expected to disambiguate all open-class words in a text (i.e., nouns, verbs, adjectives, and adverbs)
+\end{enumerate} 
+Since the inception of Senseval systems perform better on the lexical sample task.
+
+\subsection{Unsupervised learning methods}
+Unsupervised methods have the potential to overcome the new knowledge acquisition bottleneck 
+(manual sense--tagging), which is the lack of large-scale resources manually annotated
+with word senses. These methods are able to induce word senses from training text by clustering word 
+occurrences, and then classifying new occurrences into the induced clusters/senses. They are based on 
+the idea that the same sense of a word will have similar neighboring words. However, they may not 
+discover clusters equivalent to the traditional senses in a sense inventory.
+While supervised WSD is typically identified as a sense labeling task, that is, the explicit assignment
+of a sense label to a target word, unsupervised WSD performs word sense
+discrimination, which aims to divide “the occurrences of a word into a number of
+classes by determining for any two occurrences whether they belong to the same sense
+or not [Sch\'utze 1998, page 97]. Main approaches to unsupervised WSD are:
+\begin{enumerate}
+\item Context Clustering: Each occurrence of a target word in a corpus is represented as a context vector. 
+The aim of the approach is to cluster context vectors, that is, vectors which represent the context
+of specific occurrences of a target word. Sense discrimination can then be performed by grouping these context vectors using a clustering algorithm. (Schutze 1998) proposed an algorithm, called
+context-group discrimination, which groups the occurrences of an ambiguous word into
+clusters of senses, based on the Expectation Maximization algorithm. A different clustering approach
+consists of agglomerative clustering (Pedersen and Bruce 1997). Initially, each instance
+constitutes a singleton cluster. Next, agglomerative clustering merges the most similar
+pair of clusters, and continues with successively less similar pairs until a stopping
+threshold is reached.
+\item Word Clustering: Aim at clustering words which are semantically similar and can thus convey a specific meaning. One approach to word clustering (Lin 1998a) involves identification
+of words similar (possibly synonymous) to a target word. To discriminate between the senses, a word
+clustering algorithm is applied to induce senses of the target word. In the next attempt, \textit{clustering 
+by committee} (CBC) algorithm (Lin and Pantel 2002), a different word clustering method was proposed. 
+To calculate the similarity each word is represented as a feature vector, where each feature is the 
+expression of a syntactic context in which the word occurs. Recursive procedure is applied to cluster word into \textit{committees}, and then discrimination is performed based on the similarity of feature vector to 
+the centroid of each committee.
+\end{enumerate}
+
+\subsection{Supervised methods}
+Supervised methods are also called \textit{exemplar based} methods on account of the learning phase. The training set used to
+learn the classifier typically contains a set of examples in which a given target word is
+manually tagged with a sense from the sense inventory of a reference dictionary. They are predominantly
+consisting of Machine Learning(ML) methods. 
+\begin{enumerate}
+\item Probabilistic Methods: these methods usually estimate a set of probabilistic parameters that
+express the conditional or joint probability distributions of categories and
+contexts (described by features). These parameters can be then used to assign
+to each new example the particular category that maximizes the conditional
+probability of a category given the observed context features.
+\item Methods Based on the Similarity of the Examples: the methods in this family perform 
+disambiguation by taking into account
+a similarity metric. This is done by comparing new examples to a set
+of learned vectors (one for each word sense) and assigning the
+sense of the most similar vector, or by searching in a stored base of annotated
+examples for the most similar examples and assigning the most
+frequent sense among them. VSM fall into this family of approaches. 
+\item Methods Based on Discriminating Rules: decision lists and decision trees use selective rules associated with each
+word sense. Given an example to classify, the system selects one or more
+rules that are satisfied by the example features and assign a sense based on
+their predictions. 
+\item Linear Classifiers and Kernel-Based Approaches: 
+Linear classifiers have been very popular in the field of information retrieval
+(IR), since they have been used successfully as simple and efficient
+models for text categorization. A linear (binary) classifier is a hyperplane
+in an n-dimensional feature space that can be represented with a weight
+vector w and a bias b indicating the distance of the hyperplane to the origin. In the WSD task it 
+classifies meanings of polysemous word against its context. 
+\\Support Vector Machines (SVM) is the most popular kernel-method. The learning phase consists of 
+choosing the hyperplane that separates the positive examples from the negatives with
+maximum margin between. This learning bias has proven to be very powerful
+and has lead to very good results in many pattern recognition, text, and
+NLP problems.
+\end{enumerate}
+
+\section{Approaches that use VSM for WSD}
+As mentioned in the previous section Vector Space Model (VSM) approaches fall under methods based on the similarity of the examples. There are many ways to calculate the similarity between two examples.
+Assuming the VSM one of the simplest similarity
+measures is to consider the angle that both example vectors form (i.e., the
+cosine measure). (Leacock et al. 1993)\cite{Leacock93towardsbuilding} compared VSM to ML 
+ techniques such as Neural Networks,
+and Naive Bayes methods, and drew the conclusion that the two first
+methods slightly surpass the last one in WSD. 
+\\\\
+There was also an automatic and unsupervised approach (Sch\"utze 1998)\cite{schutze1998}, based on clustering. Senses are interpreted as groups (or clusters) of similar contexts of the ambiguous word. Words, contexts, and senses are represented in Word Space, a high-dimensional, real-valued space in which closeness corresponds to semantic similarity. The algorithm is unsupervised in both training and application: senses are discriminated by learning from a corpus without labeled training instances or other external knowledge sources.
+\\\\
+Another unsupervised approach at WSD done by (Pantel \& Lin, 2002a) \cite{pantelLin2002} is a clustering algorithm called CBC (Clustering By Committee). The centroid of the members of a 
+committee is used as the feature vector of the cluster. Words to are assigned to their most similar 
+clusters. After assigning an element to a cluster, overlapping features of the cluster are removed from that element. Finally, each 
+cluster that a word belongs to represents one of its senses. Weighting is performed with PMI(explained in the chapter \ref{pmi}) and distance between vectors is calculated using cosine distance. 
+
+%perhaps this should be placed in the evaluation phase, to have the comparison with my system
+\section{State--of--the--art}
+In 1997, Senseval--1 (Kilgarriff and Palmer 2000)\cite{kilgarriff2000} found accuracy of 77\% on the English lexical sample task, just below the 80\% level of human performance (estimated by inter--tagger agreement). In 2001, scores at Senseval--2 (Edmonds and Cotton 2001)\cite{edmonds2001} appeared to be lower, but the task was more difficult, as it was based on the finer grained senses of WordNet. The best accuracy on the English lexical sample task at Senseval--2 was 64\% (to an inter--tagger agreement of 86\%). Senseval--2 showed that supervised approaches had the best overall performance.
+\\By 2004, the top systems on the English lexical sample task at Senseval--3 (Mihalcea and Edmonds 2004) \cite{mihalcea2004} were performing at human levels according to inter--tagger agreement. The top ten systems, (all supervised) made between 71.8\% and 72.9\% correct disambiguations compared to an inter--tagger agreement of 67\%. The best unsupervised system overcame the most--frequent--sense baseline achieving 66\% accuracy.

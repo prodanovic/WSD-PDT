@@ -1,0 +1,60 @@
+%\chapter*{Introduction}
+\chapter{Introduction}
+
+\begin{section}{About the task}
+Lexical disambiguation is concerned with determining the meaning of every word given their context. As a computational problem it is often described as "AI--complete", which means that in order to solve the problem of word meaning one needs to solve completely  natural--language understanding or common-- sense reasoning (Ide and V\'eronis 1998)
+%\cite{nancy1998}
+. Fortunately, this is in not the case in the field of computational linguistics. There, this problem is generally called word sense disambiguation (WSD), and is defined as the problem of computationally determining which ``sense'' of a word is activated within a particular context. WSD is essentially a task of classification: word senses are the classes, a word's context contains necessary disambiguation information, and each occurrence of a word is assigned to one or more of its possible classes depending on the context information.
+\newline
+\newline The Prague Dependency Treebank is a large annotated corpus built to further the research in Computational Linguistics for Czech language. It is fully annotated at morphological and syntactic analytic  layers of annotation as well as in tectogrammatical layer. Like any other language, Czech language has its own share of words with multiple meanings. Thus the main task of this thesis is word sense disambiguation on PDT dataset. 
+\end{section}
+\section{About the model} \label{aboutTheModel}
+Semantic theory has existed long enough to witness many different attempts to represent the meaning of 
+words. Starting from Frege, Tarsky and Davidson's Propositional Logic representations where they 
+concentrated 
+on the Propositions about Symbols, calculating the ``truth'' of those Propositions. However, they were more 
+focused on ``truth conditions''  and less on the content (representing what the propositions are about). (De 
+Saussure 1878) 
+%\cite{SAUSSURE_1878} 
+ in his first work talks about the \textit{signifier} (the signs) and the \textit{signified} (the "meaning"), 
+followed with the theory of mediated reference (Frege 1892)
+%\cite{frege1892} 
+where he makes a distinction between
+sense (intension) and reference (extension). Then comes the theory of direct reference (Rusell 1905)
+%\cite{rusell1905} 
+who equates the meaning with reference. If we look even further in history and beyond linguistic theory we 
+can find examples in philosophy like with Aristotle where he describes concepts as a finite sets of features 
+that belong to different categories (animate--inanimate, etc.). Leibnitz also used this approach when he tried 
+to make his "language of meaning".
+\\\\ 
+ \textbf{Some applications.} A large part of Natural Language Processing today is concerned with tasks and applications related to the use of meaning, like  lexicon acquisition, word--sense disambiguation, information access, machine translation, dialogue systems, etc. Vector space models have proven to be applicable in these fields. 
+Another immediate application could be in the field of Information Retrieval, in particular for the expansion of user queries, since word--space models easily retrieve nearest neighbours in semantic space,  in order to obtain better search results. 
+%\todo{perhaps this should be left for "future work" section?}
+\newline
+\newline \textbf{Intuitiveness.}
+There is a certain intuitiveness behind statistical models of semantics. Experiments by Tom Mitchell\cite{mitchell2008} successfully predict the fMRI (fuctional MRI) brain images for particular nouns, based on fMRI images of seen nouns, completely relying on statistical approach. Lexical priming studies beginning with Ratcliff \& McKoon (1978)
+%\cite{ratcliff1978}
+ and Swinney (1979)
+%\cite{swinney1979lexical} 
+as well as eye movement studies (Rayner, Pacht, \& Duffy, 1994)
+%\cite{raynerPacht1994}
+, suggest that ambiguous words first activate multiple interpretations, but very soon settle to that sense most appropriate to their discourse contexts. An analogy to estimating the amount of appropriateness of a word's meaning in some context could be drawn to the same way the scores of a word's meaning in some context are calculated, as will be presented in this thesis. It should  be noted that computational models presented here are not necessarily similar to the way humans process information when they think about word meaning. They are however empirically consistent with human behaviour when they are performing semantic related tasks. 
+
+\section{Thesis goals}   
+Main goal of this Master's thesis is to, by utilizing various approaches to statistical representation of 
+semantics, perform a Word Sense Disambiguation using Prague Dependency Treebank as a dataset. 
+Various approaches that were used for the task utilize different statistical models of semantics, and they as well as subsume a variety of steps in linguistic and statistical preprocessing of text. All necessary parameters
+are tuned in order to achieve best results for every model examined. Therefore, the secondary goal of this thesis was to establish the methodology by which preprocessing steps and tuning of models parameters should occur. 
+
+\section{Road map}
+This thesis is organized as follows: second chapter is describing the Word sense disambiguation task, its 
+purpose, applications and overview of approaches. Next chapter explains the statistical model of 
+ semantics starting from motivation, rationale and then details the mathematical foundation of 
+word--space models. Chapter after that is devoted to the problem of high dimensionality, present in
+word--space models, and gives an overview of best known techniques in overcoming this issue. Chapter
+four describes all the steps that can be taken when constructing the model, concentrating on presenting current approaches to such steps. With chapter four the theoretical part of the thesis is concluded. Chapter five, which is on experiments, details all the steps taken in experiments performed. Here are described: the research methodology and sections devoted to presenting tuning and results for three word--space models
+used for WSD task. Final chapters describe the implementation and in the user manual explain how the 
+implementation should be run when performing experiments.
+
+%\addcontentsline{toc}{chapter}{Introduction}
+

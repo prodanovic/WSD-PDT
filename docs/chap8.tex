@@ -1,0 +1,47 @@
+\chapter{User manual}
+In this section it will be explained how to use the software developed for the purpose of the experiments. First section describes the parameters 
+
+\section{Input parameters}
+System is accessed through a single class to which command line parameters are passed in the form:
+\begin{center}
+[-argumentType   argumentValue]*
+\end{center}
+
+\textbf{Class to which the arguments should be passed is  called $Experiment$.  }
+
+All arguments are optional. All arguments have their default values. Class that parses arguments is called $Arguments$.
+An overview of all input arguments is given in the table below.
+
+\begin{table}[h!]
+\begin{footnotesize}
+\begin{tabular}{| l|c|c|c|c|}
+\hline
+   index  &  name & data type & default value & used for  \\
+\hline\hline
+	1  &  lowercase & String & "n"  & preprocessing \\ \hline
+	2  &  stopWordsRemoval & String & "n"  & preprocessing \\ \hline
+	3  &  stemming & String & "n"  & preprocessing \\ \hline
+	4  &  mergeLexicalVariants & String & "n"  & preprocessing \\ \hline
+	5  &  inputFilePath & String & pdt1\_cleaned  & getting data \\ \hline
+	6  &  numberOfSentencesInLuceneDoc & Integer & 1  & document size \\ \hline
+	7  &  numberOfWordsInDocument & Integer & -1  & document size \\ \hline
+	8  &  matrixType & Integer & 0  & \small{\{0,1,2\}=\{TFIDF,PMI,RI\}} \\  \hline
+	9  &  upBoarderForNumberOfMeanings & Integer & 6  & evaluation \\ \hline
+	10  &  evaluationContextWindowSize & Integer & 3  & evaluation \\ \hline
+\hline
+\end{tabular}
+\caption{Overview of system's input arguments}
+\end{footnotesize}
+\end{table}
+
+If someone wishes to perform WSD on another dataset, they should specify the path to the file with the
+$-inputFilePath$ argument. However, it should be noted that occurrences of polysemous words should
+be annotated so that different meanings could be differentiated by the system. Content of the file
+ passed to the system is split into three separate files: train, testDev, testFinal. TestFinal contains test
+test sentences. 
+
+
+\section{Logs}
+For every experiment a log is made in the log folder, containing all relevant statistics related to the 
+experiment. Log name is constructed from abbreviations of all values of experiment's phases, for instance: $PMI\_STOP+MERGE\_1s\_7w\_6m$ means that it is a log of PMI model, where in preprocessing
+ filtering out closed class words and merging lexical variants was performed, document size in term--doc matrix is 1 sentence, 7+7 evaluation window context was used to construct context vectors, and only words with 6 meanings were investigated.

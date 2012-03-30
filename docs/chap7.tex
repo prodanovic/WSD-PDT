@@ -1,0 +1,54 @@
+\chapter{Implementation}
+Software used in all the experiments in this thesis is developed under the name PDT Word Sense Disambiguator. Entire system was implemented in Java programming language. Two third--party libraries were used: 
+\begin{enumerate}
+\item lucene\footnote{http://lucene.apache.org/java/docs/index.html}: for the purpose of text indexing,  released under the Apache Software License and
+\item semantic vectors\footnote{http://code.google.com/p/semanticvectors/}: for the purpose of constructing random vectors, released under the BSD 2-Clause License   \footnote{http://www.opensource.org/licenses/bsd-license.php}
+\end{enumerate}
+Classes are separated into following packages: preprocessing, vectorModels, utils (contains data types, string manipulation classes, vector operation classes), evaluation and experiments. 
+
+\section{Data flow}
+In this section will be presented an outline of sequential steps taken by the system in order to train the
+model, and then evaluate it on the test set. The options  mentioned here are dicussed in length in previous chapters,  therefore I will 
+outline here only what is relevant for the data flow.There are 4 major stages that subsume a number of 
+smaller, potential steps:
+\begin{description}
+\item \textbf{Obtaining and dividing the data} \hfill \\
+	First step here is to extract the text from PDT1.0(which is in a form of fully annotated SGML text). 
+Different meanings of ambiguous word are annotated differently, so this information is kept, while all
+other words are extracted in their normal form. This part is vital because the model needs to be trained
+on different meanings in order to be able to differentiate them during testing. 
+	When the text is obtained it is divided into three sets: training, testing for development and final testing. Sentences from 
+original data set are randomized before division. Training takes about 9/10 of the entire data set, while 1/10 is evenly 
+distributed to remaining two sets. Evaluation is performed twice: during training, the model is trained 
+on training set, and tested to development test set.  During testing, model is trained on train+testDev 
+set and evaluated on final test set, which represents an unseen portion of data. Files that are trained on
+and later tested on are run through the indexer. Every vector used in experiments is built straight from 
+the indexer. 
+\item \textbf{Preprocessing} \hfill \\
+There are 4 preproccessing options (all optional): lowercasing, stemming, filtering words that belong to closed class,
+and merging Czech lexical variants.  Lowercasing and word filtering take place in the indexer: lowercasing is just a matter of option, while for word filtering a stop word list needs to be passed. This list is to be found in the Apendix 1. Stemming and merging of czech variants are performed by the program directly on files. If one of these two options is used, it is applied before indexing.  
+\item \textbf{Building the matrix}\hfill \\
+After preprocessing indexer builds co-occurrence matrix (term--document). Documents passed to the 
+indexer are determined by the system, and there are two options that can be set: number of sentences 
+in one index document, and size of the context window found around ambiguous word. Any positive number can be set on either option, there is just a rule not to set number of sentences to a value 
+larger than 1 when you want to build word--level documents. Choice of document size determines 
+the "sensitivity" of the model, as is dicussed in Experiments chapter. During this phase all meanings of
+ambiguous word are saved in the hash table. Elements of the hash table are items whose keys are 
+ambiguous words while the values attached to the keys are lists which keep all the 
+meanings of ambiguous word. This hash table is passed to evaluator during evaluation. 
+\item \textbf{Normalizing the matrix: frequency weighting or dimensionality reduction }\hfill \\
+Although in case of frequency weighting this step is performed during evaluation, it is more natural to
+come before it, therefore I will describe it here. Frequency weighting is performed on elements of 
+term--document matrix, and which weight scheme is applied depends on the model (either TF--IDF or 
+PMI). Weighting is however not applied to RI model, due to its nature (see chapter on Random Indexing). RI model is constructed with the usage of semantic vectors package. After this step, the model is considered to be trained, and is ready for the evaluation.
+\item  \textbf{Evaluation}\hfill \\
+Evaluation is performed in several steps. First the entire test set is passed in order to extract all the 
+ambiguous words and the contexts they are found in. For some reason in PDT1 some words are labeled
+as ambiguous although they have only one meaning. These kinds of occurrences are inserted in 
+previously mentioned hash table during matrix construction phase. If a an ambiguous word encountered 
+in testing is determined to have only one meaning in training, it is not put into the test set. 
+When test set instances are extracted, model compares distances between a test set instance of 
+ambigous word and all other meanings to the context vector. Whichever meaning is the closest by 
+cosine distance from the context vector is predicted to be the ''correct meaning". Term vectors are retrieved at this point, and in the case of TFIDF and PMI they are weighted on the spot. RI were
+created during indexing and stored in $termvectors.bin$ file.   
+\end{description}

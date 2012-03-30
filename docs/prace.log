@@ -1,0 +1,964 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.29)  30 MAR 2012 11:45
+entering extended mode
+**C:/Users/srdjan.prodanovic/Desktop/Mogul/development/eclipse-java-helios-SR2-
+win32-x86_64/workspace/WSD_PDT/docs/prace.tex
+
+(C:/Users/srdjan.prodanovic/Desktop/Mogul/development/eclipse-java-helios-SR2-w
+in32-x86_64/workspace/WSD_PDT/docs/prace.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\cp1250.def"
+File: cp1250.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks17
+\thm@bodyfont=\toks18
+\thm@headfont=\toks19
+\thm@notefont=\toks20
+\thm@headpunct=\toks21
+\thm@preskip=\skip43
+\thm@postskip=\skip44
+\thm@headsep=\skip45
+\dth@everypar=\toks22
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2011/12/04 v6.82m Hypertext links for LaTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2011/04/23 v1.4 Bundle oberdiek, subset hyperref (HO)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2011/04/23 v1.4 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2011/04/23 v1.4 Subsetting bundle oberdiek (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2011/04/07 v1.13 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Defining keys (HO)
+Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/04/04 v1.12 Provides string conversions (HO)
+Package: bigintcalc 2011/01/30 v1.2 Expandable big integer calculations (HO)
+Package: bitset 2011/01/30 v1.1 Data type bit set (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provides unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/01/30 v1.0 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/04/23 v1.7 Hooks at very end of document (HO)
+Package: atbegshi 2011/01/30 v1.15 At begin shipout hook (HO)
+Package: refcount 2010/12/01 v3.2 Data extraction from references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options of hyperref/bookmark (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
+)
+\@linkdim=\dimen105
+\Hy@linkcounter=\count89
+\Hy@pagecounter=\count90
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2011/12/04 v6.82m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count91
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4046.
+Package hyperref Info: Link nesting OFF on input line 4051.
+Package hyperref Info: Hyper index ON on input line 4054.
+Package hyperref Info: Plain pages OFF on input line 4061.
+Package hyperref Info: Backreferencing OFF on input line 4066.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4284.
+\c@Hy@tempcnt=\count92
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4637.
+\Fld@menulength=\count93
+\Field@Width=\dimen106
+\Fld@charsize=\dimen107
+Package hyperref Info: Hyper figures OFF on input line 5757.
+Package hyperref Info: Link nesting OFF on input line 5762.
+Package hyperref Info: Hyper index ON on input line 5765.
+Package hyperref Info: backreferencing OFF on input line 5772.
+Package hyperref Info: Link coloring OFF on input line 5777.
+Package hyperref Info: Link coloring with OCG OFF on input line 5782.
+Package hyperref Info: PDF/A mode OFF on input line 5787.
+LaTeX Info: Redefining \ref on input line 5827.
+LaTeX Info: Redefining \pageref on input line 5831.
+\Hy@abspage=\count94
+\c@Item=\count95
+\c@Hfootnote=\count96
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2011/12/04 v6.82m Hyperref driver for pdfTeX
+\Fld@listcount=\count97
+\c@bookmark@seq@number=\count98
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip46
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 43.
+
+(C:\Users\srdjan.prodanovic\AppData\Roaming\MiKTeX\2.9\tex\latex\covington\covi
+ngton.sty
+* covington.sty : Covington's linguistic macros, 2001 March 27 *
+\c@equationsave=\count99
+\lineone=\box26
+\linetwo=\box27
+\linethree=\box28
+\wordone=\box29
+\wordtwo=\box30
+\wordthree=\box31
+\gline=\box32
+\glossglue=\skip47
+\c@exercise=\count100
+)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\prace.aux
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\uvod.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap2.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap3.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap4.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap5.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap6.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap7.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap8.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\zaver.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+
+(C:\Users\srdjan.prodanovic\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pd
+f.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count101
+\scratchdimen=\dimen108
+\scratchbox=\box33
+\nofMPsegments=\count102
+\nofMParguments=\count103
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen109
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
+\everyMPtoPDFconversion=\toks24
+)
+\AtBeginShipoutBox=\box34
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+Package hyperref Info: Link coloring ON on input line 81.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count107
+)
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
+
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\prace.out)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\prace.out)
+\@outlinefile=\write3
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 127.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 127.
+
+Overfull \hbox (177.18684pt too wide) in paragraph at lines 127--135
+ [][] 
+ []
+
+[1
+
+{C:/Users/srdjan.prodanovic/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+ [2
+
+] [3]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\prace.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.43 ...dimensionality reduction}{36}{section.6.5}
+                                                   [1
+
+
+])
+\tf@toc=\write4
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.254 \include{uvod}
+                     [2]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\uvod.tex
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--42
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.42 
+      [3
+
+
+]) [4]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap2.tex
+Chapter 2.
+
+Overfull \hbox (11.78653pt too wide) in paragraph at lines 3--4
+\T1/cmr/m/it/12 se-man-ti-cal-ly re-lat-ed words are close, un-re-lat-ed words 
+are dis-tant. (p.896) 
+ []
+
+[5
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 37--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--46
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 68--70
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--105
+
+ []
+
+[7] [8] [9])
+Underfull \hbox (badness 10000) in paragraph at lines 162--255
+
+ []
+
+[10]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap3.tex
+Chapter 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 13.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--55
+
+ []
+
+[11
+
+
+
+] [12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 142--156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--156
+
+ []
+
+) [15] [16]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap4.tex
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--44
+
+ []
+
+[17
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 46--62
+
+ []
+
+
+Overfull \hbox (4.9148pt too wide) in paragraph at lines 46--62
+\T1/cmr/m/n/12 The di-men-sion-al-i-ty re-duc-tion is ac-com-plished by us-ing 
+a sta-tis-ti-cal dimensionality--
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--81
+
+ []
+
+[18]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 82.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 82.
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--98
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 101--104
+
+ []
+
+
+Overfull \hbox (12.76715pt too wide) in paragraph at lines 112--113
+[]\T1/cmr/m/n/12 The Minkows-ki met-ric, al-so called the Minkows-ki ten-sor or
+ pseudo-Riemannian
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 127--142
+
+ []
+
+[21]
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 177.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 180.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 180.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 180.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <> on input line 180.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <0.7> on input line 180.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <0.5> on input line 180.
+) [22]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap5.tex
+Chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5--42
+
+ []
+
+[23
+
+
+
+] [24] [25] [26]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 155.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 160.
+ [27]
+Underfull \hbox (badness 10000) in paragraph at lines 176--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--188
+
+ []
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 190.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 198.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 207.
+
+) [28] [29]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap6.tex
+Chapter 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--48
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[30
+
+
+
+]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 102--104
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 119--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--156
+
+ []
+
+[33] [34]
+Overfull \hbox (20.46341pt too wide) in paragraph at lines 219--230
+[][] 
+ []
+
+[35]
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 242.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--261
+
+ []
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 266.
+
+[36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 336--351
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--351
+
+ []
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 352.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--361
+
+ []
+
+
+Overfull \hbox (59.99948pt too wide) in paragraph at lines 354--361
+\T1/cmr/m/n/12 sys-tem. If the mod-el ''cal-cu-lates the cor-rect mean-ing" pro
+p-er-ly, $\OT1/cmr/m/n/12 #\OML/cmm/m/it/12 correct[]answers[]provided$
+ []
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 362.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--370
+
+ []
+
+[38]
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 371.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--378
+
+ []
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 379.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 380.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--386
+
+ []
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 390.
+
+<img/meaningTypePlot.png, id=756, 243.15843pt x 146.79843pt>
+File: img/meaningTypePlot.png Graphic file (type png)
+
+<use img/meaningTypePlot.png>
+Package pdftex.def Info: img/meaningTypePlot.png used on input line 404.
+(pdftex.def)             Requested size: 243.15784pt x 146.79807pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[39] [40 <C:/Users/srdjan.prodanovic/Desktop/Mogul/development/eclipse-java-hel
+ios-SR2-win32-x86_64/workspace/WSD_PDT/docs/img/meaningTypePlot.png>]
+Overfull \hbox (11.5063pt too wide) in paragraph at lines 461--472
+[][] 
+ []
+
+
+Overfull \hbox (34.87408pt too wide) in paragraph at lines 483--490
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (11.5063pt too wide) in paragraph at lines 495--502
+[][] 
+ []
+
+[41]
+Overfull \hbox (34.87408pt too wide) in paragraph at lines 506--513
+[][] 
+ []
+
+
+Overfull \hbox (63.88376pt too wide) in paragraph at lines 525--532
+[][] 
+ []
+
+
+Overfull \hbox (61.73003pt too wide) in paragraph at lines 536--543
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[42]
+Overfull \hbox (61.10806pt too wide) in paragraph at lines 551--558
+[][] 
+ []
+
+
+Overfull \hbox (53.08076pt too wide) in paragraph at lines 562--569
+[][] 
+ []
+
+
+Overfull \hbox (73.10513pt too wide) in paragraph at lines 576--584
+[][] 
+ []
+
+
+Overfull \hbox (65.07784pt too wide) in paragraph at lines 588--596
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[43] [44] [45]
+Overfull \hbox (63.96849pt too wide) in paragraph at lines 706--715
+[][] 
+ []
+
+
+Overfull \hbox (63.9115pt too wide) in paragraph at lines 719--728
+[][] 
+ []
+
+) [46]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap7.tex
+Chapter 7.
+[47
+
+
+
+]) [48]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap8.tex
+Chapter 8.
+
+Overfull \hbox (4.30243pt too wide) in paragraph at lines 10--11
+[]\T1/cmr/bx/n/12 Class to which the ar-gu-ments should be passed is called $\O
+ML/cmm/m/it/12 Experiment$\T1/cmr/bx/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Overfull \hbox (47.66891pt too wide) in paragraph at lines 17--33
+[][] 
+ []
+
+)
+Overfull \hbox (7.13506pt too wide) in paragraph at lines 45--261
+\T1/cmr/m/n/12 val-ues of ex-per-i-ment's phas-es, for in-stance: $\OML/cmm/m/i
+t/12 PMI[]STOP \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 MERGE[]\OT1/cmr/m/n/12 1\OML/
+cmm/m/it/12 s[]\OT1/cmr/m/n/12 7\OML/cmm/m/it/12 w[]\OT1/cmr/m/n/12 6\OML/cmm/m
+/it/12 m$
+ []
+
+[49
+
+
+
+]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\zaver.tex) [50
+
+
+
+]
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\prace.bbl [51
+
+
+] [52] [53]) [54] [55
+
+] [56
+
+]
+[57
+
+]
+Chapter 9.
+[58
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 296.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 296.
+
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\prace.aux
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\uvod.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap2.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap3.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap4.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap5.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap6.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap7.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\chap8.aux)
+(C:\Users\srdjan.prodanovic\Desktop\Mogul\development\eclipse-java-helios-SR2-w
+in32-x86_64\workspace\WSD_PDT\docs\zaver.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 296.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 296.
+Package rerunfilecheck Info: File `prace.out' has not changed.
+(rerunfilecheck)             Checksum: F38309AF2FD79D310FFBA2E618BAE83B;4550.
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5778 strings out of 494045
+ 89859 string characters out of 3145933
+ 172803 words of memory out of 3000000
+ 8677 multiletter control sequences out of 15000+200000
+ 21275 words of font info for 48 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 29i,10n,33p,923b,420s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
+n\ec\dpi600\ecrm1095.pk> <C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\2.9\f
+onts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk> <C:\Users\srdjan.prodanovic\AppD
+ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\
+srdjan.prodanovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\e
+crm0700.pk> <C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
+r\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\srdjan.prodanovic\AppData\Local\MiK
+TeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\srdjan.prodan
+ovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <
+C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
+\dpi600\ecbx1200.pk> <C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\2.9\fonts
+\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\srdjan.prodanovic\AppData\
+Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\srdj
+an.prodanovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2
+074.pk> <C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jk
+nappen\ec\dpi600\ecrm2074.pk> <C:\Users\srdjan.prodanovic\AppData\Local\MiKTeX\
+2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\Users\srdjan.prodanovic
+\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
+/public/amsfonts/latxfont/line10.pfb>
+Output written on prace.pdf (61 pages, 613405 bytes).
+PDF statistics:
+ 1627 PDF objects out of 1728 (max. 8388607)
+ 281 named destinations out of 1000 (max. 500000)
+ 526 words of extra memory for PDF output out of 10000 (max. 10000000)
+

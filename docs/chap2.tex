@@ -1,0 +1,175 @@
+\chapter{Computational model of semantics}
+The computational model of semantics presented here is referred to in the literature as the \textit{word--space model} or \textit{vector--space model} (VSM). Term was coined by Hinrich Sch\"{u}tze (1993) who defined the model as:
+\begin{quotation}\textit{Vector similarity is the only information present in Word Space: semantically related words are close, unrelated words are distant. (p.896)}
+\end{quotation}
+
+\section{Motivation}
+Despite the wealth of theories on meaning only a number of them has proven to be fully functional in an actual implementation. This is mainly due to the fact that linguistic data tends to be variable, inconsistent and vague. Keeping this in mind, a categorization of approaches can be viewed (Jurafsky, Martin 2000):
+\begin{enumerate}
+\item Representational approach: involves the creation of formal \textbf{meaning representations} that are intended to bridge the
+gap from language to commonsense knowledge of the world. These representations need to be able to support the practical aspects of semantic processing, like to resolve the truth of propositions, to support unambiguous representations,
+to represent variables, and to support inference. Human languages have various tools used to convey meaning, the most important being the one used to convey a \textbf{predicate--argument structure}. First order Predicate Calculus is a computationally tractable
+meaning representation language that is used mainly for the purpose of handling predicate--argument structure. 
+\item Syntax-driven approach: rests on the \textbf{Principle of Compositionality} that states that the meaning of a sentence can
+be composed from the meanings of its parts. Semantic analyzers that make use of static knowledge from the lexicon and
+grammar can create context-independent literal, or conventional, meanings. In Syntax-driven semantic analysis, the parts are the syntactic constituents
+of an input.
+%\item Prescriptive approach: language is viewed as ambiguous and incomplete. It is therefore recommended to have a more exact form of a language model that will make up for all the shortcomings of language. Language should be modeled in abstract. 
+%\item Descriptive approach: believe that ambiguity, vagueness and incompleteness do not represent a malfunctions of language and should therefore not be forced into a single formalism.   
+\end{enumerate}
+Vector--space models described in this thesis rely completely on the language data and do not have a single rule or constraint pre--written 
+into the model.
+Apart from the advantage of avoiding laborious task of handcrafting rules for the model of semantics, 
+statistical modeling has yet another advantage- its construction is entirely automatic, straight from the
+raw or annotated corpus. Since the modeling depends on the data set used in training, results are completely optimized toward that data set.
+
+\section{Similarity is proximity}
+The word--space model is a spatial representation of a word meaning. If every word is represented as a vector in n--dimensional space then the claim is that semantic (un)similarity of those words can be measured as a distance between their vectors. To illustrate this on a simple example for vectors representing meanings of 2 words in 2--dimensional space:
+
+\setlength{\unitlength}{5cm}
+\begin{picture}(1,1)
+\put(0,0){\line(0,1){1}}
+\put(0,0){\line(1,0){1}}
+\put(0.75,0.75){$tangerine$}
+\put(0,0){\vector(1,1){0.75}}
+\put(0.5,0.2){$orange$}
+\put(0,0){\vector(3,1){0.5}}
+\end{picture}
+\\\\
+Semantic similarity between words can be measured as a distance between vectors representing \textit{tangerine} and \textit{orange}. Mathematical background of this claim will be explained in detail later in chapter 5.5.
+\\\\  Distance in space as a way to represent semantic similarity seems to be a very natural and intuitive idea. This has been pointed out in a number of works by George Lakoff and Mark Johnson (Lakoff \& Johnson, 1980, 1999)
+%\cite{lakoff_1980} \cite{lakoff_1999}
+ where it is explained how humans use their spatio--temporal knowledge to conceptualize abstract objects.
+(Sahlgren 2006)
+%\cite{sahlgren06}
+ notes that \textit{similarity--is--proximity} also entails another geometric metaphor: \textit{concepts--are--locations}. This is also important to observe because in Distributional Semantics word meanings are percieved according to the differential property of their geometric locations in the Word Space. 
+
+\section{Distributional manifestation of meaning}
+In the word--space model similarities between words are automatically extracted from language data. As data, the word--space model uses statistics about the distributional properties of words. (Sahlgren 2006) has formulated from this insight his \textit{Distributional Hypothesis} which states:
+\begin{quotation}
+\textit{Words with similar distributional properties have similar meanings.}
+\end{quotation}
+There are number of examples in previous work to back this claim. (Schutze \& Pedersen 1995) \cite{schutze_pedersen1995}, claim that  ''words with similar meanings will occur with similar neighbors if enough text material is available", and (Rubenstein \& Goodenough 1965)\cite{rubensteinG65} in one of the very first studies to explicitly formulate and investigate the distributional hypothesis state that  "words which are similar in meaning occur in similar contexts" .
+
+According to Zelig Harris in his "Mathematical Structures of Language" linguistic meaning is inherently 
+differential, instead of referential which means that differences in meaning are visible through the 
+differences in distribution. One of the first experiments to back this is (Rubenstein \& Goodenough 1965)\cite{rubensteinG65}, who compared contextual similarities with synonymy judgments provided by university students. Their experiments demonstrated that there indeed is a correlation between semantic similarity and the degree of contextual similarity between words.
+
+\section{Context vectors}
+After describing the geometrical intuition behind the semantic similarity in this section will be explained how the model is built. Let us start by quoting Zelig Harris:
+\begin{quotation}
+The distribution of an element will be understood as the sum of all its environments. (Z. Harris, 1970, p.775)\cite{harris1970}
+\end{quotation}
+
+Let us illustrate on a one sentence example how a distributional model could be built from it: 
+\begin{quotation}
+"Where there is smoke there is fire."
+\end{quotation}
+We start by determining what is the appropriate environment of the word. In linguistics word environment is called \textbf{context}. In our example we will restrict the context to the preceding and succeeding word. Distributions gathered from our example are shown in the table below. 
+\\
+\begin{center}
+\begin{tabular}{ l | c c c c c }
+   &  where & there & is & smoke & fire\\
+  \hline                       
+  where & 0 & 1 & 0 & 0 & 0 \\
+  there & 1 & 0 & 2 &  0 & 0 \\
+  is & 0 & 2 & 0 & 1 & 1 \\
+  smoke & 0 & 0 & 1 & 0 & 0 \\
+  fire & 0 & 0 & 1 & 0 & 0 \\
+\end{tabular}
+\end{center}
+As we can see from the table every word is represented with a vector, for instance "smoke" is (0,0,1,0,0). To put it more formally: every vector is defined by \textit{n} components, where each component represents a location in n--dimensional space. To quote Magnus Sahlgren's definition on context vectors:
+\begin{quotation}
+I call the co--occurrence counts \textit{context vectors} because they effectively constitute a representation of the sum of the word's contexts.
+\end{quotation} 
+
+\subsection{A brief history of context vectors}
+The notion of context vectors has begun with the prominent work in psychology by Charles Osgood in the 1950's\cite{osgood1952} on feature space representations of meaning, which he called \textit{semantic differential approach to meaning representation}. In this approach words are represented as feature vectors where elements are contrastive adjective pairs such as "soft--hard", fast--slow", etc. The idea was to measure the psychological difference between words. An example from the research is given below. 
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ l | c c c  }
+   &  small--large & bald--furry& docile--dangerous\\
+  \hline                       
+  mouse & 1 & 6 & 1\\
+  rat & 2 & 6 & 4 \\
+\end{tabular}
+\caption{Feature vectors based on three contrastive pairs for words mouse and rat}
+\end{center}
+\end{table}
+Osgood's work was an inspiration for Stephen Gallant, who introduced the term "context vector" to
+describe the feature--space representations (Gallant, 1991a)\cite{gallant1991a}. In Gallant's algorithm, context vectors were defined with a set of manually derived features, such as "human, "man, "machine," etc. However as some researchers later noticed drawbacks of this approach to describe the word's semantics were:
+\\1. which features should be used?	
+\\2. how many features are enough?
+\\\\  These questions led to first approaches to \textit{automatically} construct a feature space. One of the first approaches was by Gallant (1991b)\cite{gallant1991b} where he described the algorithm in two steps:
+\begin{enumerate}
+\item A context vector is initialized for each word as a normalized random vector.
+\item While making several passes through the corpus, the context vectors are changed to be more like the context vectors of the surrounding words.
+\end{enumerate}
+The results were then used for word--sense disambiguation, where he calculated meanings for words from context, and compared them to the manually defined ones (Gallant, 1991b)\cite{gallant1991b}. However, probably the most influential work comes from Hinrich Sch\"utze (1992, 1993)\cite{schutze1992}\cite{schutze1993}, who built context vectors (which he calls "term vectors" or "word vectors") similarly to the approach described above: co--occurrence counts are collected in a words--by--words matrix, in which the elements record the number of times two words co--occur within a set window of word tokens. Context vectors are then defined as the rows or the columns of the matrix.
+%\\\\  Not all attempts are oblivious to the notion of grammar though. There were also some grammar--informed methods as well. Lin (1998) measures similarity of any two things (words, documents, people, plants) as a function of the information gained by having: a joint description of \textit{a} and \textit{b} in terms of what they have in common compared to describing \textit{a} and \textit{b} separately. For instance, do we gain more by a joint description of:
+%\begin{enumerate}
+%\item apple and chair (both THINGS)
+
+%\item apple and banana (both FRUIT: more specific) 
+%\end{enumerate}
+
+
+\section{The co--occurrence matrix} \label{coOcMatrix}
+The most formal definition of a co--occurrence matrix would be that it is a matrix of co--occurrence counts of its elements. The matrix can be a words--by--words matrix \textit{w} $\times$ \textit{w}, where w are the word types in the data, or a words--by--documents matrix \textit{w} $\times$ \textit{d}, where d are the documents in the data. A cell $f_{ij}$ of the co--occurrence matrix contain the frequency of occurrence of word \textit{i} in the context of word \textit{j} or in document \textit{j}, depending on the matrix type.
+\\In the study on Vector Space Models of Semantics (Turney\&Pantel, 2010)\cite{journals/corr/abs-1003-1141} authors look into various approaches to the task of  semantic processing of text. They observe and classify Vector Space Models into three main classes, depending on the type of the co--occurrence matrix they are based on: term--document, word--context or pair--pattern matrices. 
+
+\begin{enumerate}
+\item \textbf{Term--Document matrix:} The row vectors of the matrix correspond to terms (usually 
+terms are words, but there are also other possibilities), and the column vectors correspond to 
+documents (web pages, for example).  Term--Document matrix follows the "bag--of--words" hypothesis, 
+which means that the order of words does not matter in order to estimate the importance of the query 
+to the document (Salton et al. 1975) \cite{salton1975}. The "bag" here is like a mathematical set, with 
+allowed duplicates.  To illustrate this on a simple example using pseudo--words: bag \{aa, ab, aa, ab, 
+ac\} contains elements aa, ab, ac. The order of bag's elements is of no relevance here-- bag \{aa, ab, 
+aa, ab, ac\} is the same as a bag \{aa, aa, ab, ab, ac\}. If we measure raw frequencies, this bag can 
+be represented with a vector \textbf{A}=<2,2,1> where first element is the frequency of \textit{aa}, 
+second element is the frequency of \textit{ab}, and third element is the frequency of \textit{ac}. A set of 
+bags can be represented as a matrix X, in which each column $x_{:j}$ corresponds to a bag, each row 
+$x_{i:}$ corresponds to a unique term, and an element $x_{ij}$ is the frequency of the \textit{i}--th 
+term in the \textit{j}--th bag. If we look at the documents as bags, this example is easily transported into the 
+Information Retrieval domain. The pattern of numbers in $x_{i:}$ is a kind of signature of the i--th term 
+$w_{i}$; likewise, the pattern of numbers in $x_{:j}$ is a signature of the \textit{j}--th document 
+$d_{j}$. This means that the pattern of numbers reveal, to some degree, what the term or document is 
+about.
+
+The vector does not attempt to capture the structure in the phrases, sentences, paragraphs, and 
+chapters of the document. Despite this omission, search engines work really well when based on term 
+document matrix. Term--document matrix reflects in fact the similarity of documents. In the IR domain, 
+search engines treat queries as documents, and return search results whose score is based on the degree of similarity 
+between query vectors and all document vectors in corpus.
+\item \textbf{Word--Context matrix:} Deerwester et al. (1990)\cite{deerwester90indexing} observed 
+that we can shift the focus to measuring word similarity, instead of document similarity, by looking at 
+row vectors in the term--document matrix, instead of column vectors. In general, we may have a 
+word--context matrix, in which the context is given by words, phrases, sentences, paragraphs, chapters 
+or documents. A word may be represented by a vector in which the elements are derived from the 
+occurrences of the word in various contexts, such as windows of words (Lund \& Burgess, 1996)\cite{lundb96}, 
+grammatical dependencies (Lin, 1998)\cite{lin1998}, and richer contexts consisting of dependency links 
+and selectional preferences on the argument positions (Erk \& Pad\'o, 2008)\cite{erk_pado2008}. To 
+illustrate this on a simple example: consider a co--occurrence matrix populated by simple frequency 
+counting: if word \textit{i} co--occurs 16 times with word \textit{j}, we enter 16 in the cell $f_{ij}$ in 
+the words--by--words co--occurrence matrix. The co--occurrences are normally counted within a 
+context window spanning some (usually small) number of words.
+
+\item \textbf{Pair-- Pattern Matrix:} reflects the similarity of relations. Row vectors correspond to pairs of words, such as \textit{mason : stone} and \textit{carpenter : wood}, and column vectors correspond to the patterns in which the pairs co--occur, such as \textit{"X cuts Y"} and \textit{"X works with Y"}. Turney et al. (2003) introduced the use of the pair--pattern matrix for measuring the semantic similarity of relations between word pairs, which in this case is the similarity of row vectors. The \textit{latent relation hypothesis} is that pairs of words that co--occur in similar patterns tend to have similar semantic relations (Turney, 2008a). Word pairs with similar row vectors in a pair--pattern matrix tend to have similar semantic relations.
+\end{enumerate}
+
+(Sch\"utze and Pedersen 1993)\cite{schutze_pedersen1993} defined two ways that words can be 
+distributed in a corpus of text: If two words tend to be neighbours with each other, then they are 
+syntagmatic associates. If two words have similar neighbours, then they are paradigmatic parallels. As 
+they noted, syntagmatic associates are often different parts of speech, whereas paradigmatic parallels 
+are usually the same part of speech. Syntagmatic associates tend to be semantically associated (for 
+example, bee and honey), while paradigmatic parallels tend to be taxonomically similar (for example 
+doctor and nurse ).
+\\\\  While word--document and word--word matrices reflect attributional relations between word 
+senses, the pair--pattern matrix reflects relational similarity between word senses. This distinction was 
+explained in (Gentner 1983)\cite{gentner83}. Being that we are focused in this dissertation on the 
+application of vector space models solely on the task of WSD we are interested only in models that stem 
+from attributional kind of relationship, thus utilizing the first two kinds of matrices. The pair--pattern 
+matrix has proven track record with other applications, for example one of them being the analogies 
+task \cite{cogprints4501}, and is therefore of no interest to implement in this research.

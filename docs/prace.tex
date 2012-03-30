@@ -1,0 +1,296 @@
+%%% Main File
+
+%% Single sided version
+% Okraje: levý 40mm, pravý 25mm, horní a dolní 25mm
+% (ale pozor, LaTeX si sám pøidává 1in)
+\documentclass[12pt,a4paper]{report}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{15mm}
+\setlength\evensidemargin{15mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+% \openright zaøídí, aby následující text zaèínal na pravé stranì knihy
+\let\openright=\clearpage
+
+%% Double sided version:
+% \documentclass[12pt,a4paper,twoside,openright]{report}
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{15mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+% \setlength\headsep{0mm}
+% \setlength\headheight{0mm}
+% \let\openright=\cleardoublepage
+
+%% Pokud používáte csLaTeX (doporuèeno):
+%\usepackage{czech}
+%% Pokud nikoliv:
+%\usepackage[czech]{babel}
+%\usepackage[T1]{fontenc}
+
+%% Character encoding; usually latin2, cp1250 nebo utf8:
+\usepackage[cp1250]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% other packages
+\usepackage{graphicx}
+\usepackage{amsthm}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+
+\usepackage{covington}
+
+\setlength{\parindent}{1cm}
+
+ \newcommand{\todo}[1]{\textbf{[TODO: #1]}}
+
+
+%% Balíèek hyperref, kterým jdou vyrábìt klikací odkazy v PDF,
+%% ale hlavnì ho používáme k uložení metadat do PDF (vèetnì obsahu).
+%% POZOR, nezapomeòte vyplnit jméno práce a autora.
+%\usepackage[ps2pdf,unicode]{hyperref}   % Musí být za všemi ostatními balíèky
+%\hypersetup{pdftitle=Thesis title}
+%\hypersetup{pdfauthor=Name}
+
+% Less space above chapters
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries \thechapter. #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\def\@makeschapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+   \Huge\bfseries #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\makeatother
+
+% Chapter without number, but in TOC
+\def\chapwithtoc#1{
+\chapter*{#1}
+\addcontentsline{toc}{chapter}{#1}
+}
+
+\begin{document}
+
+% Set hyphenation to be less strict
+\lefthyphenmin=2
+\righthyphenmin=2
+
+%%% Title page
+
+\pagestyle{empty}
+\begin{center}
+
+\large
+
+Univerzita Karlova v Praze
+
+\medskip
+
+Matematicko-fyzikální fakulta
+
+\vfill
+
+{\bf\Large DIPLOMOVÁ PRÁCE}
+
+\vfill
+
+% comment this out in drafts to speed up compilation
+%\centerline{\mbox{\includegraphics[width=60mm]{logo.eps}}}
+
+\vfill
+\vspace{5mm}
+
+{\LARGE Sr\dj an Prodanovi\'{c}}
+
+\vspace{15mm}
+
+% Název práce pøesnì podle zadání
+{\LARGE\bfseries Word Sense Disambiguation\\ in Prague Dependency Treebank\\ via Distributional Semantic Approach}
+
+\vfill
+
+% Název katedry nebo ústavu, kde byla práce oficiálnì zadána
+% (dle Organizaèní struktury MFF UK)
+\'Ustav form\'aln\'i a aplikovan\'e lingvistiky
+
+\vfill
+
+\begin{tabular}{rl}
+
+Vedoucí diplomové práce: & RNDr.~Ji\v{r}\'i Hana, Ph.D., Institute of Formal and Applied Linguistics\\
+\noalign{\vspace{2mm}}
+Studijní program: & Language and Communication Technologies \\
+\noalign{\vspace{2mm}}
+Studijní obor: & obor \\
+\end{tabular}
+
+\vfill
+
+% Zde doplòte rok
+Praha 2012
+
+\end{center}
+
+\newpage
+
+%%% Následuje vevázaný list -- kopie podepsaného "Zadání diplomové práce".
+%%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
+
+%%% Na tomto místì mohou být napsána pøípadná podìkování (vedoucímu práce,
+%%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
+
+\openright
+
+\noindent
+
+
+\newpage
+
+%%% Strana s èestným prohlášením k diplomové práci
+
+\vglue 0pt plus 1fill
+
+\noindent
+Prohlašuji, že jsem tuto diplomovou práci vypracoval(a) samostatnì a výhradnì
+s~použitím citovaných pramenù, literatury a dalších odborných zdrojù.
+
+\medskip\noindent
+Beru na~vìdomí, že se na moji práci vztahují práva a povinnosti vyplývající
+ze zákona è. 121/2000 Sb., autorského zákona v~platném znìní, zejména skuteènost,
+že Univerzita Karlova v Praze má právo na~uzavøení licenèní smlouvy o~užití této
+práce jako školního díla podle §60 odst. 1 autorského zákona.
+
+\vspace{10mm}
+
+\hbox{\hbox to 0.5\hsize{%
+V ........ dne ............
+\hss}\hbox to 0.5\hsize{%
+Podpis autora
+\hss}}
+
+\vspace{20mm}
+\newpage
+
+%%% Povinná informaèní strana diplomové práce
+
+\vbox to 0.5\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Název práce:
+Word Sense Disambiguation in Prague Dependency Treebank via Distributional Semantic Approach
+% pøesnì dle zadání
+
+Autor:
+Sr\dj an Prodanovi\'{c}
+
+Katedra:  % Pøípadnì Ústav:
+Matematicko-fyzikální fakulta, Univerzita Karlova v Praze
+% dle Organizaèní struktury MFF UK
+
+Vedoucí diplomové práce:
+RNDr.~Ji\v{r}\'i Hana, Ph.D., \'Ustav form\'aln\'i a aplikovan\'e lingvistiky
+
+Jméno a pøíjmení s tituly, pracovištì
+% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovištì mimo MFF UK
+
+Abstrakt:
+Distributional semantics is based completely on the distributional properties of words. The core resource is a single lexico--semantic lexicon 
+that can be used for a variety of tasks, where word meanings are represented as vectors in Vector Space, and word 
+similarities as distances between vector representations. Using strengths of similarities, appropriateness of terms given a 
+particular context can be calculated and used for a variety of tasks, one of them being Word Sense Disambiguation.
+In this thesis several different approaches to models of Vector Space were examined and implemented in order to cross 
+evaluate their performance on the Word Sense Disambiguation task in Prague Dependency Treebank. 
+
+Klíèová slova:
+%WSD, VSM, PDT
+word sense disambiguation, vector space model, prague dependancy treebank
+
+\vss}\nobreak\vbox to 0.49\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+\newpage
+Title:
+% pøesný pøeklad názvu práce v angliètinì
+Word Sense Disambiguation in Prague Dependency Treebank via Distributional Semantic Approach
+
+Author:
+Sr\dj an Prodanovi\'{c}
+
+Department:
+Matematicko-fyzikální fakulta, Univerzita Karlova v Praze
+% dle Organizaèní struktury MFF UK v angliètinì
+
+Supervisor:
+RNDr.~Ji\v{r}\'i Hana, Ph.D., Institute of Formal and Applied Linguistics
+
+Abstract:
+% abstrakt v rozsahu 80-200 slov v angliètinì; nejedná se však o pøeklad
+% zadání diplomové práce
+
+Keywords:
+% 3 až 5 klíèových slov v angliètinì
+
+\vss}
+
+\newpage
+
+\openright
+\pagestyle{plain}
+\setcounter{page}{1}
+\tableofcontents
+
+%%% Each chapter is in a separate file
+
+\include{uvod}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{chap6}
+\include{chap7}
+\include{chap8}
+
+% Ukázka použití nìkterých konstrukcí LateXu (odkomentujte, chcete-li)
+% \include{ukazka}
+
+\include{zaver}
+
+%%% Seznam použité literatury
+%\include{literatura}
+\bibliographystyle{plain}		% (uses file "plain.bst")
+\bibliography{myrefs}		% expects file "myrefs.bib"
+
+%%% Tabulky v diplomové práci, existují-li.
+\chapwithtoc{List off Tables}
+
+%%% Použité zkratky v diplomové práci, existují-li, vèetnì jejich vysvìtlení.
+\chapwithtoc{List of Abbreviations}
+
+%%% Pøílohy k diplomové práci, existují-li (rùzné dodatky jako výpisy programù,
+%%% diagramy apod.). Každá pøíloha musí být alespoò jednou odkazována z vlastního
+%%% textu práce. Pøílohy se èíslují.
+\chapwithtoc{Appendices}
+\chapter{List of filter words for Czech language}
+[dnes cz
+timto budes
+budem byli jses muj  svym ta tomto  tohle tuto tyto jej  zda  proc  mate  tato  kam  tohoto  kdo  kteri
+mi   nam  tom  tomuto  mit   nic  proto kterou byla toho protoze asi ho nasi napiste re coz tim takze
+svych  jeji svymi jste  aj tu tedy teto bylo kde ke prave ji  nad nejsou ci pod tema mezi  pres  ty
+pak vam  ani kdyz vsak  ne jsem tento clanku clanky aby jsme pred pta jejich byl jeste az bez take
+pouze  prvni vase ktera nas novy tipy pokud muze design strana  jeho sve jine zpravy nove neni	vas
+jen   podle  zde clanek uz email byt vice bude jiz nez  ktery by  tere  co nebo ten tak  ma pri
+od po jsou jak dalsi ale si ve to jako za zpet  ze  do  pro   je 
+na]
+
+\openright
+\end{document}

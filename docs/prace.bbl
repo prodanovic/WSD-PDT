@@ -1,0 +1,342 @@
+\begin{thebibliography}{10}
+
+\bibitem{mihalcea2004}
+{\em Proceedings of Senseval-3: Third International Workshop on the Evaluation
+  of Systems for the Semantic Analysis of Text}, Barcelona, Spain, 2004.
+
+\bibitem{kilgarriff1997}
+Kilgarriff Adam.
+\newblock I don't believe in word senses.
+\newblock {\em CoRR}, cmp-lg/9712006, 1997.
+
+\bibitem{kilgarriff2000}
+Kilgarriff Adam and Palmer Martha.
+\newblock Introduction to the special issue on senseval.
+\newblock {\em Computers and the Humanities}, 34(1--2):1--13, 2000.
+
+\bibitem{bainJingSong2005}
+Jing Bai, Dawei Song, Peter Bruza, Jian-Yun Nie, and Guihong Cao.
+\newblock Query expansion using term relationships in language models for
+  information retrieval.
+\newblock In {\em CIKM '05: Proceedings of the 14th ACM international
+  conference on Information and knowledge management}, pages 688--695, New
+  York, NY, USA, 2005. ACM Press.
+
+\bibitem{bullinaria2007}
+J.A. Bullinaria and J.P. Levy.
+\newblock Extracting semantic representations from word co-occurrence
+  statistics: A computational study.
+\newblock {\em Behavior Research Methods}, (3):510, 2007.
+
+\bibitem{osgood1952}
+Osgood C.
+\newblock The nature and measurement of meaning.
+\newblock {\em Psychological Bulletin}, 49:197--237, 1952.
+
+\bibitem{shannon1948}
+Shannon C.
+\newblock A mathematical theory of communication.
+\newblock 27:379--423, 623--656, 1948.
+
+\bibitem{ruhl1989}
+Ruhl Charles.
+\newblock {\em On Monosemy: A Study in Linguistic Semantics}.
+\newblock State University of New York Press, Albany, 1989.
+
+\bibitem{church89}
+Kenneth~W. Church and Patrick Hanks.
+\newblock Word association norms, mutual information, and lexicography.
+\newblock In {\em 27th {M}eeting of the {A}ssociation for {C}omputational
+  {L}inguistics}, pages 76--83, Vancouver, B.C, 1989.
+
+\bibitem{lin1998}
+Lin D.
+\newblock Automatic retrieval and clustering of similar words.
+\newblock In {\em Proceedings of the 17th international conference on
+  Computational linguistics}, pages 768--774, 1998.
+
+\bibitem{journals/ml/DaganLP99}
+Ido Dagan, Lillian Lee, and Fernando C.~N. Pereira.
+\newblock Similarity-based models of word cooccurrence probabilities.
+\newblock {\em Machine Learning}, 34(1-3):43--69, 1999.
+
+\bibitem{deerwester90indexing}
+Scott~C. Deerwester, Susan~T. Dumais, Thomas~K. Landauer, George~W. Furnas, and
+  Richard~A. Harshman.
+\newblock Indexing by latent semantic analysis.
+\newblock {\em Journal of the American Society of Information Science},
+  41:391--407, 1990.
+
+\bibitem{bingham2001}
+Bingham E. and Mannila H.
+\newblock Random projection in dimensionality reduction: applications to image
+  and text data.
+\newblock In {\em Proceedings of the 7th ACM SIGKDD International Conference on
+  Knowledge Discovery and Data Mining (KDD-2001)}, pages 245--250. Association
+  for Computing Machinery (ACM), 2001.
+
+\bibitem{furnas1988iru}
+GW~Furnas, S.~Deerwester, ST~Dumais, TK~Landauer, RA~Harshman, LA~Streeter, and
+  KE~Lochbaum.
+\newblock {Information retrieval using a singular value decomposition model of
+  latent semantic structure}.
+\newblock pages 465--480, 1988.
+
+\bibitem{salton1975}
+Salton G., Wong A., and Yang C.S.
+\newblock A vector space model for automatic indexing.
+\newblock {\em Communications of the ACM}, 18:613--620, 1975.
+
+\bibitem{gentner83}
+D.~Gentner.
+\newblock Structure-mapping: A theoretical framework for analogy.
+\newblock {\em Cognitive Science}, 7:155--170, 1983.
+
+\bibitem{zipf1949_1}
+Zipf George~Kingsley.
+\newblock {\em Human Behaviour and the Principle of Least Effort:An
+  introduction to human ecology}.
+\newblock Cambridge, MA: Addison-Wesley, 1949.
+
+\bibitem{golub1965}
+G.~Golub and W.~Kahan.
+\newblock Calculating the singular values and pseudo-inverse of a matrix.
+\newblock 1965.
+
+\bibitem{rubensteinG65}
+Rubenstein H. and Goodenough John~B.
+\newblock Contextual correlates of synonymy.
+\newblock {\em Commun. ACM}, 8(10):627--633, 1965.
+
+\bibitem{schutze_pedersen1993}
+Sch\"utze H. and Pedersen J.
+\newblock A vector model for syntagmatic and paradigmatic relatedness.
+\newblock In {\em In Making Sense of Words: Proceedings of the Conference},
+  pages 104--113, Oxford, England, 1993.
+
+\bibitem{schutze_pedersen1995}
+Sch\"utze H. and Pedersen J.
+\newblock Information retrieval based on word senses.
+\newblock In {\em In Proceedings of the 4th Annual Symposium on Document
+  Analysis and 145 Information Retrieval}, pages 161--175, 1995.
+
+\bibitem{schutze1992}
+Sch\"utze Hinrich.
+\newblock Dimensions of meaning.
+\newblock In {\em Proceedings of the 1992 ACM/IEEE Conference on
+  Supercomputing, Supercomputing'92}, pages 787--796. IEEE Computer Society
+  Press, 1992.
+
+\bibitem{schutze1993}
+Sch\"utze Hinrich.
+\newblock Word space.
+\newblock In {\em Proceedings of the 1993 Conference on Advances in Neural
+  Information Processing Systems, NIPS'93}, pages 895--902, San Francisco, CA,
+  USA: Morgan Kaufmann Publishers Inc., 1993.
+
+\bibitem{schutze1998}
+Sch\"utze Hinrich.
+\newblock {\em Automatic word sense discrimination}, volume~24.
+\newblock Computational Linguistics, 1998.
+
+\bibitem{jones_pictures_1987}
+W.~P. Jones and G.~W. Furnas.
+\newblock Pictures of relevance: A geometric analysis of similarity measures.
+\newblock {\em Journal of the American society for information science},
+  38(6):420 --442, 1987.
+
+\bibitem{erk_pado2008}
+Erk K. and Pad\'o S.
+\newblock A structured vector space model for word meaning in context.
+\newblock In {\em Proceedings of the 2008 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP-08)}, pages 897--906, 2008.
+
+\bibitem{kanerva88}
+P.~Kanerva.
+\newblock {\em Sparse distributied memory}.
+\newblock MIT Press, Cambridge, MA, 1988.
+
+\bibitem{karlgren2005}
+J.~Karlgren, M.~Sahlgren, and R.~C\"oster.
+\newblock Principled query processing.
+\newblock In {\em Working notes of the 6th workshop of the Cross-Language
+  Evaluation Forum, CLEF'05, Vienna, Austria}, pages 245--250. Association for
+  Computing Machinery (ACM), 2005.
+
+\bibitem{katz_1996}
+S.~Katz.
+\newblock Distribution of content words and phrases in text and language
+  modelling.
+\newblock {\em Natural Language Engineering}, 2(1):15--59.
+
+\bibitem{landauerd97}
+T.~K. Landauer and S.~T. Dumais.
+\newblock A solution to {P}lato's problem: the {L}atent {S}emantic {A}nalysis
+  theory of acquisition, induction, and representation of knowledge.
+\newblock {\em Psychological Review}, 104:211--240, 1997.
+
+\bibitem{Lavrenko+Croft:01a}
+Victor Lavrenko and W.~Bruce Croft.
+\newblock Relevance-based language models.
+\newblock In {\em Proceedings of SIGIR}, pages 120--127, 2001.
+
+\bibitem{Leacock93towardsbuilding}
+Claudia Leacock, Geoffrey Towell, and Ellen Voorhees.
+\newblock Towards building contextual representations of word senses using
+  statistical models.
+\newblock In {\em Corpus Processing for Lexical Acquisition}, pages 97--113.
+  MIT Press, 1993.
+
+\bibitem{lund1995}
+Burgess~C. Lund, K. and R.~A. Atchley.
+\newblock Semantic and associative priming in highdimensional semantic space.
+\newblock In {\em Proceedings of the 17th Annual Conference of the Cognitive
+  Science Society}, pages 660--665, 1995.
+
+\bibitem{lundb96}
+K.~Lund and C.~Burgess.
+\newblock Producing high-dimensional semantic spaces from lexical
+  co-occurrence.
+\newblock {\em Behavior Research Methods, Instrumentation, and Computers},
+  28:203--208, 1996.
+
+\bibitem{manning1999foundations}
+C.~Manning and H.~Sch\"utze.
+\newblock {\em Foundations of statistical natural language processing}.
+\newblock MIT Press, Cambridge, MA, 1999.
+
+\bibitem{manning-etal:08}
+Christopher~D. Manning, Prabhakar Raghavan, and Hinrich Sch{\"u}tze.
+\newblock {\em Introduction to Information Retrieval}.
+\newblock Cambridge University Press, Cambridge, 2008.
+
+\bibitem{mitchell2008}
+Tom~M. Mitchel, Svetlana~V. Shinkareva, Andrew Carlson, Kai-Min Chang,
+  Vicente~L. Malave, Robert~A. Mason, and Marcel~Adam Just.
+\newblock Predicting human brain activity associated with the meanings of
+  nouns.
+\newblock {\em Science}, 320:1191--1195, 2008.
+
+\bibitem{EventTwitterSPIM10}
+Shashi Narayan, Srdjan Prodanovic, Zo\"e Bogart, and Mohammad~Fazleh Elahi.
+\newblock Population and enrichment of event ontology using twitter.
+\newblock In {\em First Workshop of Semantic Personalized Information
+  Management, LREC, Malta, 2010}, May 2010.
+
+\bibitem{niwa94}
+Yoshiki Niwa and Yoshihiko Nitta.
+\newblock Co-occurrence vectors from corpora vs. distance vectors from
+  dictionaries.
+\newblock In {\em Proceedings of the 15th International Conference On
+  Computational Linguistics}, pages 304--309, Kyoto, Japan, 1994.
+
+\bibitem{pantelLin2002}
+Patrick Pantel and Dekang Lin.
+\newblock Discovering word senses from text.
+\newblock In {\em Proceedings of the eighth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, KDD '02, pages 613--619, New York,
+  NY, USA, 2002. ACM.
+
+\bibitem{papadim1998}
+C.~Papadimitriou, P.~Raghavan, H.~Tamaki, and S.~Vempala.
+\newblock Latent semantic indexing: A probabilistic analysis.
+\newblock In {\em In Proceedings of the 17th ACM Symposium on the Principles of
+  Database Systems}, pages 159--168. ACM Press, 1998.
+
+\bibitem{edmonds2005}
+Edmonds Philip.
+\newblock {\em Lexical disambiguation. The Elsevier Encyclopedia of Language
+  and Linguistics}.
+\newblock Oxford: Elsevier, 2005.
+
+\bibitem{edmonds2001}
+Edmonds Philip and Scott Cotton.
+\newblock Senseval-2: Overview.
+\newblock In {\em Proceedings of Senseval-2: Second International Workshop on
+  Evaluating Word Sense Disambiguation Systems}, pages 1--5, Toulouse, France.
+
+\bibitem{porter_1980}
+M.~Porter.
+\newblock An algorithm for suffix stripping.
+\newblock {\em Program}, 14(3):130--137, 1980.
+
+\bibitem{gallant1991b}
+Gallant S.
+\newblock A practical approach for representing context and performing word
+  sense disambiguation using neural networks.
+\newblock {\em Neural Computation}, 3(3):293--309.
+
+\bibitem{gallant1991a}
+Gallant S.
+\newblock Context vector representations for document retrieval.
+\newblock In {\em AAAI Natural Language Text Retrieval Workshop}, 1991.
+
+\bibitem{kaski1999}
+Kaski S.
+\newblock Dimensionality reduction by random mapping: Fast similarity
+  computation for clustering.
+\newblock In {\em In Proceedings of the International Joint Confer- ence on
+  Neural Networks, IJCNN'98}, pages 413--418. IEEE Service Center, 1999.
+
+\bibitem{robertson_jones1997}
+Robertson S. and Sp\"arck~Jones K.
+\newblock Simple, proven approaches to text retrieval.
+\newblock 1997.
+
+\bibitem{journals/ipm/SinghalSMB96}
+Amit Singhal, Gerard Salton, Mandar Mitra, and Chris Buckley.
+\newblock Document length normalization.
+\newblock {\em Inf. Process. Manage.}, 32(5):619--633, 1996.
+
+\bibitem{dill2003}
+Dill Stephen, Nadav Eiron, David Gibson, Daniel Gruhl, R.~Guha, Anant Jhingran,
+  Tapas Kanungo, Sridhar Rajagopalan, Andrew Tomkins, John A.Tomlin, and
+  Jason~Y. Zien.
+\newblock Semtag and seeker: Bootstrapping the semantic web via automated
+  semantic annotation.
+\newblock In {\em Proceedings of the Twelfth International Conference on World
+  Wide Web (WWW-2003), Budapest, Hungary}, pages 178--186, 2003.
+
+\bibitem{turney2001mining}
+Peter Turney.
+\newblock Mining the web for synonyms: Pmi-ir versus lsa on toefl.
+\newblock 2001.
+
+\bibitem{cogprints4501}
+Peter~D. Turney.
+\newblock Measuring semantic similarity by latent relational analysis, 2005.
+
+\bibitem{journals/corr/abs-1003-1141}
+Peter~D. Turney and Patrick Pantel.
+\newblock From frequency to meaning: Vector space models of semantics.
+\newblock {\em CoRR}, abs/1003.1141, 2010.
+
+\bibitem{vanrijsbergen1979}
+Cornelis~Joost van Rijsbergen.
+\newblock {\em Information Retrieval}.
+\newblock 1979.
+
+\bibitem{weaver1949}
+Weaver Warren.
+\newblock {\em Machine Translation of Languages}.
+\newblock New York: John Wiley \& Sons, 1949.
+
+\bibitem{wei_peng2008}
+X.~Wei, F.~Peng, and B.~Dumoulin.
+\newblock Analyzing web text association to disambiguate abbreviation in
+  queries.
+\newblock In {\em In Proceedings of the 31st Annual International ACM SIGIR
+  Conference on Research and Development in Information Retrieval (SIGIR '08)},
+  New York, NY, 2008. ACM.
+
+\bibitem{widdows04}
+Dominic Widdows.
+\newblock {\em Geometry and Meaning}.
+\newblock CSLI Publications, Stanford, California, USA, 2004.
+
+\bibitem{harris1970}
+Harris Z.
+\newblock {\em In Papers in structural and transformational Linguistics},
+  chapter Distributional structure, pages 775--794.
+
+\end{thebibliography}

@@ -1,0 +1,205 @@
+\chapter{Word space implementations}
+We have described in the previous chapters the intuitions behind Word Space Models in Distributional 
+Semantics as well as how the semantic similarity between words represented there can be computed. 
+This chapter will be dedicated to presenting how some of the best known Word Space Models are 
+implemented with respect to difficulties that arise when dealing with corpora of large volume. The first 
+section will outline some of the main difficulties that stem from facing large and sparse data. Sections 
+that follow will present main implementations of Word Space Models that address these difficulties. 
+These models will also be reviewed with respect to their applicability on the task of WSD. 
+
+\section{High dimensionality and data sparseness}
+The word--space methodology relies on statistical evidence to construct the word space. If there is not 
+enough data, there is no   required statistical foundation to build a model of word distributions. At the 
+same time with a substantial volume of data, context (co--occurrence) matrices easily become very 
+large, with high dimensional context vectors which seriously affects the scalability and efficiency of the 
+algorithm. As we can already see this issue presents a problem that is fortunately, neither new nor 
+unsolvable. After all, a Word Space Model implemented by the vast majority of commercial Search 
+Engines handles this issue gracefully by approaching it from its technical side-- the most common 
+solution is division and distribution of index. However, in this thesis we are interested in addressing 
+this problem from another perspective, and see how this issue can be resolved from the mathematical 
+stance to prevent the models to become computationally expensive.
+\\\\  Another issue that appears within a high--volumed corpus is that the majority of its term vectors 
+turns out as sparse. This means that most the elements of a term vector are zero, while only a small 
+amount of elements has non--zero values. This fact stems from the notion that only a tiny amount of the 
+words in language are distributionally promiscuous; the vast majority of words only occur in a very 
+limited number of contexts. This phenomenon is well known, and is an example of the general Zipf's 
+law (Zipf, 1949)\cite{zipf1949_1}. This reflects on the co-occurrence matrix, causing the majority of 
+term vectors from it to be sparse. 
+
+\section{Dimensionality reduction}
+The solution to both issues mentioned in the previous section is an NLP operation (borrowed from linear 
+algebra) called \textit{dimensionality reduction}. Dimensionality reduction represents high--dimensional 
+data in a low--dimensional space, so that both the dimensionality and sparseness of the data are reduced, 
+while still 
+retaining as much of the original information as possible. There are two general ways to perform 
+dimensionality reduction, that can also be combined: word filtering and matrix reduction.
+\\\\
+The simplest way to perform dimensionality reduction is to filter out words and documents based on 
+either linguistic or statistical criteria (Sahlgren 2006). Linguistic criteria can be word's affiliation to certain 
+(unfavorable) 
+grammatical classes. Statistical criteria can be an undesirable statistical property of a 
+word. Both linguistic and statistic criteria are discussed in more detail in the preprocessing section. In 
+the following sections three major, and most influential approaches in performing dimensionality reduction 
+by reducing the co--occurrence matrix are presented.
+
+\section{Latent Semantic Analysis}\label{LSA}
+Probably the best know VSM that performs dimensionality reduction is Latent Semantic Analysis (LSA) 
+(Landauer \& Dumais, 1997)\cite{landauerd97}. LSA was developed under the name Latent Semantic 
+Indexing (LSI) (Dumais et al., 1988; Deerwester et al., 
+1990)\cite{furnas1988iru}\cite{deerwester90indexing} in the late 1980s as an extension to the traditional 
+vector--space IR. The terms LSI and LSA have since become  more or less synonymous in the literature, 
+though LSI is a term more frequently used in the IR domain. The development of LSA was motivated by 
+the inability of the vector--space model to handle synonymy: a query about "boats" will not retrieve 
+documents about "ships" in the standard vector--space model. LSA addresses this problem by reducing 
+the original high--dimensional vector space into a much smaller space, in which the original dimensions 
+that represented words and documents have been shrunk into a smaller set of latent dimensions that 
+collapses words and documents with similar context vectors.
+\\\\
+The dimensionality reduction is accomplished by using a statistical dimensionality--reduction technique 
+called Singular Value Decomposition (SVD). (Golub and Kahan 1965)\cite{golub1965} introduced 
+SVD as a decomposition technique for calculating the singular values, pseudo--inverse and rank of a 
+matrix. The equation is given below:
+\begin{center} 
+\begin{equation}
+ A = USV^{T}
+\end{equation}
+\end{center}
+,where: 
+\\\textbf{U} is a matrix whose columns are the eigenvectors\footnote{The eigenvectors of a square matrix 
+are the non--zero vectors that, after being multiplied by the matrix, remain parallel to the original vector.} 
+of the $AA^{T}$ matrix. These are called left eigenvectors.
+\\\textbf{S} is a matrix whose diagonal elements are the singular values of A. This is a diagonal 
+matrix\footnote{diagonal matrix is a matrix (usually a square matrix) in which the entries outside the main 
+diagonal are all zero}, so its non--diagonal elements are zero
+\\\textbf{V} is a matrix whose columns are the eigenvectors of the $A^{T}A$  matrix. These are called 
+the right eigenvectors.
+\\\textbf{$V^{T}$} is the transpose matrix\footnote{The transpose of a \textit{m} by \textit{n} matrix is 
+defined to be a \textit{n} by \textit{m} matrix that results from interchanging the rows and columns of the 
+matrix.} of matrix V.
+\\\\  This outlines the basic mechanism of LSA when performing SVD. Main steps which are performed in 
+building and using LSA are:
+\begin{itemize}
+\item Building a term--document matrix;
+
+%\item Entropy--based weighting of the co--occurrences, e.g. according to the formula (Dumais, %1993)\cite{conf/trec/Dumais93}:
+%\begin{center}\large
+%\begin{equation}
+%f_{ij}=(log(TF_{ij}+1)\cdot(1- (\sum_{j}\frac{p_{ij}log p_{ij}}{logD}))
+%\end{equation}
+%\end{center}
+%where \textit{D} is the total number of documents in the collection, $p_{ij} = \frac{TF_{ij}}{f_{i}}$ and %$f_{i}$ is the frequency of term \textit{i} in the whole document collection;
+\item SVD based dimensionality reduction
+\item Calculating the cosine measure to compute vector similarities between vectors from the co--occurrence matrix 
+\end{itemize}
+LSA is well applied in information retrieval(Deerwester et al., 1990; Dumais, 1993; Dumais et al., 1997; Jiang \& Littman, 2000). The incentive for using SVD in an information--retrieval setting is obvious: words with similar co--occurrence patterns are grouped together, allowing for the retrieval of documents that need not necessarily contain any of the query words.
+\\\\
+In the domain of the Contextual Disambiguation LSA has had both good and bad performances, depending on the aspect of the task(Landauer \& Dumais, 1997)\cite{landauerd97}. Good performance is demonstrated for the task of choosing the correct one out of all meanings of a polysemous word, when presented as certain context. On the other hand, for polysemous words that take many semantically diverse meanings, it has proven to be ineffective when it comes to acquisition
+and representation of multiple separate meanings of a single word.
+\newpage
+
+\section{Hyperspace Analogue to Language}
+A pretty different word--space implementation is the Hyperspace Analogue to Language (HAL) (Lund et al., 1995)\cite{lund1995}, which in contrast to LSA was developed specifically for word--space research. HAL builds a words--by--words co--occurrence matrix, which is populated by counting word co--occurrences within a directional context window 10 words wide. The co--occurrences are weighted with the distance between the words, so that words that occur next to each other get the highest weight, and words that occur on opposite sides of the context window get the lowest weight. The result of this operation is a directional co--occurrence matrix in which the rows and the columns represent co--occurrence counts in different directions.
+\\\\  Each row--column pair (i.e. the left and right--context co--occurrences) is then concatenated to produce a very--high--dimensional context vector, which has a dimensionality two times the size of the vocabulary. If such very--high--dimensional vectors prove to be too costly to handle, HAL reduces their dimensionality by computing the variances of the row and column vectors for each word, and discarding the elements with lowest variance, leaving only the 100 to 200 most variant vector elements. In HAL,  two words are semantically related if they tend to appear with the same words.
+Summarized, HAL is built in the following steps:
+\begin{itemize}
+\item Building a directional words--by--words matrix.
+\item Distance weighting of the co--occurrences.
+\item Concatenation of row--column pairs.
+\item Normalization of the vectors to unit length.
+\item Minkowski metric to compute vector similarities.
+\end{itemize}
+
+The Minkowski metric, also called the Minkowski tensor or pseudo-Riemannian metric, is a tensor  $\eta_{\alpha\beta}$ whose elements are defined by the matrix:
+
+\[  (\eta)_{\alpha\beta}=\left
+|\begin{array}{cccc}
+-1 & 0 & 0 & 0 \\
+0 & 1& 0 & 0  \\
+0 & 0& 1 & 0  \\
+0 & 0& 0 & 1   \end{array} \right| \]
+,which means that for 2 vectors $\alpha$ and $\beta$ when computing similarity between them, the first 
+coordinate is taken with a negative sign. Minkowski metric is normally used in physics, in theory of relativity, and
+there the first coordinate represents the time dimension.
+
+
+\newpage
+\section{Random Indexing}\label{RI}
+Another approach is Random Indexing (RI) (Kanerva et al., 2000; Karlgren \& Sahlgren, 2001), developed
+ at the Swedish Institute of Computer Science (SICS) based on Pentti Kanerva's work on sparse
+ distributed memory (Kanerva, 1988)\cite{kanerva88}. Like the previous approaches described in 
+this chapter RI 
+is motivated as well with the problem of high dimensionality. What is different with RI is how it addresses 
+that problem: while previous approaches make lower--dimensional context vectors which are
+ easier to compute with, they do not solve the problem of initially having to collect a potentially
+ huge co--occurrence matrix. Even implementations that use powerful dimensionality reduction, such
+as SVD, need to initially collect the words--by--documents or words--by--words co--occurrence
+matrix. RI addresses this problem at its source, and removes the need for the huge co--occurrence 
+matrix.
+\\\\
+RI \textit{incrementally accumulates context vectors} which can then, if needed, be assembled into a co-
+occurrence matrix (both words--by--documents and a words--by--words). RI accumulates context vectors 
+in a two--step operation:
+\begin{enumerate}
+\item Each context (i.e. each document or each word type) in the text is assigned a
+unique and randomly generated representation called an \textit{index vector}. In RI,
+these index vectors are sparse, high-dimensional, which means
+that their dimensionality \emph{r} is on the order of thousands, and that they consist of a small number 
+ of randomly distributed non--zero elements (as many +1s as --1s). Each word also has an initially
+ empty context vector of the same dimensionality \emph{r} as the index vectors.
+\item The context vectors are then accumulated by advancing through the text one word token at 
+a time, and adding the context's (the surrounding word types' or the current document's)
+ r--dimensional index vector(s) to the word's r--dimensional context vector. When the entire data 
+has been processed, the r--dimensional context vectors are effectively the sum of the word's contexts.
+\end{enumerate}
+
+If we then want to construct the equivalent of a co-occurrence matrix, we can simply
+collect the r-dimensional context vectors into a matrix of order $w\times r$, where w
+ is the number of unique word types, and $r$ is the chosen dimensionality for vectors. The dimensions in 
+the RI vectors are randomly chosen, and therefore do not represent any kind of context (which is the case with the original co--occurrence matrix). Furthermore,
+$r$ is chosen to be much smaller than the size of word types and the number of
+documents in the data, which means that RI will accumulate (roughly) the same
+information in the $w\times r$ matrix as other word-space implementations collect in the
+ $w\times w$ or  $w\times d$ co-occurrence matrices, except that in case of RI $r \ll d;w$.
+
+If we think about every document in the term--document matrix to be different from each other,
+we can represent them with $n$--dimensional unary, zero vector, that have 1 written in a different place. 
+These vectors are orthogonal\footnote{Two vectors, $\vec x$ and $\vec y$ are orthogonal if their dot product is zero. Dot product is an algebraic operation that takes two equal--length sequences of numbers (usually coordinate vectors) and returns a single number obtained by multiplying corresponding entries and then summing those products.}. 
+The r-dimensional random index vectors are only nearly orthogonal. This near--orthogonality of the
+ random index vectors is in fact an explanation of the RI methodology. There are many more
+ nearly orthogonal than truly orthogonal directions in a high--dimensional space (Kaski, 1999)\cite{kaski1999}, and 
+choosing  random directions, as is it is done with index vectors, can \textit{approximate} orthogonality.
+The near-orthogonality of random directions in high-dimensional spaces is exploited
+by a number of dimensionality-reduction techniques which include methods
+such as Random Projection (Papadimitriou et al., 1998)\cite{papadim1998}, Random Mapping (Kaski, 1999)\cite{kaski1999},
+ and Random Indexing.
+The dimensionality of a given matrix F can be reduced to F' by multiplying it with (or projecting it through) a random matrix R:
+\begin{equation}
+\large{
+F'_{w \times r} = F_{w \times d}R_{d \times r}
+}
+\end{equation}
+
+Obviously, the choice of the random matrix R is an important design decision. If the $d$ random vectors 
+in matrix $R$ are orthogonal, so that $R_{T}R= I$, then $F' = F$. If random vectors are nearly 
+orthogonal, then $F'\approx F$ in terms of the similarity of their rows. RI uses the following distribution
+for the elements of the random index vectors:
+\begin{center}
+\begin{equation}
+ r_{ij} = \left\{ 
+\begin{array}{l l} 
+    +1 & \quad \textrm{with probability $\frac{\epsilon/2}{r}$}\\
+      0  & \quad \textrm{with probability $\frac{r-\epsilon}{r}$}\\
+    -1 & \quad \textrm{with probability $\frac{\epsilon/2}{r}$}\\
+  \end{array} \right.
+\end{equation}
+\end{center}
+where $r$ is the dimensionality of the vectors, and $\epsilon$ is the number of non-zero
+elements in the random index vectors, usually a very small number.
+
+Random Indexing is comparably robust with regards to the choice of parameters. Other
+word-space implementations, such as LSA, are very sensitive to the choice of
+dimensionality for the reduced space. For RI, the choice of dimensionality is a
+trade--off between efficiency and performance (random projection techniques
+perform better the closer the dimensionality of the vectors is to the number of
+contexts in the data (Kaski, 1999; Bingham \& Mannila, 2001))\cite{kaski1999}\cite{bingham2001}. Performance of RI reaches a stable level
+when the dimensionality of the vectors become sufficiently large as concluded in  (Sahlgren \& Karlgren, 2005a)\cite{karlgren2005}.

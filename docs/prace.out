@@ -1,0 +1,65 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{About the task}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{About the model}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Thesis goals}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Road map}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Computational model of semantics}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Motivation}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Similarity is proximity}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Distributional manifestation of meaning}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{Context vectors}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.4.1}{A brief history of context vectors}{section.2.4}% 11
+\BOOKMARK [1][-]{section.2.5}{The co\205occurrence matrix}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Word sense disambiguation}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Word sense\(s\)}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Applications of WSD\205 why is it important?}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Classification of approaches to WSD}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.3.1}{Unsupervised learning methods}{section.3.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.2}{Supervised methods}{section.3.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Approaches that use VSM for WSD}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.5}{State\205of\205the\205art}{chapter.3}% 20
+\BOOKMARK [0][-]{chapter.4}{Word space implementations}{}% 21
+\BOOKMARK [1][-]{section.4.1}{High dimensionality and data sparseness}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Dimensionality reduction}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.3}{Latent Semantic Analysis}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.4}{Hyperspace Analogue to Language}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.5}{Random Indexing}{chapter.4}% 26
+\BOOKMARK [0][-]{chapter.5}{The theory behind experiments}{}% 27
+\BOOKMARK [1][-]{section.5.1}{Linguistic preprocessing}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.2}{Statistic preprocessing}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.3}{Types and Tokens}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.4}{Building the matrix}{chapter.5}% 31
+\BOOKMARK [2][-]{subsection.5.4.1}{Normalizing the frequency counts}{section.5.4}% 32
+\BOOKMARK [2][-]{subsection.5.4.2}{TF\205IDF}{section.5.4}% 33
+\BOOKMARK [2][-]{subsection.5.4.3}{PMI}{section.5.4}% 34
+\BOOKMARK [1][-]{section.5.5}{Calculating similarity}{chapter.5}% 35
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 36
+\BOOKMARK [1][-]{section.6.1}{The resource}{chapter.6}% 37
+\BOOKMARK [2][-]{subsection.6.1.1}{Polysemous words}{section.6.1}% 38
+\BOOKMARK [2][-]{subsection.6.1.2}{Why PDT1 instead of PDT2?}{section.6.1}% 39
+\BOOKMARK [1][-]{section.6.2}{Preprocessing}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.3}{Train and test sets}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.4}{Document size}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.5}{Normalization of the frequency counts and dimensionality reduction}{chapter.6}% 43
+\BOOKMARK [1][-]{section.6.6}{Evaluation context size}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.7}{Evaluation metrics and baselines}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.8}{Tuning}{chapter.6}% 46
+\BOOKMARK [2][-]{subsection.6.8.1}{Tuning preprocessing parameters}{section.6.8}% 47
+\BOOKMARK [2][-]{subsection.6.8.2}{Tuning evaluation context size}{section.6.8}% 48
+\BOOKMARK [2][-]{subsection.6.8.3}{Evaluation on polysemous words of different level }{section.6.8}% 49
+\BOOKMARK [1][-]{section.6.9}{TF\205IDF experiments}{chapter.6}% 50
+\BOOKMARK [2][-]{subsection.6.9.1}{Tuning preprocessing parameters}{section.6.9}% 51
+\BOOKMARK [2][-]{subsection.6.9.2}{Tuning evaluation context size}{section.6.9}% 52
+\BOOKMARK [2][-]{subsection.6.9.3}{ Evaluation on polysemous words of different level}{section.6.9}% 53
+\BOOKMARK [1][-]{section.6.10}{PMI experiments}{chapter.6}% 54
+\BOOKMARK [2][-]{subsection.6.10.1}{Tuning preprocessing parameters}{section.6.10}% 55
+\BOOKMARK [0][-]{chapter.7}{Implementation}{}% 56
+\BOOKMARK [1][-]{section.7.1}{Data flow}{chapter.7}% 57
+\BOOKMARK [0][-]{chapter.8}{User manual}{}% 58
+\BOOKMARK [1][-]{section.8.1}{Input parameters}{chapter.8}% 59
+\BOOKMARK [1][-]{section.8.2}{Logs}{chapter.8}% 60
+\BOOKMARK [0][-]{chapter*.2}{Summary}{}% 61
+\BOOKMARK [0][-]{chapter*.4}{List off Tables}{}% 62
+\BOOKMARK [0][-]{chapter*.5}{List of Abbreviations}{}% 63
+\BOOKMARK [0][-]{chapter*.6}{Appendices}{}% 64
+\BOOKMARK [0][-]{chapter.9}{List of filter words for Czech language}{}% 65
