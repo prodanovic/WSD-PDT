@@ -1,69 +1,163 @@
-mar 29, 2012 3:40:21 PM experiments.TfIdfExperiment main
+Apr 1, 2012 9:28:25 PM experiments.TfIdfExperiment main
 FINE: Model: TFIDF
-==================
-Preprocessing:LOWCASE
+Apr 1, 2012 9:28:29 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:LOWCASE
 Size of document in the matrix:
 	 number Of Sentences In Document:1
 	 number Of Words In Document:-1
-Evaluation:
+Apr 1, 2012 9:28:32 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:127.0
+	total number Of Test Contexts[ts instances]:1968.0
+
+Apr 1, 2012 9:28:32 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:m-0
+Apr 1, 2012 9:28:32 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-1`volt
+Apr 1, 2012 9:28:32 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:k-0
+Apr 1, 2012 9:28:32 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:j-0
+Apr 1, 2012 9:28:32 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:i-0
+Apr 1, 2012 9:28:33 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:d-0
+Apr 1, 2012 9:28:52 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:a-0
+Apr 1, 2012 9:28:52 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-3`5
+Apr 1, 2012 9:29:16 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-0
+Apr 1, 2012 9:29:26 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:r-0
+Apr 1, 2012 9:29:29 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:o-4
+Apr 1, 2012 9:29:29 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:i-3`1
+Apr 1, 2012 9:29:33 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:m-4
+Apr 1, 2012 9:29:33 PM experiments.TfIdfExperiment main
+FINE: Evaluation:
 	 Up Threshold For Number Of Meanings:6
 	 Evaluation Context Window Size:3
 
-mar 29, 2012 3:40:23 PM experiments.TfIdfExperiment main
-FINE: 	====train and test====
-mar 29, 2012 3:40:27 PM disambiguate.Evaluator extractTestContext
-FINE: Extracting contexts for the test set..
-mar 29, 2012 3:40:27 PM experiments.TfIdfExperiment main
-FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:220.0
-	total number Of Test Contexts[ts instances]:3406.0
+Apr 1, 2012 9:29:33 PM experiments.TfIdfExperiment main
+FINE: Finished in 63 seconds.
 
-mar 29, 2012 3:41:12 PM experiments.TfIdfExperiment main
-FINE: Finished in 50 seconds.
-mar 29, 2012 3:41:12 PM experiments.TfIdfExperiment main
+Apr 1, 2012 9:29:33 PM experiments.TfIdfExperiment main
 FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):3406.0==3406.0
-	tp=2002.0 fp=50.0 discarded=1354.0
-	Precision:97.56335 tp=2002.0 fp=50.0
-	Recall:100.0 tp=2002.0 fn=0.0
-	F-measure:98.76665
-	Random precision= 11.395828 (testInstances=2052.0 ,invertSenseCount=233.84239)
+	Checksum(#test set=tp+fp+discarded):1968.0==1938.0
+	tp=1097.0 fp=20.0 discarded=821.0
+	Precision:98.20949 tp=1097.0 fp=20.0
+	Recall:97.338066 tp=1097.0 fn=30.0
+	F-measure:97.771835
+	Random precision= 9.505139 (testInstances=1117.0 ,invertSenseCount=106.17241)
 
-mar 29, 2012 3:41:14 PM disambiguate.Evaluator extractTestContext
-FINE: Extracting contexts for the test set..
-mar 29, 2012 3:41:14 PM experiments.TfIdfExperiment main
+Apr 1, 2012 9:29:33 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:LOWCASE
+Size of document in the matrix:
+	 number Of Sentences In Document:3
+	 number Of Words In Document:-1
+Apr 1, 2012 9:29:35 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:269.0
-	total number Of Test Contexts[ts instances]:4218.0
+	total number Of Test Meanings[ts cases]:127.0
+	total number Of Test Contexts[ts instances]:1968.0
 
-mar 29, 2012 3:42:29 PM experiments.TfIdfExperiment main
-FINE: Finished in 127 seconds.
-mar 29, 2012 3:42:29 PM experiments.TfIdfExperiment main
+Apr 1, 2012 9:29:35 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:m-0
+Apr 1, 2012 9:29:35 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-1`volt
+Apr 1, 2012 9:29:35 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:k-0
+Apr 1, 2012 9:29:35 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:j-0
+Apr 1, 2012 9:29:35 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:i-0
+Apr 1, 2012 9:29:36 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:d-0
+Apr 1, 2012 9:31:24 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:a-0
+Apr 1, 2012 9:31:24 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-3`5
+Apr 1, 2012 9:31:48 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-0
+Apr 1, 2012 9:31:58 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:r-0
+Apr 1, 2012 9:32:01 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:o-4
+Apr 1, 2012 9:32:01 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:i-3`1
+Apr 1, 2012 9:32:05 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:m-4
+Apr 1, 2012 9:32:05 PM experiments.TfIdfExperiment main
+FINE: Evaluation:
+	 Up Threshold For Number Of Meanings:6
+	 Evaluation Context Window Size:3
+
+Apr 1, 2012 9:32:05 PM experiments.TfIdfExperiment main
+FINE: Finished in 152 seconds.
+
+Apr 1, 2012 9:32:05 PM experiments.TfIdfExperiment main
 FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):4218.0==4218.0
-	tp=2407.0 fp=108.0 discarded=1703.0
-	Precision:95.705765 tp=2407.0 fp=108.0
-	Recall:100.0 tp=2407.0 fn=0.0
-	F-measure:97.80576
-	Random precision= 7.660094 (testInstances=2515.0 ,invertSenseCount=192.65137)
+	Checksum(#test set=tp+fp+discarded):1968.0==1938.0
+	tp=1097.0 fp=20.0 discarded=821.0
+	Precision:98.20949 tp=1097.0 fp=20.0
+	Recall:97.338066 tp=1097.0 fn=30.0
+	F-measure:97.771835
+	Random precision= 9.505139 (testInstances=1117.0 ,invertSenseCount=106.17241)
 
-mar 29, 2012 3:42:31 PM disambiguate.Evaluator extractTestContext
-FINE: Extracting contexts for the test set..
-mar 29, 2012 3:42:31 PM experiments.TfIdfExperiment main
+Apr 1, 2012 9:32:05 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:LOWCASE
+Size of document in the matrix:
+	 number Of Sentences In Document:5
+	 number Of Words In Document:-1
+Apr 1, 2012 9:32:07 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:273.0
-	total number Of Test Contexts[ts instances]:4186.0
+	total number Of Test Meanings[ts cases]:127.0
+	total number Of Test Contexts[ts instances]:1968.0
 
-mar 29, 2012 3:43:48 PM experiments.TfIdfExperiment main
-FINE: Finished in 207 seconds.
-mar 29, 2012 3:43:48 PM experiments.TfIdfExperiment main
+Apr 1, 2012 9:32:07 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:m-0
+Apr 1, 2012 9:32:07 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-1`volt
+Apr 1, 2012 9:32:07 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:k-0
+Apr 1, 2012 9:32:07 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:j-0
+Apr 1, 2012 9:32:07 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:i-0
+Apr 1, 2012 9:32:08 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:d-0
+Apr 1, 2012 9:32:26 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:a-0
+Apr 1, 2012 9:32:26 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-3`5
+Apr 1, 2012 9:32:50 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:v-0
+Apr 1, 2012 9:33:00 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:r-0
+Apr 1, 2012 9:33:03 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:o-4
+Apr 1, 2012 9:33:03 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:i-3`1
+Apr 1, 2012 9:33:07 PM disambiguate.Evaluator predict
+INFO: Meaning not found in training:m-4
+Apr 1, 2012 9:33:07 PM experiments.TfIdfExperiment main
+FINE: Evaluation:
+	 Up Threshold For Number Of Meanings:6
+	 Evaluation Context Window Size:3
+
+Apr 1, 2012 9:33:07 PM experiments.TfIdfExperiment main
+FINE: Finished in 61 seconds.
+
+Apr 1, 2012 9:33:07 PM experiments.TfIdfExperiment main
 FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):4186.0==4186.0
-	tp=2420.0 fp=120.0 discarded=1646.0
-	Precision:95.27559 tp=2420.0 fp=120.0
-	Recall:100.0 tp=2420.0 fn=0.0
-	F-measure:97.58065
-	Random precision= 7.3002257 (testInstances=2540.0 ,invertSenseCount=185.42574)
+	Checksum(#test set=tp+fp+discarded):1968.0==1938.0
+	tp=1097.0 fp=20.0 discarded=821.0
+	Precision:98.20949 tp=1097.0 fp=20.0
+	Recall:97.338066 tp=1097.0 fn=30.0
+	F-measure:97.771835
+	Random precision= 9.505139 (testInstances=1117.0 ,invertSenseCount=106.17241)
 
-mar 29, 2012 3:43:48 PM experiments.TfIdfExperiment main
-FINE: LOWCASE  & 97.56 & 100 & 95.71 & 100 & 95.28 & 100 & 7.3002257 \\
+Apr 1, 2012 9:33:07 PM experiments.TfIdfExperiment main
+FINE: LOWCASE  & 98.21 & 97.34 & 98.21 & 97.34 & 98.21 & 97.34 & 9.505139 \\

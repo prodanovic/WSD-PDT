@@ -47,7 +47,7 @@ public class ExperimentPreprocessing {
 		
 		int setSize = allSentencesList.size()/100;
 		int startTestDev = 95*setSize;
-		int startTestFinal = 97*setSize;
+		int startTestFinal = 96*setSize;
 		
 		
 		File trainFile = new File(trainPath);
