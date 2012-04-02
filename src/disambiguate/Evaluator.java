@@ -123,7 +123,6 @@ public class Evaluator {
 		String current;
 		for (int i = 0; i < tokens.length; i++) {
 			current = tokens[i];
-			 
 			if(current.contains("-")){ // && current.length()>1 && Character.isLetter(current.charAt(0))
 				String lemma = current.substring(0, current.indexOf("-"));
 				ArrayList<String> lemma_meanings = meanings.get(lemma);
@@ -172,6 +171,7 @@ public class Evaluator {
 		Set<Entry<String, EvaluationEntry>> set = evaluationEntries.entrySet();
 		Iterator<Entry<String, EvaluationEntry>> it =set.iterator();
 		while(it.hasNext()){
+			long start = System.currentTimeMillis();
 			Entry<String, EvaluationEntry> ee = it.next();
 			current = ee.getKey();
 			lemma = current.substring(0, current.indexOf("-"));
@@ -201,6 +201,7 @@ public class Evaluator {
 				float temp = lemma_meanings.size();
 				randomAccuracy+=1/temp;
 				
+				
 				String chosenMeaning = isRI?calculateMeaningRI(context,lemma_meanings)
 							:calculateMeaningTFIDF_PMI(context,lemma_meanings);
 				if(chosenMeaning.equals("")){
@@ -215,8 +216,9 @@ public class Evaluator {
 //				if(++evaluate%50==0){
 //					evaluateAndLog();
 //				}
-		}			
-			
+			}		
+//			System.out.println("zavrsio "+current+" za:"+(System.currentTimeMillis()-start));
+					
 		}
 		return predictionList;
 	}
@@ -429,28 +431,7 @@ public class Evaluator {
 //		System.out.println(evaluator.isToken(")"));
 //		System.out.println(evaluator.isToken("^a3344"));
 		
-		Evaluator evaluator = new Evaluator(-1,1, 2, null);
-		String sentence = "aero-1 tedy nebude pri-1 vyrobe l-3 l-3 a-1 l-3 vazano na-1 jedineho dodavatele spickove avioniky";
-		evaluator.extractSentenceContext(sentence, 2);
-		evaluator.predict();
 		
-		Set<Entry<String, EvaluationEntry>> set = evaluator.evaluationEntries.entrySet();
-		Iterator<Entry<String, EvaluationEntry>> it =set.iterator();
-		while(it.hasNext()){
-			Entry<String, EvaluationEntry> ee = it.next();
-			String  meaning = ee.getKey();
-			ArrayList<Context> contexts = ee.getValue().getContext();
-			System.out.println(meaning);
-			for(Context context:contexts){
-				ArrayList<String> left = context.previousContext;
-				ArrayList<String> right = context.nextContext;
-				for(String s:left)System.out.print("l:"+s+" ");
-				System.out.println();	
-				for(String s:right)System.out.print("d:"+s+" ");
-				System.out.println();
-			}
-			System.out.println();
-		}
 		
 		
 		

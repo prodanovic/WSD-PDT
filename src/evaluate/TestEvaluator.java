@@ -24,13 +24,13 @@ import disambiguate.Evaluator;
 
 public class TestEvaluator {
 
-	String inputPath = "./pdt_cleaned_test_sample";
+	String inputPath = "pdt_cleaned_test_sample";
 	HashMap<String, ArrayList<String>> meanings ;
 	Evaluator evaluator;
 
 
 	
-	@Test
+//	@Test
 	public void testExtractTestContext() throws IllegalArgumentException, IOException{
 		evaluator = new Evaluator(-1,1,2, "pdt1_0/train_");
 		String sentence = "pri-1 tedy nebude pri-1 vyrobe l-3 l-3 a-1 l-3 vazano na-1 jedineho dodavatele spickove avioniky-9";
@@ -59,9 +59,7 @@ public class TestEvaluator {
 	
 //	@Test
 	public void testMeaningCountHasNotChangedBasedOnInputDocSizeParagraph() throws Exception, Exception{
-		CzechIndexer ci = new CzechIndexer("pdt1_0/train_", 1,
-				Arguments.numberOfWordsInDocument);
-		ci.index("index");
+		Arguments.numberOfSentencesInLuceneDoc=1;
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
 				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
@@ -70,9 +68,7 @@ public class TestEvaluator {
 		while(ks.hasNext()){
 			numberOfTrainPolysemes1+=evaluator.meanings.get(ks.next()).size();
 		}
-		ci = new CzechIndexer("pdt1_0/train_", 5,
-				Arguments.numberOfWordsInDocument);
-		ci.index("index");
+		Arguments.numberOfSentencesInLuceneDoc=5;
 		int numberOfTrainPolysemes5 = 0;
 		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
@@ -86,19 +82,21 @@ public class TestEvaluator {
 	
 //	@Test
 	public void testMeaningCountHasNotChangedBasedOnInputDocSizeWord() throws Exception, Exception{
-		Arguments.numberOfSentencesInLuceneDoc=1;
+		long start = System.currentTimeMillis();
+		Arguments.numberOfWordsInDocument=1;
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
 				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
+		System.out.println("indexing train set:"+(System.currentTimeMillis()-start)/1000);
 		int numberOfTrainPolysemes1 = 0;
 		Iterator<String> ks = evaluator.meanings.keySet().iterator();
 		while(ks.hasNext()){
 			numberOfTrainPolysemes1+=evaluator.meanings.get(ks.next()).size();
 		}
-		Arguments.numberOfSentencesInLuceneDoc=5;
+		Arguments.numberOfWordsInDocument=4;
 		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings, null);
+				Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
 		int numberOfTrainPolysemes4 = 0;
 		Iterator<String> ks5 = evaluator.meanings.keySet().iterator();
 		while(ks5.hasNext()){
@@ -136,5 +134,31 @@ public class TestEvaluator {
 		}
 		Assert.assertEquals(numberOfTestPolysemes1, numberOfTestPolysemes5);
 		Assert.assertEquals(numberOfTestContexts1, numberOfTestContexts5);
+	}
+	
+	@Test
+	public void testPredict() throws Exception, Exception{
+		Evaluator evaluator = new Evaluator(-1,1, 2, null);
+		String sentence = "aero-1 tedy nebude pri-1 vyrobe l-3 l-3 a-1 l-3 vazano na-1 jedineho dodavatele spickove avioniky";
+		evaluator.extractSentenceContext(sentence, 2);
+		evaluator.predict();
+		
+		Set<Entry<String, EvaluationEntry>> set = evaluator.evaluationEntries.entrySet();
+		Iterator<Entry<String, EvaluationEntry>> it =set.iterator();
+		while(it.hasNext()){
+			Entry<String, EvaluationEntry> ee = it.next();
+			String  meaning = ee.getKey();
+			ArrayList<Context> contexts = ee.getValue().getContext();
+			System.out.println(meaning);
+			for(Context context:contexts){
+				ArrayList<String> left = context.previousContext;
+				ArrayList<String> right = context.nextContext;
+				for(String s:left)System.out.print("l:"+s+" ");
+				System.out.println();	
+				for(String s:right)System.out.print("d:"+s+" ");
+				System.out.println();
+			}
+			System.out.println();
+		}
 	}
 }

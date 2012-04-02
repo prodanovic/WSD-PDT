@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import disambiguate.Evaluator;
 
 import preprocessing.CzechIndexer;
+import preprocessing.ExperimentPreprocessing;
 import preprocessing.LinguisticPreprocessing;
 
 import util.Arguments;
@@ -21,7 +22,7 @@ public class TfIdfExperiment {
 		Arguments.lowercase="n";
 		Arguments.stopWordsRemoval="n";
 		Arguments.stemming="n";
-		Arguments.mergeLexicalVariants="y";
+		Arguments.mergeLexicalVariants="n";
 //......matrix generation
 		Arguments.numberOfWordsInDocument=-1;//3,2,1
 		Arguments.numberOfSentencesInLuceneDoc = 1;//5,3,1
@@ -52,14 +53,10 @@ public class TfIdfExperiment {
 		
 //......train and test
 		
-		for(int i=1; i<6; ){
+		for(int i=1; i<4; ){
 			start = System.currentTimeMillis();
-			Arguments.numberOfSentencesInLuceneDoc = i;
-			CzechIndexer ci = new CzechIndexer("pdt1_0/train_", Arguments.numberOfSentencesInLuceneDoc,
-					Arguments.numberOfWordsInDocument);
-			ci.index("index");
+			Arguments.numberOfWordsInDocument= i;
 			logger.fine(Arguments.preprocessingParamsForLog());
-			
 			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 					Arguments.numberOfSentencesInLuceneDoc,
 					Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
@@ -68,7 +65,7 @@ public class TfIdfExperiment {
 			
 			evaluator.predict();
 			
-//			logger.fine(Arguments.evaluationParamsForLog());
+			logger.fine(Arguments.evaluationParamsForLog());
 			ResultFormatter.precicisions.add(evaluator.getPrecision());
 			ResultFormatter.recalls.add(evaluator.getRecall());
 			ResultFormatter.Fmeasures.add(evaluator.getFMeasure(0.5f));
@@ -78,8 +75,8 @@ public class TfIdfExperiment {
 			long end = (System.currentTimeMillis()-start)/1000;
 			logger.fine("Finished in "+end+" seconds.\n");
 			System.err.println(Arguments.initLogName()+" ["+end+"s]");
-//			logger.fine(evaluator.evaluationStatsForLog());
-			i+=2;
+			logger.fine(evaluator.evaluationStatsForLog());
+			i+=1;
 		}
 //		logger.fine(ResultFormatter.getTableForPreprocessingFC(Arguments.preprocessingName()));
 		logger.fine(ResultFormatter.getTableForPreprocessingPR(Arguments.preprocessingName()));
