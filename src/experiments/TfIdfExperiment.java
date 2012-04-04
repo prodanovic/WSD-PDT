@@ -21,7 +21,7 @@ public class TfIdfExperiment {
 //......preprocessing		
 		Arguments.lowercase="n";
 		Arguments.stopWordsRemoval="n";
-		Arguments.stemming="n";
+		Arguments.stemming="y";
 		Arguments.mergeLexicalVariants="n";
 //......matrix generation
 		Arguments.numberOfWordsInDocument=-1;//3,2,1

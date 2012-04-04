@@ -16,17 +16,6 @@ public class LinguisticPreprocessing {
 		margeAllCzechVariants("pdt1_0/testDev_","pdt1_0/testDev_");
 		margeAllCzechVariants("pdt1_0/testFinal_","pdt1_0/testFinal_");
 	}
-	public static String mergeCzechTermVariants(String inToken) throws IOException{
-		if(inToken.contains("á"))inToken=inToken.replaceAll("á", "a");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("é", "e");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("í", "i");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("ý", "y");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("ú", "u");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("ù", "u");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("ò", "o");
-		if(inToken.contains("á"))inToken=inToken.replaceAll("ó", "o");
-		return inToken;
-	}
 	public static void margeAllCzechVariants(String inPath,String outPath) throws IOException{
 		String wholePDT1 = FileUtil.extractTextFromFile(new File(inPath), "Windows-1250");
 		String []sentences = wholePDT1.split("\n");
@@ -45,6 +34,17 @@ public class LinguisticPreprocessing {
 			sb.append(ssb.toString().trim()+"\n");
 		}
 		FileUtil.writeTextToFile(sb.toString(), outPath, "Windows-1250", false);
+	}
+	public static String mergeCzechTermVariants(String inToken) throws IOException{
+		if(inToken.contains("á"))inToken=inToken.replaceAll("á", "a");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("é", "e");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("í", "i");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ý", "y");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ú", "u");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ù", "u");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ò", "o");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ó", "o");
+		return inToken;
 	}
 	
 	public static void stemCzechTerms() throws IOException{
@@ -73,19 +73,7 @@ public class LinguisticPreprocessing {
 		FileUtil.writeTextToFile(sb.toString(), outPath, "Windows-1250", false);
 	}
 	
-	//should be taken care of with WordFilter in WordSpaceAnalyzer
-//	public static void deleteNonWords() throws IOException{
-//		String wholePDT1 = FileUtil.extractTextFromFile(new File(inputFilePath), "Windows-1250");
-//		String regex = "\\s[^\\w]+\\s";
-//		String regex2 = "\\u0020\\u002E?[\\u0030-\\u0039]+\\u0020"; //\s.?\d+\s in Windows-1250 encoding 
-//		String regex3 = "\\u0020?[\\u0030-\\u0039]*\\u002E[\\u0030-\\u0039]*\\u0020"; //\s?\d*\.\d*\s
-//		wholePDT1 = wholePDT1.replaceAll(regex, " ");
-//		wholePDT1 = wholePDT1.replaceAll(regex, " ");
-//		wholePDT1 = wholePDT1.replaceAll(regex2, " ");
-//		wholePDT1 = wholePDT1.replaceAll(regex3, " ");
-//		wholePDT1 = wholePDT1.replaceFirst(" ", "");
-//		FileUtil.writeTextToFile(wholePDT1, inputFilePath+"_", "Windows-1250", false);
-//	}
+	
 	public static void removeNonWords() throws IOException{
 		removeNonWords("pdt1_0/train_","pdt1_0/train_");
 		removeNonWords("pdt1_0/testDev_","pdt1_0/testDev_");
