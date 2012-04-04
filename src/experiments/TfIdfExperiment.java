@@ -20,7 +20,7 @@ public class TfIdfExperiment {
 	public static void main(String[] args) throws Exception {
 //......preprocessing		
 		Arguments.lowercase="n";
-		Arguments.stopWordsRemoval="y";
+		Arguments.stopWordsRemoval="n";
 		Arguments.stemming="n";
 		Arguments.mergeLexicalVariants="n";
 //......matrix generation

@@ -47,16 +47,8 @@ public class Experiment {
 		ExperimentPreprocessing ep = new ExperimentPreprocessing();
 		ep.divideIntoTrainAndTestSets(Arguments.inputFilePath);
 		
-		if(isMerge){
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//train","pdt1_0//train");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testDev","pdt1_0//testDev");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testFinal","pdt1_0//testFinal");
-		}
-		if(isStem){
-			LinguisticPreprocessing.stemCzechTerms("pdt1_0//train_","pdt1_0//train");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testDev_","pdt1_0//testDev");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testFinal_","pdt1_0//testFinal");
-		}
+		if(isMerge)LinguisticPreprocessing.mergeCzechTermVariants();
+		if(isStem)LinguisticPreprocessing.stemCzechTerms();
 		
 		
 //......train and test
@@ -86,8 +78,8 @@ public class Experiment {
 		logger.fine("Finished in "+(System.currentTimeMillis()-start)/1000+" seconds.");
 		logger.fine(evaluator.evaluationStatsForLog());
 		
+	
 	}
-
 	
 
 }

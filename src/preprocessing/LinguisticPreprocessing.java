@@ -12,21 +12,39 @@ public class LinguisticPreprocessing {
 	public static String inputFilePath = Arguments.inputFilePath;
 	
 	public static void mergeCzechTermVariants() throws IOException{
-		mergeCzechTermVariants("pdt1_0/train_","pdt1_0/train_");
-		mergeCzechTermVariants("pdt1_0/testDev_","pdt1_0/testDev_");
-		mergeCzechTermVariants("pdt1_0/testFinal_","pdt1_0/testFinal_");
+		margeAllCzechVariants("pdt1_0/train_","pdt1_0/train_");
+		margeAllCzechVariants("pdt1_0/testDev_","pdt1_0/testDev_");
+		margeAllCzechVariants("pdt1_0/testFinal_","pdt1_0/testFinal_");
 	}
-	public static void mergeCzechTermVariants(String inPath,String outPath) throws IOException{
+	public static String mergeCzechTermVariants(String inToken) throws IOException{
+		if(inToken.contains("á"))inToken=inToken.replaceAll("á", "a");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("é", "e");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("í", "i");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ý", "y");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ú", "u");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ù", "u");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ò", "o");
+		if(inToken.contains("á"))inToken=inToken.replaceAll("ó", "o");
+		return inToken;
+	}
+	public static void margeAllCzechVariants(String inPath,String outPath) throws IOException{
 		String wholePDT1 = FileUtil.extractTextFromFile(new File(inPath), "Windows-1250");
-		wholePDT1=wholePDT1.replaceAll("á", "a");		
-		wholePDT1=wholePDT1.replaceAll("é", "e");
-		wholePDT1=wholePDT1.replaceAll("í", "i");
-		wholePDT1=wholePDT1.replaceAll("ý", "y");
-		wholePDT1=wholePDT1.replaceAll("ú", "u");
-		wholePDT1=wholePDT1.replaceAll("ù", "u");
-		wholePDT1=wholePDT1.replaceAll("ò", "o");
-		wholePDT1=wholePDT1.replaceAll("ó", "o");
-		FileUtil.writeTextToFile(wholePDT1, new File(outPath), "Windows-1250", false);
+		String []sentences = wholePDT1.split("\n");
+		String[]tokens;
+		StringBuilder ssb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
+		for(String sentence:sentences){
+			ssb = new StringBuilder();
+			tokens = sentence.split(" ");
+			for(String token:tokens){
+				if(!token.contains("-")){
+					token = mergeCzechTermVariants(token);
+				}
+				sb.append(token+" ");
+			}
+			sb.append(ssb.toString().trim()+"\n");
+		}
+		FileUtil.writeTextToFile(sb.toString(), outPath, "Windows-1250", false);
 	}
 	
 	public static void stemCzechTerms() throws IOException{

@@ -26,7 +26,7 @@ public class ObtainFileStats {
 		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
 		
 		Arguments.inputFilePath = "pdt1_0//train";
-		LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//train","pdt1_0//train_");
+		LinguisticPreprocessing.mergeCzechTermVariants();
 //		LinguisticPreprocessing.deleteNonWords("pdt1_0//train","pdt1_0//train*");
 		ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index(indexLocation);

@@ -44,16 +44,8 @@ public class RandomIndexingExperiment {
 		ExperimentPreprocessing ep = new ExperimentPreprocessing();
 //		ep.divideIntoTrainAndTestSets(Arguments.inputFilePath);
 		
-		if(Arguments.mergeLexicalVariants.equalsIgnoreCase("y")){
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//train","pdt1_0//train_");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testDev","pdt1_0//testDev_");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testFinal","pdt1_0//testFinal_");
-		}
-		if(Arguments.stemming.equalsIgnoreCase("y")){
-			LinguisticPreprocessing.stemCzechTerms("pdt1_0//train_","pdt1_0//train_");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testDev_","pdt1_0//testDev_");
-			LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//testFinal_","pdt1_0//testFinal_");
-		}
+		if(Arguments.mergeLexicalVariants.equalsIgnoreCase("y"))LinguisticPreprocessing.mergeCzechTermVariants();
+		if(Arguments.stemming.equalsIgnoreCase("y"))LinguisticPreprocessing.stemCzechTerms();
 		
 		
 //......train and test

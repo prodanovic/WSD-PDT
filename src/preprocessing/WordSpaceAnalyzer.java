@@ -23,7 +23,7 @@ import util.Arguments;
 public class WordSpaceAnalyzer extends Analyzer {
 
 
-	private Set<?> stoptable;
+//	private Set<?> stoptable;
 	private final Version matchVersion;
 	public final static String[] CZECH_STOP_WORDS = {
         "a","s","k","o","i","u","v","z","dnes","cz","t\u00edmto","bude\u0161","budem",
@@ -51,15 +51,15 @@ public class WordSpaceAnalyzer extends Analyzer {
 	
 	public TokenStream tokenStream(String fieldName, Reader reader) {
 		Tokenizer tokenizer =  new WhitespaceTokenizer(matchVersion,reader);
-		TokenStream result = new WordFilter(tokenizer);
+//		TokenStream result = new WordFilter(tokenizer);
+//		
+////		if(Arguments.lowercase.equalsIgnoreCase("y"))result=new LowerCaseFilter(result);
+//		if(Arguments.stopWordsRemoval.equalsIgnoreCase("y")){
+//			Set<String> stopSet = new HashSet<String>(Arrays.asList(CZECH_STOP_WORDS));
+//			result =new StopFilter(matchVersion, result, stopSet);
+//		}
 		
-//		if(Arguments.lowercase.equalsIgnoreCase("y"))result=new LowerCaseFilter(result);
-		if(Arguments.stopWordsRemoval.equalsIgnoreCase("y")){
-			Set<String> stopSet = new HashSet<String>(Arrays.asList(CZECH_STOP_WORDS));
-			result =new StopFilter(matchVersion, result, stopSet);
-		}
-		
-		return result ;
+		return tokenizer ;
 	}
 
 	
