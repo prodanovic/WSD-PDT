@@ -53,28 +53,31 @@ In our experiments we were using as a resource PDT1.0 version, instead of PDT2.0
 \end{itemize}
 
 \subsection{Polysemous words}\label{pdt}
-Czech language is the typical representative of inflectionally rich free--word--order language\footnote{http://www.czech--language.cz/index.php}, which surely doesn't have a favorable influence on the number of polysemous words in Czech language. From the training set that represents approximately 9/10 of the whole PDT1.0 we present in the table below the number of words that have more than one meaning. In the left column is given the number of meanings, and in the right column the number of words that take that number of meanings. For instance, the eight row informs us that there are two words that take 8 different meanings in the training set.
+Czech language is the typical representative of inflectionally rich free--word--order language\footnote{http://www.czech--
+language.cz/index.php}, which surely doesn't have a favorable influence on the number of polysemous words in Czech 
+language. From the training set that represents approximately 9/10 of the whole PDT1.0 we present in the table below the 
+number of words that have more than one meaning. In the left column is given the number of meanings, and in the right column 
+the number of words that take that number of meanings. For instance, the eight row informs us that there are two words that 
+take 8 different meanings in the training set. It has to mentioned that these numbers could be different in another instance of 
+training, being that the training set is assembled pseudo--randomly before the training phase. However, for the PDT training set they would not be drastically different because training is performed on the 90\% of the entire set. 
 \begin{table}[h!]
 \begin{center}
 	\begin{tabular}{ c  c |  c }
    	&   \# of meanings & \# of types \\
 \hline  
- & 2 & 329  \\
- & 3 & 37  \\
- & 4 & 20  \\
- & 5 & 6  \\
- & 6 & 4  \\
- & 7 & 4  \\
- & 8 & 5  \\
- & 9 & 3  \\
- & 10 & 3  \\
+ & 2 & 319  \\
+ & 3 & 49  \\
+ & 4 & 19  \\
+ & 5 & 9  \\
+ & 6 & 5  \\
+ & 7 & 1  \\
+ & 8 & 2  \\
 \hline  
-& &Total =411\\  
+& &Total =404\\  
  	\end{tabular}
 \end{center}
 \caption{Number of types with multiple meanings in the training set}
 \end{table}
-Another interesting ratio to be taken into account is the number 
 
 
 
@@ -138,7 +141,7 @@ Although a good lemmatizer was built at
 UFAL\footnote{http://ufal.mff.cuni.cz/pdt/Morphology\_and\_Tagging/Morphology/index.html}, it was not 
 used 
 in this system. During preliminar experiments with cosine-weighted co-occurrence matrix it was observed 
-that the improvement in precision when applying lemmatizer over stemmer is not  significant. It was 
+that the improvement in precision when applying lemmatizer over stemmer is not significant. It was 
 therefore
 assumed that precision would not be improved in other models experimented with as well. 
 A stemmer built for the Czech language made at University of 
@@ -158,8 +161,8 @@ Stemming was left as an optional measure in order to observe whether it improves
 
 After extracting the text from PDT and optional preprocessing normalization performed on text, text's 
 sentences are randomized and split into 3 separate files: $train, testDev, testFinal$. Training set holds 
-85\% of the number of sentences in the whole set, while $testDev$ holds about 5\% and $testFinal$ 
-about 10\%. First test file 
+90\% of the number of sentences in the whole set, while $testDev$ holds about 5\% and $testFinal$ 
+about 5\%. First test file 
 ($testDev$) is used to evaluate during training phase, while the second ($ testFinal$) is used for 
 evaluation in the testing phase. 
 
@@ -181,7 +184,7 @@ We can observe that stemming reduces the vocabulary size much more than merging
 lexical variants. This fact will reflect on the precision in the evaluation phase. 
 
 \section{Document size}
-After preprocessing phase, the next is to build the term--document matrix. This step is generalized for all models we will be training. This is because the term--document matrix is a simple frequency matrix, and (optional) normalization of frequency counts or dimensionality reduction takes place in the next phase. Crucial property of this phase is the size of the document in the term--document. Previous approaches were described on the use of context, ranging from word--level to paragraph--level. Document size used in the following experiments will be: 
+After preprocessing phase, the next step is to build the term--document matrix. This step is generalized for all the models we will be training. This is because the term--document matrix is a simple frequency matrix, and (optional) normalization of frequency counts or dimensionality reduction takes place in the next phase. Crucial property of this phase is the size of the document in the term--document. Previous approaches were described on the use of context, ranging from word--level to paragraph--level. Document size used in the following experiments will be: 
 \begin{itemize}
 \item five sentence paragraph
 \item three sentence paragraph
@@ -266,7 +269,7 @@ where \textit{D} is the total number of documents in the collection. $P_{ij}$ is
 \begin{equation}\large{P_{ij} = \frac{TF_{ij}}{f_{i}}} \end{equation}
 where $TF_{ij}$ is the frequency of term $i$ in document $j$ and $f_{i}$ is the frequency of term \textit{i} in the whole document collection.
 
-Another model that was experimented with is created through the use of dimensionality reduction 
+The last model that was experimented with is created through the use of dimensionality reduction 
 technique-- Random Indexing. Frequencies counts of its term--document matrix were not normalized, 
 due to the nature of its generation. Detail description of RI is given in chapter\ref{RI}. What should be 
 restated is that:
@@ -308,7 +311,7 @@ occurrence of ambiguous word. For instance, for the sentence:
 \end{examples}
 
 
-In the implementation level, the way the most appropriate meaning for a context is calculated in two passes:
+In the implementation level, the way the most appropriate meaning for the context is calculated in two passes:
 \begin{itemize}
 \item The test set is traversed, in order to extract all the contexts for all the polysemous words 
 encountered  in testing.
@@ -355,7 +358,8 @@ of items in the test set for which the system provided a sense assignment:
 \\\\
 If the systems provides an answer for every test instance then $C=1$.
 The \textit{precision P} of a system is computed as the percentage of correct answers given by the 
-system. If the model ''calculates the correct meaning" properly, $\#correct\_answers\_provided$ is 
+system. If the model ''calculates the correct meaning" properly, 
+\\$\#correct\_answers\_provided$ is 
 incremented. The total number of answers given by the system is counted as well, and then precision 
 is calculated as: 
 \begin{equation}
@@ -380,12 +384,16 @@ From these two values (precision and recall) an F--measure is calculated accordi
 F-measure=\large{\frac{1}{\frac{\alpha}{P}+\frac{1-\alpha}{R}}}
 }
 \end{equation}
-where $\alpha$ is the weight factor which in experiments performed here takes the value of 0.5, in order to give equal weights to both precision and recall. 
+where $\alpha$ is the weight factor which in experiments performed here takes the value of 0.5, in order to give equal weights 
+to both precision and recall. As it is customary for WSD experiments (Navigli 2009), all results in the experiments are presented in 
+as Precision/Recall pairs, though an alternate output in the form of F--measure/Coverage could be enabled as well by the 
+system.   
 \\\\
 \textbf{Baseline.}
 
-As a baseline result, random guessing is calculated for every test set used in evaluation. Random baseline is the random choice of a sense from those available for each polysemous word $w_i$ . Random 
-precision is calculated as:
+As a baseline result, random guessing is calculated for every test set used in evaluation. Random baseline is the probability of a 
+random choice of a sense from those available for each polysemous word $w_i$ . Overall random 
+precision is then calculated as:
 \begin{equation}
 \large{
 RandomP=\frac{1}{n} \sum_{i=1}^{n}\frac{1}{Senses(w_i)}
@@ -451,43 +459,51 @@ is evaluation on  words with different number of meanings attached to them.
 
 \subsection{Tuning preprocessing parameters}
 First, no preprocessing method was applied on the train and test set. The size of the document in the term--document co-
-ocurrence matrix was changed in order to observe the influence on the precision. A threshold number of meanings was set to 6, which means that other polysemous words that had less than 6 meanings encountered in training were dicareded for this test. Also an evaluation context size was fixed to 3. Document sizes that were
+ocurrence matrix was changed in order to observe the influence on the precision. A threshold number of meanings to be evaluated on was set to 6, which means that other polysemous words that had less than 6 meanings encountered in training were discarded for this test. Also an evaluation context size was fixed to 3, which means that a symmetric window 3 preceeding and 3 succeeding words were used to build a vector which was used for classification. First column in the table displays the preprocessing method used on the entire corpus (except on the test instances) used in the phase of constructing co--occurrence matrix. To ensure that the best preprocessing method is chosen, regardless of the 
+document size used in co--occurrence matrix, different size of documents were observed. Document sizes that were
 experimented with are: 5 sentence document, 3 sentence document, 1 sentence document, and 3+3, 2+2, 1+1 symmetric word windows around polysemous word.  
-Random precision was calculated as well to serve as a baseline. 
+Random precision was calculated as well to serve as a baseline. It represents a precision of the system when it is picking a random meaning for a polysemous word that is tested. 
+Precision and recall (in \%) for every document size is presented in the tables below. First a sentence--level 
+document size was experimented with. This means that for the units from which the frequencies were calculated from (for the co-occurrence matrix) the paragraphs of size 1, 3 and 5 sentences. 
 Best results in all the tables are bolded. 
-Precision (in \%) for every document size is presented in the tables below. First a sentence--level 
-document size was experimented with. This means that for the units from which the frequencies were calculated from (for the co-occurrence matrix), paragraphs of size 1, 3 and 5 sentences were taken. 
+
 \begin{table}[h!]
 \begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  5 sentences && 3 sentences && 1 sentence  && random\\
+   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
 \hline
 	& P  &  R & P  &  R & P  &  R &\\
 \hline\hline
-NO  & 97.84 & 100 & 97.84 & 100 & 97.84 & 100 & 9.45 \\
-STOP  & 97.66 & 100 & 97.66 & 100 & 97.66 & 100 & 9.45 \\
-STEM  & 96.93 & 100 & 96.93 & 100 & 96.93 & 100 & 9.45 \\
-MERGE  & 95.91 & 100 & 95.91 & 100 & 95.91 & 100 & 9.25 \\
+NO  & 97.25 & 100 & 94.59 & 100 & 63.46 & 100 &11.36 \\
+LOWCASE  & 96.33 & 100 & 96.33 & 100 & 96.33 & 100 & 11.36 \\
+LOWCASE  & 96.19 & 100 & 96.19 & 100 & 96.19 & 100 & 14.234712 \\
+STOP  & 97.25 & 100 & 95.02 & 100 & 63.62 & 100 & 11.36 \\
+STEM  & 96.33 & 100 & 96.33 & 100 & 96.33 & 100 & 11.36 \\
+MERGE  & 97.25 & 100 & 94.71 & 100 & 63.46 & 100 & 11.36 \\
 \end{tabular}
-\caption{Precision and Recall of TF--IDF model, no preprocessing, sentence level document size}
+\caption{Precision and Recall using various individual preprocessing techniques, sentence level document size}
 \end{table}
 
-As explained in the previous section evaluation was performed in two phases. Only results from the 
-evaluation phase are displayed in the tables. Random prediction from the training phase was 8.1\%.
-Total number of final test set instances was \textbf{17845}, however because only words with 6 and more 
-meanings were taken into consideration test set size was \textbf{952}, while even \textbf{16882} occurrences of 
-polysemous words was discarded.
+First thing that should be noted is that  
+
 
 Then word--level document size was then observed to see how it performs. 
 \begin{table}[h!]
 \begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  3+3 words && 2+2 words && 1+1 word  && random\\
+   preprocessing & 1+1 word && 2+2 words && 3+3 words  && random\\
 \hline\hline
 	& P  &  R & P  &  R & P  &  R &\\
 \hline
-NO & 90.43  & 93.61 & \textbf{90.90} & \textbf{94.65} & 85 & 93.22 & 4.51 \\
+ NO  & 93.58 & 100 & 98.17 & 100 & 98.17 & 100 & 11.36 \\
+LOWCASE  & 94.5 & 100 & 98.17 & 100 & 98.17 & 100 & 11.36  \\
+STOP  & 93.58 & 100 & 97.25 & 100 & 98.17 & 100 & 11.36  \\
+ STEM  & 93.58 & 100 & 98.17 & 100 & 97.25 & 100 & 11.36 \\
+MERGE  & 93.58 & 100 & 98.17 & 100 & 98.17 & 100 & 11.36  \\
 \end{tabular}
 \caption{Precision and Recall of TF--IDF model, no preprocessing, word level document size}
 \end{table}
+
+
+
 
 Next preprocessing technique that was experimented with was lowercasing. Total number of final test set instances was \textbf{18383}, however the test set size was \textbf{9636}, while \textbf{8747} occurrences of polysemous words was discarded  for having less than 6 meanings attached to them. Tables are given below.
 \begin{table}[h!]

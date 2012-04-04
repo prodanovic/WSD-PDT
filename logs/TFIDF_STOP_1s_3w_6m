@@ -1,0 +1,89 @@
+apr 02, 2012 5:55:09 PM experiments.TfIdfExperiment main
+FINE: Model: TFIDF
+apr 02, 2012 5:55:28 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:STOP
+Size of document in the matrix:
+	 number Of Sentences In Document:1
+	 number Of Words In Document:-1
+apr 02, 2012 5:55:34 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:175.0
+	total number Of Test Contexts[ts instances]:1856.0
+
+apr 02, 2012 5:55:37 PM experiments.TfIdfExperiment main
+FINE: Evaluation:
+	 Up Threshold For Number Of Meanings:6
+	 Evaluation Context Window Size:3
+
+apr 02, 2012 5:55:37 PM experiments.TfIdfExperiment main
+FINE: Finished in 8 seconds.
+
+apr 02, 2012 5:55:37 PM experiments.TfIdfExperiment main
+FINE: Evaluation Statistics
+	Checksum(#test set=tp+fp+discarded):1856.0==1856.0
+	tp=102.0 fp=3.0 discarded=1751.0
+	Precision:97.14286 tp=102.0 fp=3.0
+	Recall:100.0 tp=102.0 fn=0.0
+	F-measure:98.55073
+	Random precision= 14.234712 (testInstances=105.0 ,invertSenseCount=14.946446)
+
+apr 02, 2012 5:55:37 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:STOP
+Size of document in the matrix:
+	 number Of Sentences In Document:3
+	 number Of Words In Document:-1
+apr 02, 2012 5:55:40 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:218.0
+	total number Of Test Contexts[ts instances]:2335.0
+
+apr 02, 2012 5:56:04 PM experiments.TfIdfExperiment main
+FINE: Evaluation:
+	 Up Threshold For Number Of Meanings:6
+	 Evaluation Context Window Size:3
+
+apr 02, 2012 5:56:04 PM experiments.TfIdfExperiment main
+FINE: Finished in 27 seconds.
+
+apr 02, 2012 5:56:04 PM experiments.TfIdfExperiment main
+FINE: Evaluation Statistics
+	Checksum(#test set=tp+fp+discarded):2335.0==2335.0
+	tp=874.0 fp=45.0 discarded=1416.0
+	Precision:95.10337 tp=874.0 fp=45.0
+	Recall:100.0 tp=874.0 fn=0.0
+	F-measure:97.49024
+	Random precision= 9.7030115 (testInstances=919.0 ,invertSenseCount=89.17067)
+
+apr 02, 2012 5:56:04 PM experiments.TfIdfExperiment main
+FINE: Preprocessing:STOP
+Size of document in the matrix:
+	 number Of Sentences In Document:5
+	 number Of Words In Document:-1
+apr 02, 2012 5:56:07 PM experiments.TfIdfExperiment main
+FINE: Test Set Statistics
+	total number Of Test Meanings[ts cases]:225.0
+	total number Of Test Contexts[ts instances]:2348.0
+
+apr 02, 2012 5:56:39 PM disambiguate.Evaluator calculateMeaningTFIDF_PMI
+SEVERE: v-1  |X| 
+apr 02, 2012 5:56:39 PM disambiguate.Evaluator predict
+SEVERE: System couldn't calculate for meaning=LN-1, lemma=LN
+apr 02, 2012 5:56:40 PM experiments.TfIdfExperiment main
+FINE: Evaluation:
+	 Up Threshold For Number Of Meanings:6
+	 Evaluation Context Window Size:3
+
+apr 02, 2012 5:56:40 PM experiments.TfIdfExperiment main
+FINE: Finished in 35 seconds.
+
+apr 02, 2012 5:56:40 PM experiments.TfIdfExperiment main
+FINE: Evaluation Statistics
+	Checksum(#test set=tp+fp+discarded):2348.0==2348.0
+	tp=670.0 fp=386.0 discarded=1292.0
+	Precision:63.446968 tp=670.0 fp=386.0
+	Recall:100.0 tp=670.0 fn=0.0
+	F-measure:77.636154
+	Random precision= 9.526614 (testInstances=1056.0 ,invertSenseCount=100.60104)
+
+apr 02, 2012 5:56:40 PM experiments.TfIdfExperiment main
+FINE: STOP  & 97.14 & 100 & 95.1 & 100 & 63.45 & 100 & 9.526614 \\

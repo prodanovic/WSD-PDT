@@ -66,54 +66,35 @@ public class Evaluator {
 	public Evaluator(int numberOfWordsInDocument, int numberOfSentencesInLuceneDoc,
 			int upBoarderForNumberOfMeanings, String inputFilePath) throws CorruptIndexException, IOException {
 		super();
+		logger=Log.getLogger(Arguments.logName);
+		czechIndexer = new CzechIndexer(inputFilePath,numberOfSentencesInLuceneDoc,numberOfWordsInDocument);
+		czechIndexer.index("index");
+		czechIndexer.loadMeaningsAndTokens();
+		
 		try {
-			if(new File("termvectors.bin").exists())
+			if(new File("termvectors.bin").exists()){
 				vecReader = new VectorStoreReaderLucene("termvectors.bin");
+				luceneUtils = new LuceneUtils("index");
+			}
 	    } catch (IOException e) {
 	    	e.printStackTrace();
 	    }
-	    try {
-	    	luceneUtils = new LuceneUtils("index");
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
+	   
 	    evaluationEntries = new Hashtable<String, EvaluationEntry>();
 	    termVectors = new Hashtable<String, Vector>();
-		logger=Log.getLogger(Arguments.logName);
 //		tokenTestList = new ArrayList<String>();
 //		cachedDistances = new HashMap<String, Double>();
 		this.upBoarderForNumberOfMeanings = upBoarderForNumberOfMeanings;
-		
-		czechIndexer = new CzechIndexer(inputFilePath,numberOfSentencesInLuceneDoc,numberOfWordsInDocument);
-		czechIndexer.loadMeaningsAndTokens();
 //		czechIndexer.pruneMeaningThatOccurLessThan(upBoarderForNumberOfMeanings);
 		meanings = czechIndexer.meanings;
 	}
 	
 	public void extractTestContext(String testFilePath,int contextWindowSize) throws Exception{
-//		if(isRI)System.err.println("RI");
-//		else System.err.println("not RI");
-//		
-//		if(isPMI)System.err.println("PMI");
-//		else System.err.println("TFIDF");
-		CzechIndexer testIndexer = new CzechIndexer(testFilePath, 1,-1);
-		testIndexer.index("indexTest");
-		IndexReader indexReader = IndexReader.open(FSDirectory.open(new File("indexTest")));
-		int numDocs = indexReader.numDocs();
-		while(numDocs-->0){
-			String sentence = indexReader.document(numDocs).get("contents").toString();
-			extractSentenceContext(sentence,contextWindowSize);
-		}
-//		try {
-//			File file = new File(testFilePath);
-//			Scanner scanner = new Scanner(file, "Windows-1250");
-//			while(scanner.hasNextLine()){
-//				String sentence = scanner.nextLine();
-//				extractSentenceContext(sentence,contextWindowSize);
-//			}
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
+
+		 Scanner scanner = new Scanner(new File(testFilePath), "Windows-1250");
+		  while(scanner.hasNextLine()){
+			  extractSentenceContext(scanner.nextLine(),contextWindowSize);
+		  }
 	}
 	
 	//sliding window depending on the contextSize

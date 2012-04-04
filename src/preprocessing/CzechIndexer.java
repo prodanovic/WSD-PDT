@@ -56,20 +56,19 @@ public class CzechIndexer {
 		typesTokens = new Hashtable<String, Integer>();
 		meanings = new HashMap<String, ArrayList<String>>();
 	}
-
+	
 	public void index(String indexLocation) {
 		  File docDir = new File(inputDocumentPath);
-	    
 		  try {
 			  File INDEX_DIR = new File(indexLocation);
-			  IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_34, new WordSpaceAnalyzer(Version.LUCENE_34));
+			  IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_34,
+					  new WordSpaceAnalyzer(Version.LUCENE_34));
 			  conf.setOpenMode(OpenMode.CREATE);
 			  IndexWriter writer = new IndexWriter(FSDirectory.open(INDEX_DIR),conf);
 //		      System.out.println("Indexing to directory '" +INDEX_DIR+ "'...");
 		      addSentencesFromFileToIndex(writer,docDir);
 		      writer.optimize();
 		      writer.close();
-	
 //		      System.out.println("created index in: "+(end.getTime() - start.getTime())/1000 + " seconds");
 		  } catch (IOException e) {
 		      e.printStackTrace();
@@ -233,7 +232,8 @@ public class CzechIndexer {
 		}
 	  
 	  public void loadMeaningsAndTokens() throws CorruptIndexException, IOException{
-		  IndexReader indexReader = IndexReader.open(FSDirectory.open(new File("index")));
+		  File indexDir = new File("index");
+		  IndexReader indexReader = IndexReader.open(FSDirectory.open(indexDir));
 		  TermEnum terms = indexReader.terms();
 		  while(terms.next()){
 		        Term term = terms.term();

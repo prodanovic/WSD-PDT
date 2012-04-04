@@ -1,85 +1,85 @@
-Apr 1, 2012 10:18:35 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:23 PM experiments.TfIdfExperiment main
 FINE: Model: TFIDF
-Apr 1, 2012 10:18:42 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:25 PM experiments.TfIdfExperiment main
 FINE: Preprocessing:MERGE
 Size of document in the matrix:
 	 number Of Sentences In Document:1
 	 number Of Words In Document:-1
-Apr 1, 2012 10:18:45 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:30 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:221.0
-	total number Of Test Contexts[ts instances]:2243.0
+	total number Of Test Meanings[ts cases]:176.0
+	total number Of Test Contexts[ts instances]:1861.0
 
-Apr 1, 2012 10:20:14 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:33 PM experiments.TfIdfExperiment main
 FINE: Evaluation:
 	 Up Threshold For Number Of Meanings:6
 	 Evaluation Context Window Size:3
 
-Apr 1, 2012 10:20:14 PM experiments.TfIdfExperiment main
-FINE: Finished in 91 seconds.
+apr 02, 2012 5:07:33 PM experiments.TfIdfExperiment main
+FINE: Finished in 7 seconds.
 
-Apr 1, 2012 10:20:14 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:33 PM experiments.TfIdfExperiment main
 FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):2243.0==2243.0
-	tp=1195.0 fp=51.0 discarded=997.0
-	Precision:95.9069 tp=1195.0 fp=51.0
-	Recall:100.0 tp=1195.0 fn=0.0
-	F-measure:97.91069
-	Random precision= 9.251503 (testInstances=1246.0 ,invertSenseCount=115.27373)
+	Checksum(#test set=tp+fp+discarded):1861.0==1861.0
+	tp=106.0 fp=3.0 discarded=1752.0
+	Precision:97.24771 tp=106.0 fp=3.0
+	Recall:100.0 tp=106.0 fn=0.0
+	F-measure:98.60466
+	Random precision= 13.762607 (testInstances=109.0 ,invertSenseCount=15.001241)
 
-Apr 1, 2012 10:20:14 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:33 PM experiments.TfIdfExperiment main
 FINE: Preprocessing:MERGE
 Size of document in the matrix:
 	 number Of Sentences In Document:3
 	 number Of Words In Document:-1
-Apr 1, 2012 10:20:17 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:36 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:221.0
-	total number Of Test Contexts[ts instances]:2243.0
+	total number Of Test Meanings[ts cases]:218.0
+	total number Of Test Contexts[ts instances]:2341.0
 
-Apr 1, 2012 10:21:41 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:57 PM experiments.TfIdfExperiment main
 FINE: Evaluation:
 	 Up Threshold For Number Of Meanings:6
 	 Evaluation Context Window Size:3
 
-Apr 1, 2012 10:21:41 PM experiments.TfIdfExperiment main
-FINE: Finished in 87 seconds.
+apr 02, 2012 5:07:57 PM experiments.TfIdfExperiment main
+FINE: Finished in 23 seconds.
 
-Apr 1, 2012 10:21:42 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:57 PM experiments.TfIdfExperiment main
 FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):2243.0==2243.0
-	tp=1195.0 fp=51.0 discarded=997.0
-	Precision:95.9069 tp=1195.0 fp=51.0
-	Recall:100.0 tp=1195.0 fn=0.0
-	F-measure:97.91069
-	Random precision= 9.251503 (testInstances=1246.0 ,invertSenseCount=115.27373)
+	Checksum(#test set=tp+fp+discarded):2341.0==2341.0
+	tp=841.0 fp=47.0 discarded=1453.0
+	Precision:94.70721 tp=841.0 fp=47.0
+	Recall:100.0 tp=841.0 fn=0.0
+	F-measure:97.28167
+	Random precision= 10.467384 (testInstances=888.0 ,invertSenseCount=92.95037)
 
-Apr 1, 2012 10:21:42 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:57 PM experiments.TfIdfExperiment main
 FINE: Preprocessing:MERGE
 Size of document in the matrix:
 	 number Of Sentences In Document:5
 	 number Of Words In Document:-1
-Apr 1, 2012 10:21:44 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:07:59 PM experiments.TfIdfExperiment main
 FINE: Test Set Statistics
-	total number Of Test Meanings[ts cases]:221.0
-	total number Of Test Contexts[ts instances]:2243.0
+	total number Of Test Meanings[ts cases]:224.0
+	total number Of Test Contexts[ts instances]:2308.0
 
-Apr 1, 2012 10:23:07 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:08:23 PM experiments.TfIdfExperiment main
 FINE: Evaluation:
 	 Up Threshold For Number Of Meanings:6
 	 Evaluation Context Window Size:3
 
-Apr 1, 2012 10:23:07 PM experiments.TfIdfExperiment main
-FINE: Finished in 85 seconds.
+apr 02, 2012 5:08:23 PM experiments.TfIdfExperiment main
+FINE: Finished in 26 seconds.
 
-Apr 1, 2012 10:23:07 PM experiments.TfIdfExperiment main
+apr 02, 2012 5:08:23 PM experiments.TfIdfExperiment main
 FINE: Evaluation Statistics
-	Checksum(#test set=tp+fp+discarded):2243.0==2243.0
-	tp=1195.0 fp=51.0 discarded=997.0
-	Precision:95.9069 tp=1195.0 fp=51.0
-	Recall:100.0 tp=1195.0 fn=0.0
-	F-measure:97.91069
-	Random precision= 9.251503 (testInstances=1246.0 ,invertSenseCount=115.27373)
+	Checksum(#test set=tp+fp+discarded):2308.0==2308.0
+	tp=667.0 fp=384.0 discarded=1257.0
+	Precision:63.463367 tp=667.0 fp=384.0
+	Recall:100.0 tp=667.0 fn=0.0
+	F-measure:77.64843
+	Random precision= 9.676362 (testInstances=1051.0 ,invertSenseCount=101.69856)
 
-Apr 1, 2012 10:23:07 PM experiments.TfIdfExperiment main
-FINE: MERGE  & 95.91 & 100 & 95.91 & 100 & 95.91 & 100 & 9.251503 \\
+apr 02, 2012 5:08:23 PM experiments.TfIdfExperiment main
+FINE: MERGE  & 97.25 & 100 & 94.71 & 100 & 63.46 & 100 & 9.676362 \\

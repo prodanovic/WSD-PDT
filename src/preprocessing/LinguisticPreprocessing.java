@@ -87,8 +87,22 @@ public class LinguisticPreprocessing {
 	}
 	public static void lowercase(String inPath,String outPath) throws IOException{
 		String wholePDT1 = FileUtil.extractTextFromFile(new File(inPath), "Windows-1250");
-		String out =wholePDT1.toLowerCase(); // matches 20.30 ,  20
-		FileUtil.writeTextToFile(out, new File(outPath), "Windows-1250", false);
+		String []sentences = wholePDT1.split("\n");
+		String[]tokens;
+		StringBuilder ssb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
+		for(String sentence:sentences){
+			ssb = new StringBuilder();
+			tokens = sentence.split(" ");
+			for(String token:tokens){
+				if(!token.contains("-")){
+					token = token.toLowerCase();
+				}
+				sb.append(token+" ");
+			}
+			sb.append(ssb.toString().trim()+"\n");
+		}
+		FileUtil.writeTextToFile(sb.toString(), outPath, "Windows-1250", false);
 	}
 	
 	public static void stopWordRemoval() throws IOException{

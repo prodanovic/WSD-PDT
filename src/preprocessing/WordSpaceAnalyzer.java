@@ -2,9 +2,13 @@ package preprocessing;
 
 import java.io.Reader;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.CharArrayMap;
 import org.apache.lucene.analysis.CharArraySet;
 import org.apache.lucene.analysis.LowerCaseFilter;
 import org.apache.lucene.analysis.StopFilter;
@@ -43,19 +47,19 @@ public class WordSpaceAnalyzer extends Analyzer {
 	
 	public WordSpaceAnalyzer(Version matchVersion) {
 	    this.matchVersion = matchVersion;
-	    stoptable = CharArraySet.unmodifiableSet(new CharArraySet(
-	  	      Arrays.asList(CZECH_STOP_WORDS), false));
 	}
 	
 	public TokenStream tokenStream(String fieldName, Reader reader) {
 		Tokenizer tokenizer =  new WhitespaceTokenizer(matchVersion,reader);
-//		TokenStream result = new WordFilter(tokenizer);
+		TokenStream result = new WordFilter(tokenizer);
 		
 //		if(Arguments.lowercase.equalsIgnoreCase("y"))result=new LowerCaseFilter(result);
-//		if(Arguments.stopWordsRemoval.equalsIgnoreCase("y"))result =
-//			new StopFilter( StopFilter.getEnablePositionIncrementsVersionDefault(matchVersion),result, stoptable );
-		 
-		return tokenizer ;
+		if(Arguments.stopWordsRemoval.equalsIgnoreCase("y")){
+			Set<String> stopSet = new HashSet<String>(Arrays.asList(CZECH_STOP_WORDS));
+			result =new StopFilter(matchVersion, result, stopSet);
+		}
+		
+		return result ;
 	}
 
 	

@@ -59,8 +59,7 @@ public class EvalContextWinSize {
 		
 //......train and test
 		logger.fine("\t====train and test====");
-		CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
-		ci.index("index");
+		
 		if(Arguments.matrixType==MATRIX_TYPE.RI.ordinal()){
 			SVBuilder.indexAndMakeVectorStore("pdt1_0//train",Arguments.numberOfSentencesInLuceneDoc);
 		}

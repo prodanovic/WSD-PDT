@@ -26,7 +26,7 @@ public class ObtainFileStats {
 		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
 		
 		Arguments.inputFilePath = "pdt1_0//train";
-		LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//train","pdt1_0//train*");
+		LinguisticPreprocessing.mergeCzechTermVariants("pdt1_0//train","pdt1_0//train_");
 //		LinguisticPreprocessing.deleteNonWords("pdt1_0//train","pdt1_0//train*");
 		ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index(indexLocation);
@@ -34,21 +34,21 @@ public class ObtainFileStats {
 		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
 		
 		Arguments.inputFilePath = "pdt1_0//train";
-		LinguisticPreprocessing.stemCzechTerms("pdt1_0//train","pdt1_0//train*");
+		LinguisticPreprocessing.stemCzechTerms("pdt1_0//train","pdt1_0//train_");
 		ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index(indexLocation);
 		ci.loadMeaningsAndTokens();
 		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
 	}
 
-	public static void getLatexTableForMeaningsTypes(String inputFile) throws Exception, Exception{
+	public static void getLatexTableForMeaningsTypes() throws Exception, Exception{
 		CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index("index");
 		ci.loadMeaningsAndTokens();
 		int total=0;
 		System.out.println("&   \\# of meanings & \\# of types \\\\");
 		System.out.println("\\hline  ");
-		for(int i=1; i<22 ; i++){
+		for(int i=2; i<22 ; i++){
 			int cnt = ci.getNumberOfWordsWithMeaningCount(i);
 			if(i>0)
 				total+= cnt;
@@ -79,10 +79,11 @@ public class ObtainFileStats {
 	
 	public static void main(String[] args) throws Exception, Exception {
 		String inputFile = "pdt1_0//testDev";//"pdt1_0//train"
-		getSizeOfDocOnVocabAll(inputFile);
+//		getSizeOfDocOnVocabAll(inputFile);
 		
+//		getTypesTokens("index");
 		
-		
+		getLatexTableForMeaningsTypes();
 		
 //		CzechIndexer ci = new  CzechIndexer("", 5, -1);
 //		ci.loadMeaningsAndTokens();

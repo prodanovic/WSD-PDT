@@ -20,7 +20,7 @@ public class TfIdfExperiment {
 	public static void main(String[] args) throws Exception {
 //......preprocessing		
 		Arguments.lowercase="n";
-		Arguments.stopWordsRemoval="n";
+		Arguments.stopWordsRemoval="y";
 		Arguments.stemming="n";
 		Arguments.mergeLexicalVariants="n";
 //......matrix generation
@@ -53,9 +53,9 @@ public class TfIdfExperiment {
 		
 //......train and test
 		
-		for(int i=1; i<4; ){
+		for(int i=1; i<6; ){
 			start = System.currentTimeMillis();
-			Arguments.numberOfWordsInDocument= i;
+			Arguments.numberOfSentencesInLuceneDoc= i;
 			logger.fine(Arguments.preprocessingParamsForLog());
 			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 					Arguments.numberOfSentencesInLuceneDoc,
@@ -76,7 +76,7 @@ public class TfIdfExperiment {
 			logger.fine("Finished in "+end+" seconds.\n");
 			System.err.println(Arguments.initLogName()+" ["+end+"s]");
 			logger.fine(evaluator.evaluationStatsForLog());
-			i+=1;
+			i+=2;
 		}
 //		logger.fine(ResultFormatter.getTableForPreprocessingFC(Arguments.preprocessingName()));
 		logger.fine(ResultFormatter.getTableForPreprocessingPR(Arguments.preprocessingName()));
