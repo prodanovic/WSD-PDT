@@ -19,19 +19,19 @@ public class TfIdfExperiment {
 
 	public static void main(String[] args) throws Exception {
 //......preprocessing		
-		Arguments.lowercase="y";
+		Arguments.lowercase="n";
 		Arguments.stopWordsRemoval="n";
 		Arguments.stemming="n";
-		Arguments.mergeLexicalVariants="n";
+		Arguments.mergeLexicalVariants="y";
 //......matrix generation
-		Arguments.numberOfWordsInDocument=-1;//3,2,1
+		Arguments.numberOfWordsInDocument=3;//3,2,1
 		Arguments.numberOfSentencesInLuceneDoc = 1;//5,3,1
 		if(Arguments.numberOfWordsInDocument>-1)Arguments.numberOfSentencesInLuceneDoc = 1;
 //......matrix type - normalizing frequencies
 		Arguments.matrixType = MATRIX_TYPE.TFIDF.ordinal();
 //......evaluation
-		Arguments.upBoarderForNumberOfMeanings = 5;
-		Arguments.evaluationContextWindowSize = 3;
+		Arguments.upBoarderForNumberOfMeanings = 3;
+		Arguments.evaluationContextWindowSize = 2;
 		
 		Logger logger=Log.getLogger(Arguments.initLogName());
 		
@@ -53,19 +53,68 @@ public class TfIdfExperiment {
 		
 //......train and test
 //		testDocumentSizeSentenceLevel(logger);
-		testDocumentSizeWordLevel(logger);
+//		testDocumentSizeWordLevel(logger);
+//		testEvaluationContextSize(logger);
+		testOnDifferentLevelsOfAmbiguity(logger);
 		
-//......test on unseen data
-//		logger.fine("\t====test on unseen data====");
-//		ep.mergeFiles("pdt1_0//train", "pdt1_0//testDev", "pdt1_0//train+testDev");
-//		ci = new  CzechIndexer("pdt1_0//train+testDev", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
-//		ci.index("index");
-//		evaluator = new Evaluator(Arguments.upBoarderForNumberOfMeanings);
-//		evaluator.extractTestContext("pdt1_0//testFinal",Arguments.evaluationContextWindowSize);
-//		logger.fine(evaluator.testSetStatsForLog());
-//		evaluator.predict();
-//		logger.fine("Finished in "+(System.currentTimeMillis()-start)/1000+" seconds.");
-//		logger.fine(evaluator.evaluationStatsForLog());
+	}
+	
+	public static void testOnDifferentLevelsOfAmbiguity(Logger logger) throws Exception{
+		long start = System.currentTimeMillis();
+		for(int i=2; i<9; i++){
+			start = System.currentTimeMillis();
+			Arguments.upBoarderForNumberOfMeanings= i;
+			logger.fine(Arguments.preprocessingParamsForLog());
+			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+					Arguments.numberOfSentencesInLuceneDoc,
+					Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
+			evaluator.extractTestContext("pdt1_0/testFinal_",Arguments.evaluationContextWindowSize);
+			logger.fine(evaluator.testSetStatsForLog());
+			
+			evaluator.predict();
+			
+			logger.fine(Arguments.evaluationParamsForLog());
+			ResultFormatter.precicisions.add(evaluator.getPrecision());
+			ResultFormatter.recalls.add(evaluator.getRecall());
+			ResultFormatter.randomAccuracacies.add(evaluator.getRandomPrecision());
+			
+			long end = (System.currentTimeMillis()-start)/1000;
+			logger.fine("Finished in "+end+" seconds.\n");
+			System.err.println(Arguments.initLogName()+" ["+end+"s]");
+			logger.fine(evaluator.evaluationStatsForLog());
+		}
+		logger.fine(ResultFormatter.getTableForDiffLevelOfAmbiguityP(Arguments.preprocessingName()));
+		
+	}
+	
+	public static void testEvaluationContextSize(Logger logger) throws Exception{
+		long start = System.currentTimeMillis();
+		for(int i=1; i<9; i++){
+			start = System.currentTimeMillis();
+			Arguments.evaluationContextWindowSize= i;
+			logger.fine(Arguments.preprocessingParamsForLog());
+			Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
+					Arguments.numberOfSentencesInLuceneDoc,
+					Arguments.upBoarderForNumberOfMeanings, "pdt1_0/train_");
+			evaluator.extractTestContext("pdt1_0/testDev_",Arguments.evaluationContextWindowSize);
+			logger.fine(evaluator.testSetStatsForLog());
+			
+			evaluator.predict();
+			
+			logger.fine(Arguments.evaluationParamsForLog());
+			ResultFormatter.precicisions.add(evaluator.getPrecision());
+			ResultFormatter.recalls.add(evaluator.getRecall());
+			ResultFormatter.Fmeasures.add(evaluator.getFMeasure(0.5f));
+			ResultFormatter.coverages.add(evaluator.getCoverage());
+			ResultFormatter.randomAcc=evaluator.getRandomPrecision();
+			
+			long end = (System.currentTimeMillis()-start)/1000;
+			logger.fine("Finished in "+end+" seconds.\n");
+			System.err.println(Arguments.initLogName()+" ["+end+"s]");
+			logger.fine(evaluator.evaluationStatsForLog());
+		}
+//		logger.fine(ResultFormatter.getTableForPreprocessingFC(Arguments.preprocessingName()));
+		logger.fine(ResultFormatter.getTableForEvalContextSizeP(Arguments.preprocessingName()));
 		
 	}
 	

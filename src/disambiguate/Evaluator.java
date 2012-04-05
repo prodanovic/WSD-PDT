@@ -170,7 +170,7 @@ public class Evaluator {
 				continue;
 			}
 //..........lemma had an insufficient/incorrect number of meanings to be counted
-			if(lemma_meanings.size()<=upBoarderForNumberOfMeanings){
+			if(lemma_meanings.size()!=upBoarderForNumberOfMeanings){
 //				logger.info("Lemma: "+lemma+" had meanings less than."+upBoarderForNumberOfMeanings+"\n");
 				discardedTestEntries+=numberOfTestContextsForMeaning(current);
 				continue;

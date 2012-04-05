@@ -22,6 +22,7 @@ public class ResultFormatter {
 	public static ArrayList<Float> coverages=new ArrayList<Float>() ;
 	public static ArrayList<Float> precicisions=new ArrayList<Float>() ;  
 	public static ArrayList<Float> recalls=new ArrayList<Float>() ;
+	public static ArrayList<Float> randomAccuracacies=new ArrayList<Float>() ;
 	public static Float randomAcc = 0f;
 	
 	
@@ -77,6 +78,28 @@ public class ResultFormatter {
 		int i=0;
 		for(Float precicision:precicisions)sb.append(" & "+df.format(precicision)+" & "+df.format(recalls.get(i++)));
 		sb.append(" & "+randomAcc);
+		sb.append(" \\\\");
+		return sb.toString();
+	}
+	
+	public static String getTableForEvalContextSizeP(String preprocessingApproach){
+		DecimalFormat df= new DecimalFormat("#.##");
+		StringBuilder sb = new StringBuilder(preprocessingApproach+" "); 
+		int i=0;
+		for(Float precicision:precicisions)sb.append(" & "+df.format(precicision));
+		sb.append(" & "+randomAcc);
+		sb.append(" \\\\");
+		return sb.toString();
+	}
+	
+	public static String getTableForDiffLevelOfAmbiguityP(String preprocessingApproach){
+		DecimalFormat df= new DecimalFormat("#.##");
+		StringBuilder sb = new StringBuilder("Precision "); 
+		for(Float precicision:precicisions)sb.append(" & "+df.format(precicision));
+		sb.append("\\\\ \nRecall");
+		for(Float recall:recalls)sb.append(" & "+df.format(recall));
+		sb.append("\\\\ \nRandom Precision");
+		for(Float precicision:randomAccuracacies)sb.append(" & "+df.format(precicision));
 		sb.append(" \\\\");
 		return sb.toString();
 	}
