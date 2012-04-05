@@ -409,7 +409,7 @@ Full table is given in chapter\ref{pdt}. Below is given a plot to illustrate how
 types conform to the Zipfian distribution.
 
 \begin{figure}[h!]
-\includegraphics{img/meaningTypePlot2.png}
+\includegraphics{img/meaningTypePlot.png}
 \caption{Distrubution of number of polysemous types per number of meanings}
 \end{figure}
 
@@ -422,8 +422,8 @@ Each of the preprocessing measures mentioned before
 variants in Czech language) was experimented against the different document size (5,3,1 sentence 
 document and 3+3, 2+2, 1+1 words surrounding polysemous word) to determine for which parameters the model achieves the highest accuracy. These models were evaluated only for highly polysemous
 words, at the fixed size of the evaluation context size. In  order to able to test how models really perform 
-we train models only on highly polysemous words, the ones that have 6 or more meanings.  There are 19 
-polysemous words in the test development set that can take 6 to 10 meanings.
+we train models only on highly polysemous words, the ones that have 5 or more meanings.  There are 19 
+polysemous words in the test development set that can take 5 to 8 meanings.
 
 \subsection{Tuning evaluation context size} 
 When the best parameters for preprocessing and document size (in the term--document matrix) are 
@@ -440,7 +440,7 @@ be regarded as ''not highly polysemous". As explained, numbers of occurrences of
 conform to the Zipfian distribution, which means that there is only a small number of highly polysemous
 words. Therefore, when experimenting with such words test set is not overly large, but if other, less
 polysemous words are included, the number of test set instances rise. The purpose of this experiment
-is to investigate how do models handle more and less polysemous words. Ranges from 2 to 9 meanings per word
+is to investigate how do models handle more and less polysemous words. Ranges from 2 to 8 meanings per word
 are taken into consideration.
 
 
@@ -448,18 +448,20 @@ are taken into consideration.
 
 \section{TF--IDF experiments}
 As previously mentioned experiments are organized around 3 different different Vector Space Models, 
-based on the weighting of the matrix elements or dimensionality reduction technique. Matrix reduction technique used for this model was TF--IDF (described in Chapter 6.5). For all models experiments were performed on every possible parameter, grouped into under the phase under which they were used:
+based on the weighting of the matrix elements or dimensionality reduction technique. Matrix reduction technique used for this model was TF--IDF (described in Chapter 6.5). For all models experiments were performed on every parameter for values. Parameters are grouped into the phase in which they were used in:
 \begin{itemize}
 \item Tuning preprocessing parameters
 \item Tuning evaluation context size
 \item Evaluation on polysemous words of different level
 \end{itemize}
 These rounds are ordered sequentially in order to ensure best possible tuning for the model. Final step
-is evaluation on  words with different number of meanings attached to them.
+represents an evaluation on words with different degree of polysemicity attached to them.
 
 \subsection{Tuning preprocessing parameters}
 First, no preprocessing method was applied on the train and test set. The size of the document in the term--document co-
-ocurrence matrix was changed in order to observe the influence on the precision. A threshold number of meanings to be evaluated on was set to 6, which means that other polysemous words that had less than 6 meanings encountered in training were discarded for this test. Also an evaluation context size was fixed to 3, which means that a symmetric window 3 preceeding and 3 succeeding words were used to build a vector which was used for classification. First column in the table displays the preprocessing method used on the entire corpus (except on the test instances) used in the phase of constructing co--occurrence matrix. To ensure that the best preprocessing method is chosen, regardless of the 
+ocurrence matrix was changed in order to observe the influence on the precision. A threshold number of meanings to be evaluated on was set to 5, which means that other polysemous words that had less than 5 meanings encountered in training were discarded for this test. There was 177 polysemous words that appeared in 1861 occurences, and for this test set a number of test instances was discarded for having a 
+low number of meanings. The reason for discarding was because this round of tests is aimed at finding the best preprocessing method. 
+ An evaluation context size was fixed to 3, which means that a symmetric window 3 preceeding and 3 succeeding words were used to build a vector which was used for classification. First column in the table displays the preprocessing method used on the entire corpus (except on the test instances) used in the phase of constructing co--occurrence matrix. To ensure that the best preprocessing method is chosen, regardless of the 
 document size used in co--occurrence matrix, different size of documents were observed. Document sizes that were
 experimented with are: 5 sentence document, 3 sentence document, 1 sentence document, and 3+3, 2+2, 1+1 symmetric word windows around polysemous word.  
 Random precision was calculated as well to serve as a baseline. It represents a precision of the system when it is picking a random meaning for a polysemous word that is tested. 
@@ -471,32 +473,36 @@ Best results in all the tables are bolded.
 \begin{tabular}{ l | c c | c c | c c | c}
    preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
 \hline
-	& P  &  R & P  &  R & P  &  R &\\
+	& P  &  R & P  &  R & P  &  R & precision\\
 \hline\hline
-NO  & 97.25 & 100 & 94.59 & 100 & 63.46 & 100 &11.36 \\
-LOWCASE  & 96.33 & 100 & 96.33 & 100 & 96.33 & 100 & 11.36 \\
-STOP  & 97.25 & 100 & 95.02 & 100 & 63.62 & 100 & 11.36 \\
-STEM  & 96.33 & 100 & 96.33 & 100 & 96.33 & 100 & 11.36 \\
-MERGE  & 97.25 & 100 & 94.71 & 100 & 63.46 & 100 & 11.36 \\
+ NO  & 92.31 & 100 & 94.57 & 100 & 95.67 & 100  &11.36 \\
+LOWCASE  & 90.6 & 100 & 91.45 & 100 & 92.31 & 100 & 11.36 \\
+STOP  & 89.74 & 100 & 93.16 & 100 & 94.87 & 100 & 11.36 \\
+ STEM  & 90.6 & 100 & 96.58 & 100 & 95.73 & 100 & 11.36 \\
+ MERGE  & 90.6 & 100 & 94.87 & 100 & 95.73 & 100 & 11.36 \\
 \end{tabular}
 \caption{Precision and Recall using various individual preprocessing techniques, sentence level document size}
 \end{table}
 
-First thing that should be noted is that  
+Random precision is the same regardless of the preprocessing technique applied due to the fact that 
+they were applied to all tokens except the polysemous words. This had helped preserve the size of the 
+test set, which reflected on the consistent number of random precision in tests. Recall is 100 because all test instances were encountered in training and the system was able to
+provide an answer. This is not necessarily always the case, it depends on the pseudo--random split on 
+training and testing sets  whether an instance will be encountered during training. 
 
-
-Then word--level document size was then observed to see how it performs. 
+It seems that individually 
+ preprocessing techniques that yields best results is filtering of stop words, though lowercasing and merging of Czech variants give the most consistent results. To ensure the consistency of these findings, same test was repeated for the word--level document size. Results are given in the table below.  
 \begin{table}[h!]
 \begin{tabular}{ l | c c | c c | c c | c}
    preprocessing & 1+1 word && 2+2 words && 3+3 words  && random\\
 \hline\hline
 	& P  &  R & P  &  R & P  &  R &\\
 \hline
- NO  & 93.58 & 100 & 98.17 & 100 & 98.17 & 100 & 11.36 \\
-LOWCASE  & 94.5 & 100 & 98.17 & 100 & 98.17 & 100 & 11.36  \\
-STOP  & 93.58 & 100 & 97.25 & 100 & 98.17 & 100 & 11.36  \\
- STEM  & 93.58 & 100 & 98.17 & 100 & 97.25 & 100 & 11.36 \\
-MERGE  & 93.58 & 100 & 98.17 & 100 & 98.17 & 100 & 11.36  \\
+ NO  & 93.58 & 100 & 98.17 & 100 & 98.17 & 100 & 13.76 \\
+LOWCASE  & 94.5 & 100 & 98.17 & 100 & 98.17 & 100 & 13.76  \\
+STOP  & 93.58 & 100 & 97.25 & 100 & 98.17 & 100 & 13.76  \\
+STEM  & 93.58 & 100 & 98.17 & 100 & 97.25 & 100 & 13.76 \\
+MERGE  & 93.58 & 100 & 98.17 & 100 & 98.17 & 100 & 13.76  \\
 \end{tabular}
 \caption{Precision and Recall of TF--IDF model, no preprocessing, word level document size}
 \end{table}
