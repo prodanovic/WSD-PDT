@@ -11,6 +11,7 @@ import org.apache.lucene.store.FSDirectory;
 import preprocessing.CzechIndexer;
 import preprocessing.LinguisticPreprocessing;
 import util.Arguments;
+import util.FileUtil;
 
 public class ObtainFileStats {
 
@@ -20,29 +21,62 @@ public class ObtainFileStats {
 	}
 	
 	public static void getTypesTokens(String indexLocation) throws Exception, Exception{
-		CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		StringBuilder sb = new StringBuilder("no preprocessing &");
+		FileUtil.copyFile("pdt1_0/train", "pdt1_0/train_");
+		FileUtil.copyFile("pdt1_0/testDev", "pdt1_0/testDev_");
+		FileUtil.copyFile("pdt1_0/testFinal", "pdt1_0/testFinal_");
+		CzechIndexer ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index(indexLocation);
 		ci.loadMeaningsAndTokens();
-		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" & ");
+		ci = new  CzechIndexer("pdt1_0//testDev_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		ci.index(indexLocation);
+		ci.loadMeaningsAndTokens();
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" & ");
+		ci = new  CzechIndexer("pdt1_0//testFinal_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		ci.index(indexLocation);
+		ci.loadMeaningsAndTokens();
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" \\\\ \n");
 		
-		Arguments.inputFilePath = "pdt1_0//train";
+
+		sb.append(" stemming &");
+		LinguisticPreprocessing.stemCzechTerms();
+		ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		ci.index(indexLocation);
+		ci.loadMeaningsAndTokens();
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" & ");
+		ci = new  CzechIndexer("pdt1_0//testDev_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		ci.index(indexLocation);
+		ci.loadMeaningsAndTokens();
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" & ");
+		ci = new  CzechIndexer("pdt1_0//testFinal_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		ci.index(indexLocation);
+		ci.loadMeaningsAndTokens();
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" \\\\ \n");
+		
+		FileUtil.copyFile("pdt1_0/train", "pdt1_0/train_");
+		FileUtil.copyFile("pdt1_0/testDev", "pdt1_0/testDev_");
+		FileUtil.copyFile("pdt1_0/testFinal", "pdt1_0/testFinal_");
+		sb.append(" merge variants &");
 		LinguisticPreprocessing.mergeCzechTermVariants();
-//		LinguisticPreprocessing.deleteNonWords("pdt1_0//train","pdt1_0//train*");
 		ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index(indexLocation);
 		ci.loadMeaningsAndTokens();
-		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
-		
-		Arguments.inputFilePath = "pdt1_0//train";
-		LinguisticPreprocessing.stemCzechTerms("pdt1_0//train","pdt1_0//train_");
-		ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" & ");
+		ci = new  CzechIndexer("pdt1_0//testDev_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index(indexLocation);
 		ci.loadMeaningsAndTokens();
-		System.out.println("Types="+ci.typesTokens.keySet().size()+" tokens="+ci.getTotalTokenCount());
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" & ");
+		ci = new  CzechIndexer("pdt1_0//testFinal_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		ci.index(indexLocation);
+		ci.loadMeaningsAndTokens();
+		sb.append(ci.typesTokens.keySet().size()+" & "+ci.getTotalTokenCount()+" \\\\ \n");
+
+		System.out.println(sb.toString());
 	}
 
 	public static void getLatexTableForMeaningsTypes() throws Exception, Exception{
-		CzechIndexer ci = new  CzechIndexer("pdt1_0//train", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
+		CzechIndexer ci = new  CzechIndexer("pdt1_0//train_", Arguments.numberOfSentencesInLuceneDoc, Arguments.numberOfWordsInDocument);
 		ci.index("index");
 		ci.loadMeaningsAndTokens();
 		int total=0;
@@ -81,9 +115,9 @@ public class ObtainFileStats {
 		String inputFile = "pdt1_0//testDev";//"pdt1_0//train"
 //		getSizeOfDocOnVocabAll(inputFile);
 		
-//		getTypesTokens("index");
+		getTypesTokens("index");
 		
-		getLatexTableForMeaningsTypes();
+//		getLatexTableForMeaningsTypes();
 		
 //		CzechIndexer ci = new  CzechIndexer("", 5, -1);
 //		ci.loadMeaningsAndTokens();

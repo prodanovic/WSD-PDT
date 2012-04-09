@@ -37,6 +37,7 @@ import util.EvaluationEntry;
 import util.FileUtil;
 import util.Log;
 import util.VectorUtil;
+import vectorModels.RandomIndexingMatrix;
 import vectorModels.VectorSpaceMatrix;
 
 public class Evaluator {
@@ -71,16 +72,15 @@ public class Evaluator {
 		czechIndexer.index("index");
 		czechIndexer.loadMeaningsAndTokens();
 		
-		try {
-			if(new File("termvectors.bin").exists()){
-				vecReader = new VectorStoreReaderLucene("termvectors.bin");
-				luceneUtils = new LuceneUtils("index");
-			}
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    }
-	   
-	    evaluationEntries = new Hashtable<String, EvaluationEntry>();
+		if(isRI){
+			File riDIR = new File("termvectors.bin");
+			if(riDIR.exists())riDIR.delete();
+			RandomIndexingMatrix.makeRandomIndex();
+			vecReader = new VectorStoreReaderLucene("termvectors.bin");
+			luceneUtils = new LuceneUtils("index");
+		}
+		
+		evaluationEntries = new Hashtable<String, EvaluationEntry>();
 	    termVectors = new Hashtable<String, Vector>();
 //		tokenTestList = new ArrayList<String>();
 //		cachedDistances = new HashMap<String, Double>();
@@ -186,19 +186,15 @@ public class Evaluator {
 				String chosenMeaning = isRI?calculateMeaningRI(context,lemma_meanings)
 							:calculateMeaningTFIDF_PMI(context,lemma_meanings);
 				if(chosenMeaning.equals("")){
-					logger.severe("System couldn't calculate for meaning="+current+", lemma="+lemma);	
+					logger.severe("System couldn't calculate for meaning="+current+", lemma="+lemma);
+					falseNegative++;
 				}
 //..................increment TP or FP  
 //				predictionList.add(current+"="+chosenMeaning);
 //				logger.fine(current+"="+chosenMeaning);
 				if(current.equals(chosenMeaning))truePositive++;
 				else falsePositive++;
-				
-//				if(++evaluate%50==0){
-//					evaluateAndLog();
-//				}
 			}		
-//			System.out.println("zavrsio "+current+" za:"+(System.currentTimeMillis()-start));
 					
 		}
 		return predictionList;

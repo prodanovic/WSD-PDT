@@ -28,7 +28,7 @@ PDT was generated in two major phases. In the first phase (1996--2000), the morp
 \item analytic  layer (middle) -- superficial (surface) syntactic annotation using dependency treebank; level conceptually close to the syntactic annotation used in the Penn Treebank 
 \item tectogrammatical layer (highest) -- level of linguistic meaning
 \end{itemize}
-In our experiments we were using as a resource PDT1.0 version, instead of PDT2.0. Frequencies for each layer in PDT1.0. are given in the table below:
+In our experiments we were using as a resource PDT 1.0 version, instead of PDT 2.0. Frequencies for each layer in PDT 1.0. are given in the table below:
 \begin{table}[h!]
 \begin{center}
 	\begin{tabular}{ l  c  | c c }
@@ -40,7 +40,7 @@ In our experiments we were using as a resource PDT1.0 version, instead of PDT2.0
 	& morphological and syntactic--analytic & 1,255,590 & 81,614 \\
 	\end{tabular}
 \end{center}
-\caption{Frequencies of tags for every layer in PDT1.0.}
+\caption{Frequencies of tags for every layer in PDT 1.0.}
 \end{table}
 \\\\\\\\
 \textbf{Text Sources}
@@ -55,7 +55,7 @@ In our experiments we were using as a resource PDT1.0 version, instead of PDT2.0
 \subsection{Polysemous words}\label{pdt}
 Czech language is the typical representative of inflectionally rich free--word--order language\footnote{http://www.czech--
 language.cz/index.php}, which surely doesn't have a favorable influence on the number of polysemous words in Czech 
-language. From the training set that represents approximately 9/10 of the whole PDT1.0 we present in the table below the 
+language. From the training set that represents approximately 9/10 of the whole PDT 1.0 we present in the table below the 
 number of words that have more than one meaning. In the left column is given the number of meanings, and in the right column 
 the number of words that take that number of meanings. For instance, the eight row informs us that there are two words that 
 take 8 different meanings in the training set. It has to mentioned that these numbers could be different in another instance of 
@@ -81,28 +81,25 @@ training, being that the training set is assembled pseudo--randomly before the t
 
 
 
-\subsection{Why PDT1 instead of PDT2?}
+\subsection{Why PDT 1.0 instead of PDT 2.0?}
 The question from the title of the section is indeed a perfectly valid and reasonable question indeed, for 
 any type of research-- why use an older version of a resource, when there is a newer, more complete 
 version of the same resource?  
 
 To answer this question we must go back to the task that is in focus of this research. For the WSD task the 
 important feature of the text on which the system is trained and tested on is that every different meaning of a 
-word is marked orthographically different. This information that could be extracted both from PDT1.0 and 
-PDT2.0, therefore for the WSD task one resource is as much sufficiant as the other one. The only 
-difference between the two treebanks is that PDT2.0 contains additionally the tectogramaticall layer, that 
+word is marked orthographically different. This information that could be extracted both from PDT 1.0 and 
+PDT 2.0, therefore for the WSD task one resource is as much sufficiant as the other one. The only 
+difference between the two treebanks is that PDT 2.0 contains additionally the tectogramaticall layer, that 
 was not used in this research.  
 
 When building(training) Vector Space Models, a researcher might want to include POS information with 
 every tag. This was not done in our experiments but it was always an option supported by the resource, 
-because like previously mentioned, PDT1.0 is fully annotated on the syntactic level. 
-\\On top of these reasons, another incentive that made us decide for PDT1.0 is that it essencially 
-represents a light--wight version of PDT2.0, encoded in Standard Generalized Markup Language 
-(SGML\footnote{http://www.w3.org/MarkUp/SGML/}), which made it easier to handle during the 
-preprocessing stage.
+because like previously mentioned, PDT 1.0 is fully annotated on the syntactic level. 
+%\\On top of these reasons, another incentive that made us decide for PDT1.0 is that it essentially represents a light--wight version of PDT2.0, encoded in Standard Generalized Markup Language (SGML\footnote{http://www.w3.org/MarkUp/SGML/}), which made it easier to handle during the preprocessing stage.
 
 \section{Preprocessing}
-The preprocessing phase involves several several sub--stages. As we have described theoretical approaches to these steps in length in previous chapters, we have decided to explain all the preprocessing steps performed in experiments in this chapter. Preprocessing involves following sequential steps: text extraction from PDT files along with relevant annotation, text normalization, stemming and filtering. 
+The preprocessing phase involves several several sub--stages. As we have described theoretical approaches to these steps in length in previous chapters, we have decided to explain all the preprocessing steps performed in experiments in this chapter. Preprocessing involves following sequential steps: text extraction from PDT files along with relevant tags, text normalization, stemming and filtering. 
 \\\\  \textbf{Text extraction}
 
 Text used during training and testing phase of VSM was extracted from PDT files and put into a single file. 
@@ -112,11 +109,11 @@ words, the system extracts multiple meaning words, and represents differently ea
 PDT1.0 if a word has multiple meanings, meaning of that word is given in a separate tag, in the following format: 
 \textit{word--index\_number\_of\_meaning}. Index number increments as the word has more meanings.
 
-Therefore, the annotation step in this case was simplified: \textit{every multiple--meaning word was 
+Therefore, the tagging step in this case was simplified: \textit{every multiple--meaning word was 
 represented with its orthographic representation meaning in context}, which was simply extracted from 
 the Treebank. An example of a sentence extracted from PDT is given below:
 \begin{examples}
-\item Krumbachov\'a pr\'aci p\^rijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
+\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
 \glt \textit{ Krumbach has accepted the work " in the last minute" .} 
 \end{examples}
 Word's meaning in context was given as it was represented in PDT.
@@ -132,7 +129,7 @@ lowercased. Punctuation marks were also filtered from the entire corpus, so that
 trained on terms only. 
 \\\\  \textbf{Stemming}
 
-Stemming process was detailed in the chapter\ref{linguisticPreprocessing}, as well as how it is different 
+Stemming process was detailed in the Chapter \ref{linguisticPreprocessing}, as well as how it is different 
 from lemmatization. To re--iterate: lemmatization is more precise than stemming because it picks up 
 lexical variants that are not orthographically similar to the stem. At the same time it is much harder to 
 implement than a stemmer, because it requires utilization of a lexicon. 
@@ -150,10 +147,10 @@ preprocessing
 phase.  An example of text that 
 was extracted, normalized and stemmed is given below:
 \begin{examples}
-\item krumbach prak p\^rijmout--2 podle--2 vlastni--1 slov " v--1 hodin dvanact ". 
+\item krumbach prak p\v{r}ijmout--2 podle--2 vlastni--1 slov " v--1 hodin dvanact ". 
 \glt \textit{  Krumbach has accepted the work " in the last minute"  .} 
 \end{examples}
-Stemming was left as an optional measure in order to observe whether it improves the precision of algorithm.
+In example above we can see how a brute force of stemming can sometimes fail because it does not employ linguistic analysis. Czech noun  \textit{pr\'ace}, here in its inflected form \textit{pr\'aci} has fallen under a stemmer's rule for palatalisation which converts endings like \textit{--ci, --ce, --\v{c}i, --\v{c}} into \textit{--k}, which is wrong. However, as later experiments will prove, this does not affect the algorithm's precision in a bad way.  
 \\\\  \textbf{Word Filtering}
 \\Two effective filtering criteria were applied (optionally) in our experiments for the purpose of reducing the sparsity of vectors and improving overall precision: POS and low frequency counts. A list of Czech stop words was compiled(Apendix A) in order to filter out words that belong to closed grammatical classes. Both types of filtering were experimented with, in order to observe how their tunning influences the overall precision of system.
 
@@ -174,14 +171,14 @@ preprocessing applied to them:
 & \multicolumn{2}{|c}{train set} & \multicolumn{2}{|c}{test devel set} & \multicolumn{2}{|c|}{final test set} \\
    &  \#types & \#tokens  &  \#types & \#tokens  &  \#types & \#tokens \\
   \hline                       
-  no preprocessing & 114720 & 1080400 & 10439 & 32105 & 27626 & 113330\\
-  merge variants & 114696 & 1079851 & 10418 &  32033 & 27530 &112678\\
-  stemming & 62063 & 1050948 & 7699 & 29891 & 18122 & 105912\\
+no preprocessing &138098 & 1521180 & 6447 & 20536 & 19858 & 80514 \\ 
+ merge variants &137448 & 1521180 & 6444 & 20536 & 19824 & 80514 \\ 
+stemming &71311 & 1521180 & 4965 & 19054 & 20536 & 80514 \\ 
 \end{tabular}
 \caption{Influence of the preprocessing method on the size of training and test token count}
 \end{table}
 We can observe that stemming reduces the vocabulary size much more than merging 
-lexical variants. This fact will reflect on the precision in the evaluation phase. 
+lexical variants. This fact will reflect on the precision in the evaluation phase. The number of types decreases with the application of an individual normalizer, while the number of tokens stays the same in all sets. 
 
 \section{Document size}
 After preprocessing phase, the next step is to build the term--document matrix. This step is generalized for all the models we will be training. This is because the term--document matrix is a simple frequency matrix, and (optional) normalization of frequency counts or dimensionality reduction takes place in the next phase. Crucial property of this phase is the size of the document in the term--document. Previous approaches were described on the use of context, ranging from word--level to paragraph--level. Document size used in the following experiments will be: 
@@ -199,18 +196,17 @@ every document. We have decided to conduct experiments by partioning sentences i
 in the center of every such fragment is a polysemous meaning, surrounded by symmetrical window 
 length of varying size. An example is given for a one neighboring word of preceding and succeeding context. For a sentence:
 \begin{examples}
-\item Krumbachov\'a pr\'aci p\^rijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
+\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
 \glt \textit{  Krumbach has accepted the work " in the last minute" .}
 \end{examples}
-, corresponding fragments extracted from it are:
+the corresponding fragments extracted from it are:
 \begin{examples}
-\item pr\'aci p\^rijmout--2 podle--2
-\item p\^rijmout--2 podle--2 vlastn\'i--1
+\item pr\'aci p\v{r}ijmout--2 podle--2
+\item p\v{r}ijmout--2 podle--2 vlastn\'i--1
 \item podle--2 vlastn\'i--1 slov
 \item slov v--1 hodin\^e
 \end{examples}
-Although this fragmentation increases the volume of documents we believed that centering somehow
-documents around polysemous encounters will help train the model better. The rationale behind that decision was that this was an assumption that this way the model will become ''more sensitive" to assigning  correct meanings to their rightful contexts. 
+This kind of fragmentation increases the number of documents in the co-ocurrence matrix. The rationale behind this was that centering documents around polysemous encounters will help in training the model to be better. The idea was that in this way the model will become ''more sensitive" for contexts in which the ambiguous words appear, and will assign correct meanings to their rightful contexts better. 
 
 Choice of document size during model training is one of the crucial features of VSM, and can very much 
 influence the results of the model's performance, through the size of vocabulary. Size of vocabulary is 
@@ -299,13 +295,13 @@ A unique methodology is then applied for each model in order to calculate the me
 Evaluation context size is the number of words taken from preceding and succeeding context of the 
 occurrence of ambiguous word. For instance, for the sentence:
 \begin{examples}
-\item Krumbachov\'a pr\'aci p\^rijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
+\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
 \glt \textit{ Krumbach has accepted the work " in the last minute"  .}
 \end{examples}
 , corresponding contexts for the evaluation context size set to 1 extracted from it are:
 \begin{examples}
-\item p\^rijmout--2 : pr\'aci  podle--2
-\item  podle--2: p\^rijmout--2 vlastn\'i--1
+\item p\v{r}ijmout--2 : pr\'aci  podle--2
+\item  podle--2: p\v{r}ijmout--2 vlastn\'i--1
 \item podle--2 slov
 \item slov  hodin\^e
 \end{examples}
@@ -404,7 +400,7 @@ where $Senses(w_i)$ is the number of senses that a $w_i$ can have.
 \section{Tuning}
 Number of meanings that polysemous words encountered in the corpus can vary from 1 to 8 meanings. The actual number of meanings follows Zipf's distribution, where ranks are the number of meanings word 
 can take (1 to 8) and numbers are the number of polysemous words that take that number of meanings. 
-To illustrate this with a simple example: number of words that take 2 meanings in PDT1.0 is 329. 
+To illustrate this with a simple example: number of words that take 2 meanings in PDT 1.0 is 329. 
 Full table is given in chapter \ref{pdt}.In the figure 6.1 is given a plot to illustrate how meaning's counts and word 
 types conform to the Zipfian distribution.
 
@@ -620,7 +616,7 @@ the precision peaks at around evaluation context size (ECS) set to 2, and then i
 \includegraphics{img/precision-evalContSize_merge.png}
 \caption{Precision against evaluation context size, for preprocessing method set to merge of Czech lexical variants and document size set to 3+3}
 \end{figure}
-\\\\
+
  Variance in both sets of results 
 is very low, hence there is not much difference in which context size will be used for final evaluation
 of all occurrences of polysemous words.
@@ -633,72 +629,297 @@ they present a better, more unbiased test set than for instance words that have 
 for which random accuracy is 50\%. We will now observe the accuracy of the model set with best
 parameters to see how it performs on different sets of words with the same number of meanings. This means
 that for instance, in the first column are results of experiments performed on words with 2 meanings attached to them.
-Training is performed on the merged set of training and testing development)
+Training is performed on the merged set of training and testing development, and testing is done on the unseen set.
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c   }
+\begin{tabular}{ l | c c c c c c c  }
      & 2 & 3 & 4 & 5 & 6& 7 & 8  \\
  \hline
-Precision  & 92.49 & 97.08 & 87.87 & 97.58 & 64.71 & 98.28 & 46.15\\ 
+Precision  & 92.49 & 97.08 & 87.87 & 97.57 & 64.71 & \textbf{98.49} & 46.15\\ 
+Recall & 99.82 & 99.85 & 99.47 & 99.72 & 84.62 & \textbf{99.13} & 60\\ 
 Random Precision & 50 & 33.33 & 25 & 20 & 16.67 & 14.29 & 12.5 \\
 \end{tabular}
 \caption{Precision and Recall of TF--IDF model, closed class filter, document size 1, evaluation context size 3+3 measured against words with different number of meanings}
 \end{table} 
 
-\textbf{Conclusion}
-We can see that for every set the model performs well, although some results are somewhat surprising
-, for instance precision for words with just two meanings is lower than precisions of all words with 
-more meanings(6 meaning words excluded). This could be explained with the fact that the frequency of appearance 
-of two meaning  words is higher than for other cases (it had the highest number of appearance in test
-set --2540), thus making it harder to discriminate two meanings. Other explanation is that two--meaning words can appear in each other's contexts. As far as the lowest result is concerned (6 meaning words), the explanation lies in the number of test set instances: there was only 32 of them (tp=19.0 fp=13.0). Low number makes this result statistically insignificant. 
+\textbf{Conclusion.}\\
+We can see that for every group of polysemous words TF--IDF model performs well, where recall is high. The 
+lowest scores were noted on words with 6 and 8 meanings, where recall is 84\% and 60\% respectively. Another 
+thing that characterizes these low scores is that the test were performed on a low number of instances- there are 
+42 instances in the final test set of words with 6 meanings, and only 10 instances of words with 8 meanings. In all other cases number of instances was exceeding 500 test instances, which makes their results a more reliable estimator of the model's accuracy. Precision is reasonably high for all and though it would be expected to be lower 
+for words with more meanings, like in the case of words with 7 meanings, out of 508 test instances only 11 were misclassified which resulted with the highest precision on this test set, of  98.49\%.
 
-Overall, we can say that TF--IFD model performed well at this task. 
+Overall, it can be said that TF--IFD model performed well at this task. 
 
+\newpage
 \section{PMI experiments} 
-Experiments  with PMI model are like the ones with TF--IDF, grouped in three rounds in order to tune
-the model for the best performance. 
+Experiments with PMI model are like the ones with TF--IDF, grouped in three rounds in order to tune
+the model for the best performance. PMI weighting should increase sensitivity of the word to its correct context. 
+The theory behind PMI is explained in Chapter 5.4.3.
+\begin{itemize}
+\item Tuning preprocessing parameters
+\item Tuning evaluation context size
+\item Evaluation on polysemous words of different level
+\end{itemize}
+These rounds are ordered sequentially in order to ensure best possible tuning for the model. Final step
+represents an evaluation on words with different degree of ambiguity attached to them.
+
+
+\subsection{Tuning preprocessing parameters}
+Being that reasons for using certain values for preprocessing methods parameters were thoroughly described in 
+previous section it will not be done again here. From tuning the preprocessing 
+parameters for TF--IDF we have a general idea which values for document sizes and preprocessing 
+methods give best values. We will thus be concentrating on a smaller set of values for preprocessing parameters. 
+Results will be given in summed tables for all preprocessing methods, measured against different 
+document sizes.  Other parameters are fixed like in TF--IDF tuning experiments: 
+evaluation context size is set to 3, which means that a symmetric window 3 preceding and 3 succeeding words were used to build a vector which was used for classification. The threshold number of meanings was set to 5, which means that every word with the number of sense attached to them that is lower or equal to 5 is discarded from the evaluation. Like before, first was experimented with the individual preprocessing methods. 
+Below are given tables for the document size of sentence level. Best results in all the tables are given in bold. 
+\begin{table}[h!]
+\begin{tabular}{ l | c c | c c | c c | c}
+   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
+\hline
+	& P  &  R & P  &  R & P  &  R &\\
+\hline\hline
+NO  & 92.31 & 100 & 94.83 & 100 & 95.27 & 100 &  13.96 \\
+LOWCASE  & \textbf{98.01} & 100 & 95.01 & 100 & 95.17 & 100 & 13.96  \\
+STOP  & 92.31 & 100 & 94.72 & 100 & 93.86 & 100 & 13.96 \\
+STEM  & 91.45 & 100 & 91.45 & 100 & 91.45 & 100 & 13.96\\
+MERGE  & 92.31 & 100 & 94.83 & 100 & 95.27 & 100 & 13.96 \\
+\end{tabular}
+\caption{Precision and Recall of PMI model, individual preprocessing methods, sentence level document size}
+\end{table}
+
+Total number of not--discarded test set instances was 1174. Random precision was the same for all test cases, as 
+was recall (100\%). It seems that lowercasing produced the best result. All other individual preprocessing 
+methods achieved slightly better (like the Czech stop word filtering), or slightly worse results (stemming) than with when no preprocessing method was applied to the training set. It is interesting to see that merging of Czech variants brought no improvement whatsoever. Same tests were repeated for the word level document size.
+
+\begin{table}[h!]
+\begin{tabular}{ l | c c | c c | c c | c}
+   preprocessing &  1+1 word && 2+2 words && 3+3 words && random\\
+\hline
+	& P  &  R & P  &  R & P  &  R &\\
+\hline\hline
+NO  & 90.6 & 100 & 94.87 & 100 & 95.73 & 100 & 13.96 \\
+LOWCASE  & 94.47 & 100 & \textbf{97.49} & 100 & 97.41 & 100 & 11.47  \\
+STOP  & 89.74 & 100 & 93.16 & 100 & 94.87 & 100 & 13.96 \\
+STEM  & 90.6 & 100 & 96.58 & 100 & 95.73 & 100 & 13.96\\
+ MERGE  & 90.6 & 100 & 94.87 & 100 & 95.73 & 100 & 13.96 \\
+\end{tabular}
+\caption{Precision and Recall of PMI model, individual preprocessing methods, word level document size}
+\end{table}
+
+In the next round of experiments designed for tuning, combinations of preprocessing methods were experimented 
+with. First the combinations of methods were tried, for different values of sentence level for document size.
+
+ \begin{table}[h!]
+\begin{footnotesize}
+\begin{tabular}{ l | c c | c c | c c | c}
+   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
+\hline
+	& P  &  R & P  &  R & P  &  R & precision\\
+\hline\hline
+ STEM+LOWCASE  & \textbf{98.01} & 100 & 97.93 & 100 & \textbf{98.01} & 100 & 11.47\\
+STOP+MERGE  & 92.31 & 100 & 94.72 & 100 & 93.86 & 100 & 13.02 \\
+STOP+MERGE+LOWCASE  & 97.84 & 100 & 95.56 & 100 & 94.24 & 100 &11.47\\
+STEM+STOP+& 97.93 & 100 & 97.93 & 100 & \textbf{98.01} & 100 & 11.47 \\
++MERGE+LOWCASE  &&&&&&&\\
+\end{tabular}
+\caption{Precision and Recall using combinations of preprocessing techniques, sentence level document size}
+\end{footnotesize}
+\end{table}
+
+It seems that the combination of more preprocessing methods achieves an increase in accuracy with the PMI model. Also, It would appear that merging of Czech lexical variants does not contribute in this combination of 
+methods. Contrary to it, combinations where lowercasing appears seem to be giving good results. Lowercasing proved its mettle in individual tests of preprocessing methods.  
+Then the same test cases were repeated, only this time for the document size word level values. The reason why 
+these test cases are repeated is to validate the findings from the previous table. 
+
+ \begin{table}[h!]
+\begin{footnotesize}
+\begin{tabular}{ l | c c | c c | c c | c}
+   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
+\hline
+	& P  &  R & P  &  R & P  &  R & precision\\
+\hline\hline
+STEM+LOWCASE  & 95.68 & 100 & \textbf{97.93} & 100 & 97.93 & 100 & 11.47\\
+STOP+MERGE  & 89.74 & 100 & 93.16 & 100 & 94.87 & 100 & 13.96 \\
+STOP+MERGE+LOWCASE  & 93.95 & 100 & 97.06 & 100 & 97.06 & 100 & 11.47\\
+STEM+STOP+ & 95.25 & 100 & 97.93 & 100 & 97.67 & 100 & 11.47 \\
++MERGE+LOWCASE  &&&&&&&\\
+\end{tabular}
+\caption{Precision and Recall using combinations of preprocessing techniques, word level document size}
+\end{footnotesize}
+\end{table}
+
+
+It can be observed that best results for the PMI weighted model are achieved when applying lowercase 
+transformation on training and test sets (with the exception of ambiguous words), at the document size set to 
+symmetric window of size 3. Test set size was fixed at 1913 instances, out of which 1072 were tested. 
+Lowercasing was established to be the best individual preprocessing method (98\% accuracy at the 13\% random 
+accuracy, with document size set to 1 sentence). Also in combination with stemming it yielded very good results 
+(97.9\& at 12\% random accuracy). With the PMI model, there is general conclusion that combination of 
+preprocessing methods actually gives better results. It seems that with reduction of the word space, PMI weights 
+become better discriminators of context, when the cosine distance is measured against ambiguous word and its 
+context.  
+
+\subsection{Tuning evaluation context size}
+Evaluation context size is the size of symmetric window of context which is taken into consideration 
+when the polysemous word is encountered during testing. Words that are found within that context
+window are used to form a context vector. This context vector's distance is measured against every
+vector of each  of the meanings for the polysemous word in question. Sizes of context vector 
+experimented with range from 1 to 7. In order to have a larger test set, number of meanings that 
+a word can take was lowered to 5 instead of 6 like in the preprocessing experiments. Preprocessing
+performed was lowercasing of words, and document size was set to 1 sentence. 
+Results are given 
+in the table below, and the best result is given in bold. 
+
+\begin{table}[h!]
+\begin{tabular}{ l | c c c c c c c}
+    &  1+1 & 2+2 & 3+3 & 4+4 & 5+5 & 6+6 & 7+7 \\
+\hline
+LOWCASE  & 95.54 & 97.75 & \textbf{98.01} & 97.93 & 97.93 & 97.93 & 97.93 \\
+\end{tabular}
+\caption{Precision and Recall of PMI model,  combined preprocessing methods, word level document size}
+\end{table} 
+
+Recall is 100\% for all test cases, therefore it was not displayed in the table. Random prediction is also the same. 
+It can be observed that the best evaluation context size is 3+3, and that after it peaks at that point it converges to a stable value for all wider evaluation contexts. 
+
+\textbf{Conclusion.}\\
+PMI achieved also very good scores. The best preprocessing method was lowercasing, at 1 sentence document size. The best evaluation context size was found to be 3+3 neighboring words. 
+
+
+\subsection{ Evaluation on polysemous words of different level}
+We will now observe the accuracy of the model set with best
+parameters to see how it performs on different sets of words with the same number of meanings. This means
+that for instance, in the first column are results of experiments performed on words with 2 meanings attached to them.
+Training is performed on the merged set of training and testing development, and testing is done on the unseen set.
+\begin{table}[h!]
+\begin{tabular}{ l | c c c c c c  }
+     & 2 & 3 & 4 & 5 & 6  \\
+ \hline
+Precision  & 92.17 & 87.39 & 64.85 & 76.77 & 94.55\\ 
+Recall & 99.81 & 99.22 & 98.17 & 95 & 96.3\\ 
+Random Precision & 50 & 33.33 & 25 & 20 & 16.67 \\
+\end{tabular}
+\caption{Precision and Recall of PMI model, lowercase preprocessing , document size 1, evaluation context size 3+3 measured against words with different number of meanings}
+\end{table} 
+
+PMI model also achieves nice results for all groups of ambiguous terms with different number of meanings. 
+
+\textbf{Conclusion.}\\
+It can be seen that PMI model does not provide predictable results when observed while testing on different levels
+of ambiguity. For instance, in the Table 6.16 it can be seen that F--measure seems to deteriorate with the number of meanings 
+attached for a word starting from 2, but that it jumps again with words that have 6 meanings. 
+
+Overall, it can be said that TF--IFD model performed well at this task. 
+
+
+
+\section{RI experiments} 
+Random Indexing experiments were performed in order to see how does the matrix reduction influence on the overall accuracy of the algorithm. No weighting was applied on the co--occurrence matrix. The efficacy of the RI to retrieve semantically similar words is very high. 
+ The incentive for applying a matrix reduction technique on the WSD task was that the representation of the ambiguous word as a random vector could actually be close in the vector space to a familiar context, that is context in which it often appears. On the other hand, the algorithm should produce low scores for the target word against an unfamiliar context. 
+Experiments  with RI model are also, grouped in three rounds in order to tune
+the model for the best performance. In the end best model is evaluated on ambiguous words with 
+different counts of meanings attached to them.
 \begin{itemize}
 \item Tuning preprocessing parameters
 \item Tuning evaluation context size
 \item Evaluation on polysemous words of different level
 \end{itemize}
 
+What is different with RI model is that term--document matrix is built incrementally, by adding initially 
+assigned pseudo-random vectors of documents to initially pseudo-random vectors of terms. No 
+weighting is applied to elements of the matrix. Matrix itself is of much less dimensionality than the 
+standard co-occurrence matrix, and is also much less sparse (considerably lower count of zero 
+elements). 
+ Dimension of random vectors is preset before the construction of matrix and in our 
+experiments has that value of 300.
+
 \subsection{Tuning preprocessing parameters}
-Being that preprocessing methods were thoroughly examined in section about tuning the preprocessing 
-parameters for TF--IDF we have a general idea which values for document sizes and preprocessing 
-methods give best values. We will thus be concentrating on a smaller set of preprocessing methods. 
-Results will be given in summed tables for all preprocessing methods, measured against different 
-document sizes.  Other parameters are fixed like in TF--IDF tuning experiments: 
-evaluation context size is set to 3, and threshold number of meanings set to 6.
-Below are given tables for sentence and document level. 
-\begin{table}[h!]
-\begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  5 sentences && 3 sentences && 1 sentence  && random\\
-\hline
-	& P  &  R & P  &  R & P  &  R &\\
-\hline\hline
-NO & 89.81  & 92.53  & 90.0  &  92.23 & \textbf{90.57}  & \textbf{93.34}  & 4.5  \\
-CLOSED CLASS & 89.65  & 92.54  & 89.71  & 92.21  & \textbf{90.43}  & \textbf{91.88}  & 4.3  \\
-STEM+MERGE & 34.71  & 71.04  & 83.51  & 85.41  & \textbf{83.86}  & \textbf{85.62} & 9.6  \\
-\end{tabular}
-\caption{Precision and Recall of PMI model, various preprocessing methods, sentence level document size}
-\end{table}
+Like with the models tested before different document sizes and preprocessing methods were tunned
+for the best performance of the RI model. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  3+3 words && 2+2 words && 1+1 word  && random\\
-\hline\hline
-	& P  &  R & P  &  R & P  &  R &\\
+\begin{tabular}{ l | c  | c |c | c}
+   preprocessing &  5 sentences & 3 sentences & 1 sentence  & random\\
 \hline
-NO & 90.43   &  93.61 & \textbf{90.61}  &  \textbf{93.61} & 85.07  & 93.22  & 4.5\\
-CLOSED CLASS &  \textbf{91.16} & \textbf{94.58}  & 90.72  & 94.53  & 87.5  & 94.34  & 4.3\\
-STEM+MERGE  & 83.05  &  85.46 & 85.37  & 83.9  & \textbf{85.67}  & \textbf{94.74}  & 9.6\\
+	& P  &  P  &  P  &  \\
+\hline\hline
+ NO  & 69.21  & 70.73  &71.1 & 13.6 \\
+LOWCASE  &72.4 & 73.52 & 74.54 &13.6   \\
+CLOSED CLASS &70.76 & 72.52 & 76.37 &13.6   \\
+STEM+MERGE & 71.5 & 72.21 & 74.19 & 13.6   \\
 \end{tabular}
-\caption{Precision and Recall of PMI model,  various preprocessing methods, word level document size}
+\caption{Precision and Recall of RI model, various preprocessing methods, sentence level document size}
 \end{table}
 
-Total number of final test set instances without preprocessing was  \textbf{17845}, the test set size was \textbf{952} , while \textbf{16893} occurrences of polysemous words was discarded for having less than 6 meanings attached to them.
+Recall and random prediction were the same for all document sizes, hence they were not displayed in the table above. This aggregated table shows both individual and combined preprocessing methods. Same test cases were 
+repeated for the document size of word level. 
 
-Total number of final test set instances for word filtering was  \textbf{17220}, the test set size was \textbf{928}, while \textbf{16292} occurrences of polysemous words was discarded for having less than 6 meanings attached to them.
+\begin{table}[h!]
+\begin{tabular}{ l | c  | c |c | c}
+   preprocessing &  3+3 words& 2+2 words& 1+1 word& random\\
+\hline
+	& P  &  P  &  P  &  \\
+\hline\hline
+NO &  71.36 & 72.51 & 74.37  & 13.6\\
+LOWCASE  &72.4 & 73.52 & 74.54 &13.6   \\
+CLOSED CLASS & 76.85 &77.33 &78.45 & 13.6\\
+STEM+MERGE   & 73.71  & 75.2 & 76.84 &13.6\\
+\end{tabular}
+\caption{Precision and Recall of RI model, various preprocessing methods, word level document size}
+\end{table}
 
-Total number of final test set instances for stemmed set was  \textbf{16761}, the test set size was \textbf{7897}, while \textbf{8864} occurrences of polysemous words was discarded for having less than 6 meanings attached to them.
+
+It seems that for RI model smaller document size produces better results. The reason for that can be found in the very nature of term vector generation in RI. Term vectors are constructed from 
+superposition of all document vectors it appears in. Document vectors are initially sparse vectors, which
+means that the smaller the document size is, the stronger relation gets between a word and its context.
+The best model achieved 76.84\% accuracy, with a 100\% Recall, for document size set to 1+1 context
+window, and preprocessing method set to filtering of closed--class words.
+
+\subsection{Tuning evaluation context size}
+Evaluation context size is the size of symmetric window of context which is taken into consideration 
+when the polysemous word is encountered during testing. Words that are found within that context
+window are used to form a context vector. This context vector's distance is measured against every
+vector of each  of the meanings for the polysemous word in question. Sizes of context vector 
+experimented with range from 1 to 7. In order to have a larger test set, number of meanings that 
+a word can take was lowered to 5 instead of 6 like in the preprocessing experiments. Preprocessing
+performed was lowercasing of words, and document size was set to 1 sentence. 
+Results are given 
+in the table below, and the best result is given in bold. 
+
+\begin{table}[h!]
+\begin{tabular}{ l | c c c c c c c}
+    &  1+1 & 2+2 & 3+3 & 4+4 & 5+5 & 6+6 & 7+7 \\
+\hline
+CLOSED CLASS  & 80.16 & 85.14 & \textbf{86.74} & 79.54 & 79.54& 79.54& 79.54\\
+\end{tabular}
+\caption{Precision and Recall of RI model,  combined preprocessing methods, word level document size}
+\end{table} 
+
+Recall is 100\% for all test cases, therefore it was not displayed in the table. Random prediction is also the same. 
+It can be observed that the best evaluation context size is 3+3, and that after it peaks at that point it converges to a stable value for all wider evaluation contexts. 
+
+
+
+\subsection{Evaluation on polysemous words of different level}
+The best model is evaluated on ambiguous words with 
+different counts of meanings attached to them.
+
+\begin{table}[h!]
+\begin{tabular}{ l | c c c c c c  }
+     & 2 & 3 & 4 & 5 & 6& 7     \\
+ \hline
+Precision & 87.4 & 86.02 & 84.19 & 76.41 &80.5 & 45.48 \\
+Recall   & 95.44 & 98.48 & 94.71 & 95.12 & 100.0 &100.0    \\
+Random prediction    & 50 & 33.33 & 25 & 20 & 16.66 & 14.28      \\
+\end{tabular}
+\caption{Precision and Recall of RI model, closed class filter, document size 1+1, evaluation context size 3+3 measured against words with different number of meanings}
+\end{table} 
+ It is observable that the best score is achieved with the words that have 3 meanings, but from there precision falls down. It is 
+just 45\% for the words with 7 meanings attached to them. Out of all models tested, Random Indexing has the poorest 
+performance. One possible explanation is that too much of a contextual information is lost when matrix reduction of the co--
+occurrence matrix is performed. As outlined before RI performs well in tasks with the paradigmatic use of context, like in the 
+individual word similarity task. However when employed in the WSD task the algorithm is calculating the cosine similarity between the test 
+context and all sense candidates for an ambiguous word, where term vectors are extracted from a co-occurrence matrix which has reduced dimensionality. 
+It seems that level of contextual information which is vital for the WSD task is lowered as well with the RI matrix reduction, which leads to the poorer performance of the algorithm. 

@@ -15,7 +15,7 @@ public class TestCzechStemmerAgressive {
 			"absolventy",
 			"","absolvoval","absolvovala","absolvovali","absolvovalo","absolvovaných","absolvování",
 			"absolvováním","absolvuje","absolvují" //verbs, adverb. stems in this group should be different
-			,"","kontinuitypod-1","Slovan-2PrahaNákladùm","cizinìXXX-3`30VýhodyOhlasy" //should not stem these 
+			,"","kontinuitypod-1","Slovan-2PrahaNákladùm","cizinìXXX-3`30VýhodyOhlasy","práci" //should not stem these 
 			};
 	
 	
