@@ -14,7 +14,7 @@ public class Arguments {
 	public  static String mergeLexicalVariants = "n";
 	
 //..document size in the matrix	
-	public  static String  inputFilePath="pdt1_0//pdt1_cleaned";
+	public static String  inputFilePath="pdt1_0//pdt1_cleaned";
 	public static Integer numberOfSentencesInLuceneDoc=1;
 	public static Integer numberOfWordsInDocument=-1;
 	
@@ -28,7 +28,52 @@ public class Arguments {
 	
 
 	
-	private static void printUsage(String argName){
+	
+	
+	public static void parseArguments(String[]args) throws  SecurityException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException{
+		String[]arguments = args[0].split(" ");
+		Field field=null;
+		int i=0;
+		for(String argument:arguments){
+			if(i++==0)
+				if(!argument.trim().startsWith("-")){
+					printFieldsAndTheirTypes();
+					throw new IllegalArgumentException();
+				}
+			if(argument.trim().startsWith("-")){
+				String argName = argument.substring(1);
+					try {
+						field = Arguments.class.getField(argName);
+					} catch (NoSuchFieldException e) {
+						nonExistingField(argName);
+						throw new NoSuchFieldException();
+					}
+			}
+			else{
+				try{
+					Class type = field.getType();
+					if(type.isInstance(new Integer(0))){
+						field.set(field, Integer.parseInt(argument));
+					}
+					else 
+						if(type.isInstance(new String(""))){
+						field.set(field, argument);
+					}
+					field=null;
+				}
+				catch (NumberFormatException  e){
+					System.out.println("Field "+argument+" expects a numeral.");
+					throw new NumberFormatException ();
+				}
+				catch (NullPointerException e){
+					System.out.println("There is no field:"+argument+".");
+					throw new IllegalArgumentException();
+				}
+			}
+		}
+	}
+	
+	public static void nonExistingField(String argName){
 		System.out.println("There is no field:"+argName+".");
 		System.out.println("This is the list of valid arguments:");
 		Field[] fields = Arguments.class.getFields();
@@ -40,47 +85,8 @@ public class Arguments {
 		System.out.println();
 	}
 	
-	public static void parseArguments(String[]args){
-		String[]arguments = args[0].split(" ");
-		Field field=null;
-		for(String argument:arguments){
-			if(argument.trim().startsWith("-")){
-				try {
-					String argName = argument.substring(1);
-					field = Arguments.class.getField(argName);
-				} catch (SecurityException e) {
-					e.printStackTrace();
-				} catch (NoSuchFieldException e) {
-					printUsage(argument);
-					e.printStackTrace();
-				}
-			}
-			else{
-				try {
-					Class type = field.getType();
-					if(type.isInstance(new Integer(0))){
-						field.set(field, Integer.parseInt(argument));
-					}
-					else if(type.isInstance(new String(""))){
-						field.set(field, argument);
-					}
-					field=null;
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (NullPointerException e) {
-					printUsage(argument);
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-	
-	public static void printFieldsAndTheirValues(){
-		System.out.println("List of fields and their values:");
+	public static void printFieldsAndTheirTypes(){
+		System.out.println("List of fields and their expected input types:");
 		Field[] fields = Arguments.class.getFields();
 		for(Field f:fields){
 			System.out.println("-"+f.getName()+": "+f.getType());
@@ -90,8 +96,8 @@ public class Arguments {
 //		System.out.println("numberOfSentencesInLuceneDoc:"+numberOfSentencesInLuceneDoc);
 //		System.out.println("upBoarderForNumberOfMeanings:"+upBoarderForNumberOfMeanings);
 //		System.out.println("evaluationContextWindowSize:"+evaluationContextWindowSize);
-		System.out.println("MATRIX_TYPE.TFIDF:"+MATRIX_TYPE.TFIDF.ordinal());
-		System.out.println("MATRIX_TYPE.PMI:"+MATRIX_TYPE.PMI.ordinal());
+//		System.out.println("MATRIX_TYPE.TFIDF:"+MATRIX_TYPE.TFIDF.ordinal());
+//		System.out.println("MATRIX_TYPE.PMI:"+MATRIX_TYPE.PMI.ordinal());
 	}
 	
 	public static String preprocessingName(){

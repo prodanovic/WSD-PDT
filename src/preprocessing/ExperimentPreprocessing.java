@@ -28,9 +28,10 @@ public class ExperimentPreprocessing {
 	//mark the test set, and put into separate files
 	public static void divideIntoTrainAndTestSets(String inputfilePath) throws FileNotFoundException, IOException{
 		File file = new File(inputfilePath);
-		String trainPath = "pdt1_0//train";
-		String testDevPath = "pdt1_0//testDev";
-		String testFinalPath = "pdt1_0//testFinal";
+		String path = file.getParentFile().getAbsolutePath();
+		String trainPath = path+"/train";
+		String testDevPath = path+"/testDev";
+		String testFinalPath = path+"/testFinal";
 		
 		 
 //......loads and randomizes input sentences.  then it splits them into 3 sets

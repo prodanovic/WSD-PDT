@@ -136,6 +136,18 @@ public class PDT1Reader {
 		reader.extractFromPdtFile(pdt2, outputFilePath);
 	}
 	
+	public static String cleanInputFile(String inputPath){
+		String pdt1 = inputPath;
+		String outputFilePath = "temp/sgml_cleaned";
+		PDT1Reader reader = new PDT1Reader();
+		
+		File outputFile = new File(outputFilePath);
+		if(outputFile.exists())outputFile.delete();
+		
+		reader.extractFromPdtFile(pdt1, outputFilePath);
+		return outputFilePath;
+	}
+	
 	
 	public static void main(String[] args) throws IOException {
 //		PDT1Reader citac1 = new PDT1Reader();

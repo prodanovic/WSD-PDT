@@ -1,85 +1,98 @@
 package experiments;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Logger;
+
+import org.apache.lucene.index.CorruptIndexException;
 
 import preprocessing.CzechIndexer;
 import preprocessing.ExperimentPreprocessing;
 import preprocessing.LinguisticPreprocessing;
+import preprocessing.PDT1Reader;
 import util.Arguments;
+import util.FileUtil;
 import util.Log;
 import util.Arguments.MATRIX_TYPE;
 import disambiguate.Evaluator;
 
 public class Experiment {
 
-	/**
-	 * @param args
-	 * @throws Exception 
-	 */
-	public static void main(String[] args) throws Exception {
-		//..........preprocessing		
-//		Arguments.lowercase="n";
-//		Arguments.stopWordsRemoval="n";
-//		Arguments.stemming="n";
-//		Arguments.mergeLexicalVariants="n";
-////......matrix generation
-//		Arguments.numberOfWordsInDocument=-1;//3,2,1
-//		Arguments.numberOfSentencesInLuceneDoc = 1;//5,3,1
-//		if(Arguments.numberOfWordsInDocument>-1)Arguments.numberOfSentencesInLuceneDoc = 1;
-////......matrix type - normalizing frequencies
-//		Arguments.matrixType = MATRIX_TYPE.TFIDF.ordinal();
-////......evaluation
-//		Arguments.upBoarderForNumberOfMeanings = 2;
-//		Arguments.evaluationContextWindowSize = 3;
-		
-		Arguments.parseArguments(args);
-		
-		boolean isMerge=Arguments.mergeLexicalVariants.equalsIgnoreCase("y");
-		boolean isStem=Arguments.mergeLexicalVariants.equalsIgnoreCase("y");
-		
-		Logger logger=Log.getLogger(Arguments.initLogName());
-		logger.fine(Arguments.modelNameForLog());
+	static Logger logger;
+	
+	public static void main(String[] args) {
+		System.out.println("Welcome to the WSD system!");
+		while(true){
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Please insert your input arguments in one string:");
+			try {
+				String inputArguments= reader.readLine();
+				Arguments.parseArguments(inputArguments.split(" "));
+				logger=Log.getLogger(Arguments.initLogName());
+				
+				logger.fine(Arguments.modelNameForLog());
+				System.out.println("Please give the location of the file[in SGML format] you wish to train the system on (leave blank if you want to skip training):");
+				String inputFilePath = reader.readLine();
+				if(!inputFilePath.equals("")){
+					extractTheCorpusAndTrain(inputFilePath);
+					logger.fine(Arguments.preprocessingParamsForLog());
+					preprocess();
+				}
+				
+				System.out.println("Please give the location of the test file (ambiguous words should be marked in format \"word-number\"):");
+				String testFilePath = reader.readLine();
+				if(!testFilePath.equals("")){
+					evaluate(testFilePath);
+				}
+
+			} catch (NumberFormatException e) {
+			} catch (NoSuchFieldException e) {
+			} catch (SecurityException e) {
+			} catch (IllegalArgumentException e) {
+			} catch (IllegalAccessException e) {
+			} catch (IOException e) {
+			} catch (Exception e) {
+				System.out.println("Evaluation exception:");
+				e.printStackTrace();
+			}	
+		}
+	}
+
+	public static void extractTheCorpusAndTrain(String inputPath) throws FileNotFoundException, IOException{
 		long start = System.currentTimeMillis();
-		
-//		PDT1Reader.cleanPDTFile();
-		
-		ExperimentPreprocessing ep = new ExperimentPreprocessing();
-		ep.divideIntoTrainAndTestSets(Arguments.inputFilePath);
-		
-		if(isMerge)LinguisticPreprocessing.mergeCzechTermVariants();
-		if(isStem)LinguisticPreprocessing.stemCzechTerms();
-		
-		
-//......train and test
-		logger.fine("\t====train and test====");
-		
+		PDT1Reader.cleanInputFile(inputPath);
+		long time = (System.currentTimeMillis()-start)/1000;
+		System.out.println("Extracted the corpus from input file in "+time+" seconds.");
+	}
+	
+	public static void preprocess() throws FileNotFoundException, IOException{
+		long start = System.currentTimeMillis();
+		ExperimentPreprocessing.divideIntoTrainAndTestSets("temp/sgml_cleaned");
+		LinguisticPreprocessing.removeNonWords("temp/sgml_cleaned","temp/sgml_cleaned_");
+		if(Arguments.stopWordsRemoval.equalsIgnoreCase("y"))LinguisticPreprocessing.stopWordRemoval("temp/sgml_cleaned_","temp/sgml_cleaned_");
+		if(Arguments.lowercase.equalsIgnoreCase("y"))LinguisticPreprocessing.lowercase("temp/sgml_cleaned_","temp/sgml_cleaned_");
+		if(Arguments.mergeLexicalVariants.equalsIgnoreCase("y"))LinguisticPreprocessing.margeAllCzechVariants("temp/sgml_cleaned_","temp/sgml_cleaned_");
+		if(Arguments.stemming.equalsIgnoreCase("y"))LinguisticPreprocessing.stemCzechTerms("temp/sgml_cleaned_","temp/sgml_cleaned_");
+		long time = (System.currentTimeMillis()-start)/1000;
+		System.out.println("Preprocessing done in "+time+" seconds.");
+	}
+	
+	public static void evaluate(String testFilePath) throws Exception{
+		long start = System.currentTimeMillis();
 		Evaluator evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
 				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings, null);
-		evaluator.extractTestContext("pdt1_0//testDev",Arguments.evaluationContextWindowSize);
+				Arguments.upBoarderForNumberOfMeanings, "temp/sgml_cleaned");
+		evaluator.extractTestContext(testFilePath,Arguments.evaluationContextWindowSize);
 		logger.fine(evaluator.testSetStatsForLog());
+		
 		evaluator.predict();
-		logger.fine("Finished in "+(System.currentTimeMillis()-start)/1000+" seconds.");
 		logger.fine(evaluator.evaluationStatsForLog());
-		
-
-//......test on unseen data
-		logger.fine("\t====test on unseen data====");
-		
-		ep.mergeFiles("pdt1_0//train", "pdt1_0//testDev", "pdt1_0//train+testDev");
-		
-		evaluator = new Evaluator(Arguments.numberOfWordsInDocument,
-				Arguments.numberOfSentencesInLuceneDoc,
-				Arguments.upBoarderForNumberOfMeanings, null);
-		evaluator.extractTestContext("pdt1_0//testFinal",Arguments.evaluationContextWindowSize);
-		logger.fine(evaluator.testSetStatsForLog());
-		evaluator.predict();
-		logger.fine("Finished in "+(System.currentTimeMillis()-start)/1000+" seconds.");
-		logger.fine(evaluator.evaluationStatsForLog());
-		
-	
+		long time = (System.currentTimeMillis()-start)/1000;
+		System.out.println("Evaluation done in "+time+" seconds.");
 	}
+	
 	
 
 }
