@@ -142,7 +142,11 @@ public class PDT1Reader {
 		PDT1Reader reader = new PDT1Reader();
 		
 		File outputFile = new File(outputFilePath);
-		if(outputFile.exists())outputFile.delete();
+		if(outputFile.exists()){
+			outputFile.delete();
+		}	
+		(new File(outputFile.getParent())).mkdir();
+		
 		
 		reader.extractFromPdtFile(pdt1, outputFilePath);
 		return outputFilePath;

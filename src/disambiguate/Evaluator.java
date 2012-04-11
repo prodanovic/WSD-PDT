@@ -15,13 +15,6 @@ import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 import org.apache.lucene.index.CorruptIndexException;
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.index.Term;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.PhraseQuery;
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.store.SimpleFSDirectory;
 
 import pitt.search.semanticvectors.CompoundVectorBuilder;
 import pitt.search.semanticvectors.LuceneUtils;
