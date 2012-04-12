@@ -2,7 +2,7 @@
 \section{Word sense(s)}
 A meaning of a word is a variable category, very much dependent on its surrounding context. In the field 
 of lexical semantics it is found that many words have overlapping or extended meanings (Kilgarriff 
-1997)\cite{kilgarriff1997}. ''Polysemy" of a word means that it has multiple, but related meanings. At a 
+1997). ''Polysemy" of a word means that it has multiple, but related meanings. At a 
 more coarse grained level of meaning words that have the same spelling and pronunciation as each other but different meanings and origins are called \textit{homonyms}. Polysemy is a 
 feature of words while ''ambiguity" is a property of text. If there is uncertainty about  the meaning of a 
 word there is ambiguity about the whole text as well. 
@@ -13,18 +13,18 @@ counter where money is exchanged, a fund or reserve of money, a money box (piggy
 a gambling house (WordNet 2.1)\footnote{http://wordnet.princeton.edu/}.
 Different words have different number of meanings.
 A view on the number of senses word might have is somewhat controversial. Some argue that task--
-independent senses simply cannot be enumerated in a list (Kilgarriff 1997)\cite{kilgarriff1997} while 
-others claim that words can have only a single, abstract meaning (Ruhl 1989)\cite{ruhl1989}.
+independent senses simply cannot be enumerated in a list (Kilgarriff 1997) while 
+others claim that words can have only a single, abstract meaning (Ruhl 1989).
 \newline
 \newline 
 WSD was first formulated as a distinct computational task during the early days of machine translation. It was Weaver
- (1949)\cite{weaver1949} who noted in his memo on machine translation the importance of context in determining word sense(s), by conducting a simple experiment- observing words from a sentence in isolation, and trying to determine their meaning. (Zipf 
-1949)\cite{zipf1949_1} published his "Law of Meaning"  where he states  that more frequent words 
+ (1949) who noted in his memo on machine translation the importance of context in determining word sense(s), by conducting a simple experiment- observing words from a sentence in isolation, and trying to determine their meaning. (Zipf 
+1949) published his "Law of Meaning"  where he states  that more frequent words 
 have more senses than less frequent words in a power--law relationship. A valuable point worth noting 
 in any experiment with WSD. This was later confirmed for the British National Corpus (Edmonds 2005) 
-\cite{edmonds2005} as well.
+ as well.
 \\\\  
-Statistical and machine learning methods have been successfully applied to the WSD problem. Methods that train on manually sense--tagged corpora (like Penn Treebank, or Prague Dependency Treebank) are called supervised learning methods. Since models implemented in this thesis are trained on annotated corpus, they are as well supervised. Supervised methods have become in general the mainstream approach to WSD, with the best results in all tasks of the Senseval \footnote{http://www.senseval.org/} competitions.
+Statistical and machine learning methods have been successfully applied to the WSD problem. Methods that train on manually sense--tagged corpora (like Penn Treebank, or Prague Dependency Treebank) are called supervised learning methods. Since models implemented in this thesis are trained on annotated corpus, they are as well supervised. Supervised methods have become in general the mainstream approach to WSD, with the best results in all tasks of the Senseval\footnote{http://www.senseval.org/} competitions.
 
 \section{Applications of WSD-- why is it important?}
 WSD's importance lies in the fact that it enables other tasks and applications of computational  linguistics (CL) and natural language processing (NLP) such as information retrieval(IR), parsing,  machine translation(MT), semantic interpretation, text mining, and (lexical) knowledge acquisition. Detail 
@@ -42,7 +42,7 @@ proper use of WSD leads to an increase in the translation performance.
  queries containing large number of words, WSD cannot benefit IR. (Schutze and Pedersen 1995) have however demonstrated 
 that at a 90\% accuracy level of WSD, there is an IR performance improvement by about 4,3\%(from 29.9\% to 34.2\%).
 \\\\  
-\textbf{Information extraction (IE) and text mining.} WSD is required for the accurate analysis of text in many applications. For example if we wish to somehow mark the difference between \textit{medical drugs} and \textit{illegal drugs} we would need to have these phrases disambiguated first. More generally, the Semantic Web requires automatic annotation of documents according to a reference ontology: all textual references must be resolved to the right concepts and event structures in the ontology (Dill et al. 2003)\cite{dill2003} (Narayan et al. 2010) \cite{EventTwitterSPIM10}.
+\textbf{Information extraction (IE) and text mining.} WSD is required for the accurate analysis of text in many applications. For example if we wish to somehow mark the difference between \textit{medical drugs} and \textit{illegal drugs} we would need to have these phrases disambiguated first. More generally, the Semantic Web requires automatic annotation of documents according to a reference ontology: all textual references must be resolved to the right concepts and event structures in the ontology (Dill et al. 2003) (Narayan et al. 2010).
 \\\\  
 \textbf{Lexicography.} Modern lexicography is corpus--based, thus WSD and lexicography can work 
 for each other. WSD is providing empirical sense grouping and contextual indicators of sense to lexicographers, who 
@@ -142,19 +142,19 @@ NLP problems.
 As mentioned in the previous section Vector Space Model (VSM) approaches fall under methods based on the similarity of the examples. There are many ways to calculate the similarity between two examples.
 Assuming the VSM one of the simplest similarity
 measures is to consider the angle that both example vectors form (i.e., the
-cosine measure). (Leacock et al. 1993)\cite{Leacock93towardsbuilding} compared VSM to ML 
+cosine measure). (Leacock et al. 1993) compared VSM to ML 
  techniques such as Neural Networks,
 and Naive Bayes methods, and drew the conclusion that the two first
 methods slightly surpass the last one in WSD. 
 \\\\
-There was also an automatic and unsupervised approach (Sch\"utze 1998)\cite{schutze1998}, based on clustering. Senses are interpreted as groups (or clusters) of similar contexts of the ambiguous word. Words, contexts, and senses are represented in Word Space, a high-dimensional, real-valued space in which closeness corresponds to semantic similarity. The algorithm is unsupervised in both training and application: senses are discriminated by learning from a corpus without labeled training instances or other external knowledge sources.
+There was also an automatic and unsupervised approach (Sch\"utze 1998), based on clustering. Senses are interpreted as groups (or clusters) of similar contexts of the ambiguous word. Words, contexts, and senses are represented in Word Space, a high-dimensional, real-valued space in which closeness corresponds to semantic similarity. The algorithm is unsupervised in both training and application: senses are discriminated by learning from a corpus without labeled training instances or other external knowledge sources.
 \\\\
-Another unsupervised approach at WSD done by (Pantel \& Lin, 2002a) \cite{pantelLin2002} is a clustering algorithm called CBC (Clustering By Committee). The centroid of the members of a 
+Another unsupervised approach at WSD done by (Pantel \& Lin, 2002a) is a clustering algorithm called CBC (Clustering By Committee). The centroid of the members of a 
 committee is used as the feature vector of the cluster. Words to are assigned to their most similar 
 clusters. After assigning an element to a cluster, overlapping features of the cluster are removed from that element. Finally, each 
 cluster that a word belongs to represents one of its senses. Weighting is performed with PMI(explained in the chapter \ref{pmi}) and distance between vectors is calculated using cosine distance. 
 
 %perhaps this should be placed in the evaluation phase, to have the comparison with my system
 \section{State--of--the--art}
-In 1997, Senseval--1 (Kilgarriff and Palmer 2000)\cite{kilgarriff2000} found accuracy of 77\% on the English lexical sample task, just below the 80\% level of human performance (estimated by inter--tagger agreement). In 2001, scores at Senseval--2 (Edmonds and Cotton 2001)\cite{edmonds2001} appeared to be lower, but the task was more difficult, as it was based on the finer grained senses of WordNet. The best accuracy on the English lexical sample task at Senseval--2 was 64\% (to an inter--tagger agreement of 86\%). Senseval--2 showed that supervised approaches had the best overall performance.
-\\By 2004, the top systems on the English lexical sample task at Senseval--3 (Mihalcea and Edmonds 2004) \cite{mihalcea2004} were performing at human levels according to inter--tagger agreement. The top ten systems, (all supervised) made between 71.8\% and 72.9\% correct disambiguations compared to an inter--tagger agreement of 67\%. The best unsupervised system overcame the most--frequent--sense baseline achieving 66\% accuracy.
+In 1997, Senseval--1 (Kilgarriff and Palmer 2000) found accuracy of 77\% on the English lexical sample task, just below the 80\% level of human performance (estimated by inter--tagger agreement). In 2001, scores at Senseval--2 (Edmonds and Cotton 2001) appeared to be lower, but the task was more difficult, as it was based on the finer grained senses of WordNet. The best accuracy on the English lexical sample task at Senseval--2 was 64\% (to an inter--tagger agreement of 86\%). Senseval--2 showed that supervised approaches had the best overall performance.
+\\By 2004, the top systems on the English lexical sample task at Senseval--3 (Mihalcea and Edmonds 2004) were performing at human levels according to inter--tagger agreement. The top ten systems, (all supervised) made between 71.8\% and 72.9\% correct disambiguations compared to an inter--tagger agreement of 67\%. The best unsupervised system overcame the most--frequent--sense baseline achieving 66\% accuracy.

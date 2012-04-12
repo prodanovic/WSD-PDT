@@ -1,0 +1,151 @@
+%% Single-page style
+\documentclass[12pt,a4paper]{report}
+\setlength\textwidth{145mm}
+\setlength\textheight{247mm}
+\setlength\oddsidemargin{15mm}
+\setlength\evensidemargin{15mm}
+\setlength\topmargin{0mm}
+\setlength\headsep{0mm}
+\setlength\headheight{0mm}
+
+\let\openright=\clearpage  % macro - what follows starts on the right page
+
+%% Both-pages style
+% \documentclass[12pt,a4paper,twoside,openright]{report}
+% \setlength\textwidth{145mm}
+% \setlength\textheight{247mm}
+% \setlength\oddsidemargin{15mm}
+% \setlength\evensidemargin{0mm}
+% \setlength\topmargin{0mm}
+% \setlength\headsep{0mm}
+% \setlength\headheight{0mm}
+% \let\openright=\cleardoublepage
+
+\usepackage[utf8,utf8x]{inputenc}
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{mathptmx}
+%\usepackage[charter]{mathdesign}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\usepackage{ucs}
+\usepackage{setspace}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\usepackage[hyphens]{url}
+\usepackage[unicode]{hyperref}   % Musí být za všemi ostatními balí�?ky
+\hypersetup{
+    unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+    pdftitle={todo},    % title
+    pdfauthor={todo},     % author
+    pdfsubject={todo},   % subject of the document
+    pdfcreator={todo},   % creator of the document
+    pdfkeywords={todo}, % list of keywords
+    pdfstartview={FitH},   %fit horizontally
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+\newcommand{\todoa}[1]{[\textbf{TODOA} #1]}
+\newcommand{\todob}[1]{[\textbf{TODOB} #1]}
+\newcommand{\todoc}[1]{[\textbf{TODOC} #1]}
+
+\newcommand{\e}[1]{\textit{#1}} % language expressions, examples
+
+%%% Small modifications
+%
+% Tato makra přesvěd�?ují mírně ošklivým trikem LaTeX, aby hlavi�?ky kapitol
+% sázel pří�?etněji a nevynechával nad nimi spoustu místa. Směle ignorujte.
+%\makeatletter
+%\def\@makechapterhead#1{
+%  {\parindent \z@ \raggedright \normalfont
+%   \Huge\bfseries \thechapter. #1
+%   \par\nobreak
+%   \vskip 20\p@
+%}}
+%\def\@makeschapterhead#1{
+%  {\parindent \z@ \raggedright \normalfont
+%   \Huge\bfseries #1
+%   \par\nobreak
+%   \vskip 20\p@
+%}}
+%\makeatother
+
+% Non-numbered chapter, present in TOC
+\def\chapwithtoc#1{
+\chapter*{#1}
+\addcontentsline{toc}{chapter}{#1}
+}
+\usepackage{covington}
+
+
+\begin{document}
+
+% hyphenation
+\lefthyphenmin=2
+\righthyphenmin=2
+
+
+\include{formal_stuff}
+
+
+%% TOC
+\onehalfspacing
+\openright
+\pagestyle{plain}
+\setcounter{page}{1}
+\tableofcontents
+
+\include{uvod}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{chap6}
+\include{chap7}
+\include{chap8}
+\include{zaver}
+
+
+\appendix
+
+
+\bibliography{myrefs}{
+\addcontentsline{toc}{chapter}{Bibliography}
+}
+\bibliographystyle{plainnat}
+
+
+\chapwithtoc{List of Tables}
+%\chapwithtoc{List of Abbreviations}
+
+\chapwithtoc{Appendices}
+\chapter{List of filter words for Czech language}
+Below is given a list of Czech stop words, consisting of words that belong to closed class words, and some frequent words that are assessed to carry little contextual information. More detail description on stop--word filtering can be found in Chapter 5.1.
+\\\\\
+[dnes cz
+timto budes
+budem byli jses muj  svym ta tomto  tohle tuto tyto jej  zda  proc  mate  tato  kam  tohoto  kdo  kteri
+mi   nam  tom  tomuto  mit   nic  proto kterou byla toho protoze asi ho nasi napiste re coz tim takze
+svych  jeji svymi jste  aj tu tedy teto bylo kde ke prave ji  nad nejsou ci pod tema mezi  pres  ty
+pak vam  ani kdyz vsak  ne jsem tento clanku clanky aby jsme pred pta jejich byl jeste az bez take
+pouze  prvni vase ktera nas novy tipy pokud muze design strana  jeho sve jine zpravy nove neni	vas
+jen   podle  zde clanek uz email byt vice bude jiz nez  ktery by  tere  co nebo ten tak  ma pri
+od po jsou jak dalsi ale si ve to jako za zpet  ze  do  pro  je 
+na]
+
+\openright
+
+\end{document}

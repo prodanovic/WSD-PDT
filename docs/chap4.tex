@@ -23,7 +23,7 @@ turns out as sparse. This means that most the elements of a term vector are zero
 amount of elements has non--zero values. This fact stems from the notion that only a tiny amount of the 
 words in language are distributionally promiscuous; the vast majority of words only occur in a very 
 limited number of contexts. This phenomenon is well known, and is an example of the general Zipf's 
-law (Zipf, 1949)\cite{zipf1949_1}. This reflects on the co-occurrence matrix, causing the majority of 
+law (Zipf, 1949). This reflects on the co-occurrence matrix, causing the majority of 
 term vectors from it to be sparse. 
 
 \section{Dimensionality reduction}
@@ -44,9 +44,9 @@ by reducing the co--occurrence matrix are presented.
 
 \section{Latent Semantic Analysis}\label{LSA}
 Probably the best know VSM that performs dimensionality reduction is Latent Semantic Analysis (LSA) 
-(Landauer \& Dumais, 1997)\cite{landauerd97}. LSA was developed under the name Latent Semantic 
+(Landauer \& Dumais, 1997). LSA was developed under the name Latent Semantic 
 Indexing (LSI) (Dumais et al., 1988; Deerwester et al., 
-1990)\cite{furnas1988iru}\cite{deerwester90indexing} in the late 1980s as an extension to the traditional 
+1990) in the late 1980s as an extension to the traditional 
 vector--space IR. The terms LSI and LSA have since become  more or less synonymous in the literature, 
 though LSI is a term more frequently used in the IR domain. The development of LSA was motivated by 
 the inability of the vector--space model to handle synonymy: a query about "boats" will not retrieve 
@@ -56,7 +56,7 @@ that represented words and documents have been shrunk into a smaller set of late
 collapses words and documents with similar context vectors.
 \\\\
 The dimensionality reduction is accomplished by using a statistical dimensionality--reduction technique 
-called Singular Value Decomposition (SVD). (Golub and Kahan 1965)\cite{golub1965} introduced 
+called Singular Value Decomposition (SVD). (Golub and Kahan 1965) introduced 
 SVD as a decomposition technique for calculating the singular values, pseudo--inverse and rank of a 
 matrix. The equation is given below:
 \begin{center} 
@@ -93,12 +93,12 @@ building and using LSA are:
 \end{itemize}
 LSA is well applied in information retrieval(Deerwester et al., 1990; Dumais, 1993; Dumais et al., 1997; Jiang \& Littman, 2000). The incentive for using SVD in an information--retrieval setting is obvious: words with similar co--occurrence patterns are grouped together, allowing for the retrieval of documents that need not necessarily contain any of the query words.
 \\\\
-In the domain of the Contextual Disambiguation LSA has had both good and bad performances, depending on the aspect of the task(Landauer \& Dumais, 1997)\cite{landauerd97}. Good performance is demonstrated for the task of choosing the correct one out of all meanings of a polysemous word, when presented as certain context. On the other hand, for polysemous words that take many semantically diverse meanings, it has proven to be ineffective when it comes to acquisition
+In the domain of the Contextual Disambiguation LSA has had both good and bad performances, depending on the aspect of the task(Landauer \& Dumais, 1997). Good performance is demonstrated for the task of choosing the correct one out of all meanings of a polysemous word, when presented as certain context. On the other hand, for polysemous words that take many semantically diverse meanings, it has proven to be ineffective when it comes to acquisition
 and representation of multiple separate meanings of a single word.
 \newpage
 
 \section{Hyperspace Analogue to Language}
-A pretty different word--space implementation is the Hyperspace Analogue to Language (HAL) (Lund et al., 1995)\cite{lund1995}, which in contrast to LSA was developed specifically for word--space research. HAL builds a words--by--words co--occurrence matrix, which is populated by counting word co--occurrences within a directional context window 10 words wide. The co--occurrences are weighted with the distance between the words, so that words that occur next to each other get the highest weight, and words that occur on opposite sides of the context window get the lowest weight. The result of this operation is a directional co--occurrence matrix in which the rows and the columns represent co--occurrence counts in different directions.
+A pretty different word--space implementation is the Hyperspace Analogue to Language (HAL) (Lund et al., 1995), which in contrast to LSA was developed specifically for word--space research. HAL builds a words--by--words co--occurrence matrix, which is populated by counting word co--occurrences within a directional context window 10 words wide. The co--occurrences are weighted with the distance between the words, so that words that occur next to each other get the highest weight, and words that occur on opposite sides of the context window get the lowest weight. The result of this operation is a directional co--occurrence matrix in which the rows and the columns represent co--occurrence counts in different directions.
 \\\\  Each row--column pair (i.e. the left and right--context co--occurrences) is then concatenated to produce a very--high--dimensional context vector, which has a dimensionality two times the size of the vocabulary. If such very--high--dimensional vectors prove to be too costly to handle, HAL reduces their dimensionality by computing the variances of the row and column vectors for each word, and discarding the elements with lowest variance, leaving only the 100 to 200 most variant vector elements. In HAL,  two words are semantically related if they tend to appear with the same words.
 Summarized, HAL is built in the following steps:
 \begin{itemize}
@@ -126,7 +126,7 @@ there the first coordinate represents the time dimension.
 \section{Random Indexing}\label{RI}
 Another approach is Random Indexing (RI) (Kanerva et al., 2000; Karlgren \& Sahlgren, 2001), developed
  at the Swedish Institute of Computer Science (SICS) based on Pentti Kanerva's work on sparse
- distributed memory (Kanerva, 1988)\cite{kanerva88}. Like the previous approaches described in 
+ distributed memory (Kanerva, 1988). Like the previous approaches described in 
 this chapter RI 
 is motivated as well with the problem of high dimensionality. What is different with RI is how it addresses 
 that problem: while previous approaches make lower--dimensional context vectors which are
@@ -166,11 +166,11 @@ we can represent them with $n$--dimensional unary, zero vector, that have 1 writ
 These vectors are orthogonal\footnote{Two vectors, $\vec x$ and $\vec y$ are orthogonal if their dot product is zero. Dot product is an algebraic operation that takes two equal--length sequences of numbers (usually coordinate vectors) and returns a single number obtained by multiplying corresponding entries and then summing those products.}. 
 The r-dimensional random index vectors are only nearly orthogonal. This near--orthogonality of the
  random index vectors is in fact an explanation of the RI methodology. There are many more
- nearly orthogonal than truly orthogonal directions in a high--dimensional space (Kaski, 1999)\cite{kaski1999}, and 
+ nearly orthogonal than truly orthogonal directions in a high--dimensional space (Kaski, 1999), and 
 choosing  random directions, as is it is done with index vectors, can \textit{approximate} orthogonality.
 The near-orthogonality of random directions in high-dimensional spaces is exploited
 by a number of dimensionality-reduction techniques which include methods
-such as Random Projection (Papadimitriou et al., 1998)\cite{papadim1998}, Random Mapping (Kaski, 1999)\cite{kaski1999},
+such as Random Projection (Papadimitriou et al., 1998), Random Mapping (Kaski, 1999),
  and Random Indexing.
 The dimensionality of a given matrix F can be reduced to F' by multiplying it with (or projecting it through) a random matrix R:
 \begin{equation}
@@ -201,5 +201,6 @@ word-space implementations, such as LSA, are very sensitive to the choice of
 dimensionality for the reduced space. For RI, the choice of dimensionality is a
 trade--off between efficiency and performance (random projection techniques
 perform better the closer the dimensionality of the vectors is to the number of
-contexts in the data (Kaski, 1999; Bingham \& Mannila, 2001))\cite{kaski1999}\cite{bingham2001}. Performance of RI reaches a stable level
-when the dimensionality of the vectors become sufficiently large as concluded in  (Sahlgren \& Karlgren, 2005a)\cite{karlgren2005}.
+contexts in the data (Kaski, 1999; Bingham \& Mannila, 2001)). Performance of RI reaches a stable level
+when the dimensionality of the vectors become sufficiently large as concluded in  (Sahlgren \& Karlgren, 2005a).
+

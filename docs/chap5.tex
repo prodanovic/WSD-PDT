@@ -2,7 +2,7 @@
 In previous chapters we have explained the intuitions and approaches in building Semantic Vector Models. This chapter is devoted to outlining possible approaches in preprocessing, matrix normalization and evaluation with respect to experiments performed in this thesis on the of Word Sense Disambiguation (WSD) in Prague Dependency Treebank1 (PDT).
 
 \section{Linguistic preprocessing}\label{linguisticPreprocessing}
-Before generating a term--document\ or a  word--context matrix it can be useful to apply some sort of linguistic preprocessing to the raw text. First type of  linguistic preprocessing constitutes of \textit{text normalization}, where words can be filtered out based on their Part--Of--Speech (POS)\footnote{In grammar, a part of speech is a linguistic category of words (or more precisely lexical items), which is generally defined by the syntactic or morphological behaviour of the lexical item in question}, then stemming or lemmatization and finally \textit{annotation}.
+Before generating a term--document\ or a  word--context matrix it can be useful to apply some sort of linguistic preprocessing to the raw text. First type of  linguistic preprocessing constitutes of \textit{text normalization}, where words can be filtered out based on their Part--Of--Speech\footnote{In grammar, a part of speech is a linguistic category of words (or more precisely lexical items) (POS), which is generally defined by the syntactic or morphological behaviour of the lexical item in question}, then stemming or lemmatization and finally \textit{annotation}.
 \\\\  \underline{POS filtering} normally consists of removing words that belong to closed grammatical 
 classes\footnote{Closed grammatical classes rarely acquire new members, like adpositions, pronouns, 
 conjunctions, and determiners. Open grammatical classes, on the other hand, and constantly drop, replace, 
@@ -14,7 +14,7 @@ reducing inflected (or sometimes derived) words to their stem, base or root form
 a change in word form when found in a different case, gender, number, voice, tense, person or mood. In 
 IR all variants of a word should be considered as just a single word. In English, affixes are simpler and 
 more regular than in many other languages, and stemming algorithms based on heuristics (rules of 
-thumb) work relatively well (Porter, 1980; Minnen, Carroll, \& Pearce, 2001)\cite{porter_1980}. The most 
+thumb) work relatively well (Porter, 1980; Minnen, Carroll, \& Pearce, 2001). The most 
 popular stemming approach is the language independent Porter's stemmer.  \underline{Lemmatization} is 
 the process of assigning a form its correct lemma (canonical/base/dictinary form). The difference between stemming and lematization can be illustrated on the following 
 example: word "better" is an inflected form for comparison of adjective  "good".  
@@ -32,19 +32,19 @@ different meanings, depending on the context. Common forms of annotation include
 tagging (marking words according to their parts of speech), word sense tagging (marking ambiguous 
 words according to their intended meanings), and parsing (analyzing the grammatical structure of 
 sentences and marking the words in the sentences according to their grammatical roles) (Manning \& 
-Sch\"utze, 1999)\cite{manning1999foundations}.  In our experiments we are using a treebank  as a 
+Sch\"utze, 1999).  In our experiments we are using a treebank  as a 
 dataset, which is as resource fully annotated on morphological, syntactics and semantic level the task of 
 annotation comes down to simply extracting the desired tag connected to the word. Since we are only 
 using semantic annotation I will just mention here few more examples that use semantic annotation: 
-disambiguating abbreviations in queries (Wei,Peng, \& Dumoulin, 2008)\cite{wei_peng2008} and finding 
-query keyword associations (Lavrenko \& Croft, 2001)\cite{Lavrenko+Croft:01a} and  (Cao, Nie, \& Bai, 
-2005)\cite{bainJingSong2005}.
+disambiguating abbreviations in queries (Wei,Peng, \& Dumoulin, 2008) and finding 
+query keyword associations (Lavrenko \& Croft, 2001) and  (Cao, Nie, \& Bai, 
+2005).
 
 \section{Statistic preprocessing}
-Statistic preprocessing is a process of filtering words that have an undesirable statistical property, like very high or very low frequency of occurrence. It should be noted that filtering high frequency words has approximately the same effect as POS filtering, due to the generally low count of such words(Zipf, 1949)\cite{zipf1949_1}. More sophisticated statistical criteria for filtering includes filtering based on the TFIDF, and different variants and mixtures of the Poisson distribution (Katz, 1996) \cite{katz_1996}.
+Statistic preprocessing is a process of filtering words that have an undesirable statistical property, like very high or very low frequency of occurrence. It should be noted that filtering high frequency words has approximately the same effect as POS filtering, due to the generally low count of such words(Zipf, 1949). More sophisticated statistical criteria for filtering includes filtering based on the TFIDF, and different variants and mixtures of the Poisson distribution (Katz, 1996).
 
 \section{Types and Tokens}
-After preprocessing phase the time is to decide whether to base the co--occurrence matrix on types or tokens. A token is a single instance of a symbol, whereas a type is a general class of tokens (Manning et al., 2008)\cite{manning-etal:08}. Consider the following example built on three short sentences taken from  PDT:
+After preprocessing phase the time is to decide whether to base the co--occurrence matrix on types or tokens. A token is a single instance of a symbol, whereas a type is a general class of tokens (Manning et al., 2008). Consider the following example built on three short sentences taken from  PDT:
 \begin{examples}
 \item Ale \v{s}ance je p\v{r}esto minim\'aln\'i.
 \item Dnes je tak\'e mnohem men\v{s}\'i \v{s}ance.
@@ -113,7 +113,7 @@ experiments will be based on the type vectors.
 When the basic unit of frequency counting is chosen (as explained in the previous section), and (optional) preprocessing is done on the corpus, the co--occurrence matrix can be built. As outlined in the chapter \ref{coOcMatrix} the matrix can be either a word--document or word--context, based on their applicability on the task of WSD (therefore, the pair--pattern matrix was ruled out). When all frequencies are counted and placed in the matrix, frequency counts are normalized, and/or matrix's dimensionality can be reduced (using the models described in chapters \ref{LSA} and \ref{RI}). 
 
 \subsection{Normalizing the frequency counts}
-When frequency counts are calculated for every element in the matrix, it customary to weight the elements in the matrix. The hypothesis is that surprising events, if shared by two vectors, are better signs of the similarity between these vectors than less surprising events. For example, when measuring the semantic similarity between the words \textit{cat} and \textit{puss}, the contexts like \textit{fur} and \textit{pat} are more discriminative of their similarity than the contexts \textit{have} and \textit{like}. The idea stems way back to Information Theory where it is said that a surprising event has higher information content than an expected event (Shannon, 1948)\cite{shannon1948}.
+When frequency counts are calculated for every element in the matrix, it customary to weight the elements in the matrix. The hypothesis is that surprising events, if shared by two vectors, are better signs of the similarity between these vectors than less surprising events. For example, when measuring the semantic similarity between the words \textit{cat} and \textit{puss}, the contexts like \textit{fur} and \textit{pat} are more discriminative of their similarity than the contexts \textit{have} and \textit{like}. The idea stems way back to Information Theory where it is said that a surprising event has higher information content than an expected event (Shannon, 1948).
 \subsection{TF--IDF}
 The most popular way to weight the elements in the matrix is usually composed of three components:
 \begin{center}
@@ -121,7 +121,7 @@ The most popular way to weight the elements in the matrix is usually composed of
 $f_{ij} = TF_{ij} \cdot DF_{i} \cdot S_{j}$
 }
 \end{center}
-,according to Robertson \& Sp\"{a}rck Jones, 1997. \cite{robertson_jones1997} where $TF_{ij}$  is some function of the frequency of term \textit{i} in document \textit{j}, $DF_{i}$ is some function of the number of documents term i occurs in (DF for \textit{document frequency}), and $S_{j}$ is a normalizing factor, usually dependent on the length of document(s for scaling).
+,according to Robertson \& Sp\"{a}rck Jones (1997) where $TF_{ij}$  is some function of the frequency of term \textit{i} in document \textit{j}, $DF_{i}$ is some function of the number of documents term i occurs in (DF for \textit{document frequency}), and $S_{j}$ is a normalizing factor, usually dependent on the length of document(s for scaling).
 The first component indicates how important word \textit{i} is for document \textit{j}, because the more often a term occurs in a document, the more likely it is to be important for identifying the document. $DF_{i}$ is the discriminatory component-- if the term appears in many documents, it should not be considered important. DF is usually computed as:
 \begin{center}\large{
 $IDF = log \frac{D}{DF_{i}}$
@@ -130,10 +130,10 @@ $IDF = log \frac{D}{DF_{i}}$
 , where D is usually usually the total number of documents in the whole corpus. The third component Sj 
 is normally a function of the length of document \textit{j}, and is based on the idea that a term that 
 occurs the same number of times in a short and in a long document should be more important for the 
-short one.(Singhal, Salton, Mitra, \& Buckley, 1996)\cite{journals/ipm/SinghalSMB96}. 
+short one.(Singhal, Salton, Mitra, \& Buckley, 1996). 
 
 \subsection{PMI}\label{pmi}
-An alternative to TF--IDF is Pointwise Mutual Information (PMI) (Church \& Hanks, 1989)\cite{church89}, 
+An alternative to TF--IDF is Pointwise Mutual Information (PMI) (Church \& Hanks, 1989), 
 which works well for both word--context matrices (Pantel \& Lin, 2002a)\cite{pantelLin2002} and term--
 document matrices (Pantel \& Lin, 2002b).  
 \\We will explain now PMI on Information Theory and present how it is applied on the co--occurrence 
@@ -164,18 +164,18 @@ In this definition, $p_{ij}$ is the estimated probability that the word $w_{i}$ 
 
 On the other hand, if there is an interesting semantic relation between $w_{i}$ and $c_{j}$, then we should expect $p_{ij}$ to be larger than it would be if $w_{i}$ and $c_{j}$ were completely indepedent. In that case we should find that $p_{ij}$ >$p_{i*}$$p_{*j}$, and thus   $PMI_{ij}$ is positive. If the word $w_{i}$ is unrelated to the context $c_{j}$, we may find that   $PMI_{ij}$ is negative. 
 
-A variation of PMI is Positive PMI (PPMI), in which all PMI values that are less than zero are replaced with zero (Niwa \& Nitta, 1994)\cite{niwa94}. Bullinaria and Levy (2007)\cite{bullinaria2007} demonstrated that PPMI performs better than a wide variety of other weighting approaches when measuring semantic similarity with word--context matrices. PPMI is designed to give a high value to $x_{ij}$ when there is an interesting semantic relation between $w_{i}$ and $c_{j}$ ; otherwise, $x_{ij}$ should have a value of zero, indicating that the occurrence of $w_{i}$ in $c_{j}$ is uninformative.
+A variation of PMI is Positive PMI (PPMI), in which all PMI values that are less than zero are replaced with zero (Niwa \& Nitta, 1994). Bullinaria and Levy (2007) demonstrated that PPMI performs better than a wide variety of other weighting approaches when measuring semantic similarity with word--context matrices. PPMI is designed to give a high value to $x_{ij}$ when there is an interesting semantic relation between $w_{i}$ and $c_{j}$ ; otherwise, $x_{ij}$ should have a value of zero, indicating that the occurrence of $w_{i}$ in $c_{j}$ is uninformative.
 
 PMI is biased towards infrequent events. Consider the case where $w_{i}$ and $c_{j}$ are statistically 
 dependent: Then $p_{ij}$  = $p_{i*}$ = $p_{*j}$. Hence $x_{ij}$ becomes $log (\frac{1}{p_{i*}})$ 
 and PMI increases as the probability of word $w_i$ decreases. 
 
-PMI was tested in many experiments, one of them being the TOEFL synonym test, where its performance  was was found to be better than LSA: 73.75\% over LSA's 64.4\% (36\% without the use of SVD) (Turney, 2001)\cite{turney2001mining}.
+PMI was tested in many experiments, one of them being the TOEFL synonym test, where its performance  was was found to be better than LSA: 73.75\% over LSA's 64.4\% (36\% without the use of SVD) (Turney, 2001).
 
 \section{Calculating similarity}
 When we have the co--occurrence matrix the question is how to use it? How to extract useful information from it? 
 \\\\
-As previously mentioned in Chapter \ref{aboutTheModel} an n--dimensional vector identifies a location in 
+As previously mentioned in Chapter\ref{aboutTheModel} an n--dimensional vector identifies a location in 
 an n--dimensional space. However, the vector in isolation does not contain any meaningful information. It is 
 the distance or proximity from other vector representations of word meanings that establishes a word's 
 meaning. In the Vector Space Model of word's meaning, \textit{similarity of words is a geometrical 
@@ -200,7 +200,7 @@ dist_{E}(\vec x ,\vec y) =  \sqrt []{\sum_{k=1}^n (x_{i}-y_{i})^{2}}
 }
 \end{equation}
 \end{center}
-These measures are not ideal to use for word--space algorithms: scalar product favors frequent words (i.e. words with many and large co--occurrence counts will end up being too similar to most other words), while Euclidian metrics have the opposite problem (frequent words will end up being too far from the other words)\cite{widdows04}  .
+These measures are not ideal to use for word--space algorithms: scalar product favors frequent words (i.e. words with many and large co--occurrence counts will end up being too similar to most other words), while Euclidian metrics have the opposite problem (frequent words will end up being too far from the other words).
 \\A convenient way to compute normalized vector similarity is to calculate the cosine of the angles between two vectors $\vec x$ and $\vec y$, defined as:
 \begin{center}
 \begin{equation}
@@ -210,15 +210,15 @@ sim_{COS}(\vec x ,\vec y) =  \frac{\sum_{k=1}^n x_{i}y_{i} }{\sqrt []{\sum_{k=1}
 \end{equation}
 \end{center}
 
-Many other similarity measures have been proposed in both IR (Jones \& Furnas, 1987)\cite{jones_pictures_1987} and lexical 
-semantics circles (Dagan, Lee, \& Pereira, 1999)\cite{journals/ml/DaganLP99}. It is commonly said in IR that, properly 
+Many other similarity measures have been proposed in both IR (Jones \& Furnas, 1987) and lexical 
+semantics circles (Dagan, Lee, \& Pereira, 1999). It is commonly said in IR that, properly 
 normalized, the difference in retrieval performance using different measures is insignificant (van 
-Rijsbergen, 1979)\cite{vanrijsbergen1979}. Often the vectors are normalized in some way (e.g., unit length or unit probability) 
+Rijsbergen, 1979). Often the vectors are normalized in some way (e.g., unit length or unit probability) 
 before applying any similarity measure. Popular geometric measures of vector distance include 
 Euclidean distance and Manhattan distance. Distance measures from information theory include 
-Hellinger, Bhattacharya, and Kullback--Leibler. Bullinaria and Levy (2007)\cite{bullinaria2007} compared these five distance 
+Hellinger, Bhattacharya, and Kullback--Leibler. Bullinaria and Levy (2007) compared these five distance 
 measures and the cosine similarity measure on four different tasks involving word similarity. Overall, the 
 best measure was cosine. Other popular measures are the Dice and Jaccard coefficients (Manning et 
-al., 2008)\cite{manning-etal:08}. Determining the most appropriate similarity measure is dependent on the similarity task, the 
+al., 2008). Determining the most appropriate similarity measure is dependent on the similarity task, the 
 sparsity of the statistics and the frequency distribution of the elements being compared. 
 \\As you may have noticed-- the cosine measure corresponds to taking the scalar product of the vectors and then dividing by their norms. The cosine measure is the most frequently used similarity metric in word--space research, and the one we will use as well in this thesis. It is attractive because it provides a fixed measure of similarity and it ranges from 1 for identical vectors, over 0 for orthogonal vectors, to --1 for vectors pointing in the opposite directions.

@@ -31,8 +31,8 @@ PDT was generated in two major phases. In the first phase (1996--2000), the morp
 In our experiments we were using as a resource PDT 1.0 version, instead of PDT 2.0. Frequencies for each layer in PDT 1.0. are given in the table below:
 \begin{table}[h!]
 \begin{center}
-	\begin{tabular}{ l  c  | c c }
-   	&    & \# of tokens & \# of sentences \\
+	\begin{tabular}{ l  c  | r r }
+   	& Layer of annotation   & \# of tokens & \# of sentences \\
 	\hline                       
 	& morphological (total) & 1,725,242 & 111,175\\
 	& syntactic--analytic (total) & 1,507,333 & 98,263 \\
@@ -62,7 +62,7 @@ take 8 different meanings in the training set. It has to mentioned that these nu
 training, being that the training set is assembled pseudo--randomly before the training phase. However, for the PDT training set they would not be drastically different because training is performed on the 90\% of the entire set. 
 \begin{table}[h!]
 \begin{center}
-	\begin{tabular}{ c  c |  c }
+	\begin{tabular}{ r  r |  r }
    	&   \# of meanings & \# of types \\
 \hline  
  & 2 & 319  \\
@@ -96,10 +96,15 @@ was not used in this research.
 When building(training) Vector Space Models, a researcher might want to include POS information with 
 every tag. This was not done in our experiments but it was always an option supported by the resource, 
 because like previously mentioned, PDT 1.0 is fully annotated on the syntactic level. 
-%\\On top of these reasons, another incentive that made us decide for PDT1.0 is that it essentially represents a light--wight version of PDT2.0, encoded in Standard Generalized Markup Language (SGML\footnote{http://www.w3.org/MarkUp/SGML/}), which made it easier to handle during the preprocessing stage.
+%\\On top of these reasons, another incentive that made us decide for PDT1.0 is that it essentially represents a light--wight 
+version of PDT2.0, encoded in Standard Generalized Markup Language (SGML\footnote{http://www.w3.org/MarkUp/SGML/}), 
+which made it easier to handle during the preprocessing stage.
 
 \section{Preprocessing}
-The preprocessing phase involves several several sub--stages. As we have described theoretical approaches to these steps in length in previous chapters, we have decided to explain all the preprocessing steps performed in experiments in this chapter. Preprocessing involves following sequential steps: text extraction from PDT files along with relevant tags, text normalization, stemming and filtering. 
+The preprocessing phase involves several several sub--stages. As we have described theoretical approaches to these steps in 
+length in previous chapters, we have decided to explain all the preprocessing steps performed in experiments in this chapter. 
+Preprocessing involves following sequential steps: text extraction from PDT files along with relevant tags, text normalization, 
+stemming and filtering. 
 \\\\  \textbf{Text extraction}
 
 Text used during training and testing phase of VSM was extracted from PDT files and put into a single file. 
@@ -113,8 +118,8 @@ Therefore, the tagging step in this case was simplified: \textit{every multiple-
 represented with its orthographic representation meaning in context}, which was simply extracted from 
 the Treebank. An example of a sentence extracted from PDT is given below:
 \begin{examples}
-\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
-\glt \textit{ Krumbach has accepted the work " in the last minute" .} 
+\item Krumbachov\'a pr\'aci p\v{r}ijali podle vlastn\'ich slov " v hodin\v{e} dvan\'act\'e ".
+\glt \textit{ Krumbach has accepted the work "in the last minute" .} 
 \end{examples}
 Word's meaning in context was given as it was represented in PDT.
 \\\\  \textbf{Text normalization}
@@ -167,7 +172,7 @@ Below is given an overview of the number of types and tokens for each of these f
 preprocessing applied to them:
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c | c c | c c|}
+\begin{tabular}{ l | r r | r r| r r |}
 & \multicolumn{2}{|c}{train set} & \multicolumn{2}{|c}{test devel set} & \multicolumn{2}{|c|}{final test set} \\
    &  \#types & \#tokens  &  \#types & \#tokens  &  \#types & \#tokens \\
   \hline                       
@@ -196,7 +201,7 @@ every document. We have decided to conduct experiments by partioning sentences i
 in the center of every such fragment is a polysemous meaning, surrounded by symmetrical window 
 length of varying size. An example is given for a one neighboring word of preceding and succeeding context. For a sentence:
 \begin{examples}
-\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
+\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\v{e} dvan\'act\'e ".
 \glt \textit{  Krumbach has accepted the work " in the last minute" .}
 \end{examples}
 the corresponding fragments extracted from it are:
@@ -204,7 +209,7 @@ the corresponding fragments extracted from it are:
 \item pr\'aci p\v{r}ijmout--2 podle--2
 \item p\v{r}ijmout--2 podle--2 vlastn\'i--1
 \item podle--2 vlastn\'i--1 slov
-\item slov v--1 hodin\^e
+\item slov v--1 hodin\v{e}
 \end{examples}
 This kind of fragmentation increases the number of documents in the co-ocurrence matrix. The rationale behind this was that centering documents around polysemous encounters will help in training the model to be better. The idea was that in this way the model will become ''more sensitive" for contexts in which the ambiguous words appear, and will assign correct meanings to their rightful contexts better. 
 
@@ -215,8 +220,8 @@ preprocessing method applied as well the size of the document. Below is given a 
 the choice of document size influences the size of vocabulary, for the corpus that was not preprocessed. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c | c c |c c}\label{docSize}
-			& \#index  &  ambiguous  words && other words \\
+\begin{tabular}{ r | r | r r | r r }\label{docSize}
+			& \#index  & \multicolumn{2}{l|}{ ambiguous  words }& \multicolumn{2}{l|}{ other words }\\
  document size & documents & \#types & \#tokens & \#types & \#tokens \\
 \hline
 5 sentences & 15732 & 3513 & 4721 & 128676 & 1155781\\
@@ -295,7 +300,7 @@ A unique methodology is then applied for each model in order to calculate the me
 Evaluation context size is the number of words taken from preceding and succeeding context of the 
 occurrence of ambiguous word. For instance, for the sentence:
 \begin{examples}
-\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov " v--1 hodin\^e dvan\'act\'e ".
+\item Krumbachov\'a pr\'aci p\v{r}ijmout--2 podle--2 vlastn\'i--1 slov "v--1 hodin\v{e} dvan\'act\'e".
 \glt \textit{ Krumbach has accepted the work " in the last minute"  .}
 \end{examples}
 , corresponding contexts for the evaluation context size set to 1 extracted from it are:
@@ -303,7 +308,7 @@ occurrence of ambiguous word. For instance, for the sentence:
 \item p\v{r}ijmout--2 : pr\'aci  podle--2
 \item  podle--2: p\v{r}ijmout--2 vlastn\'i--1
 \item podle--2 slov
-\item slov  hodin\^e
+\item slov  hodin\v{e}
 \end{examples}
 
 
@@ -464,7 +469,7 @@ document size was experimented with. This means that for the units from which th
 Best results in all the tables are bolded. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c | c c | c c | c}
+\begin{tabular}{ l | r r | r r | r r | r}
    preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
 \hline
 	& P  &  R & P  &  R & P  &  R & precision\\
@@ -487,7 +492,7 @@ training and testing sets  whether an instance will be encountered during traini
 It seems that individual 
  preprocessing technique that yields best results is stemming, though lowercasing and merging of Czech variants give the most consistent results. To ensure the validity of these findings, same test was repeated for the word--level document size. Results are given in the table below.  
 \begin{table}[h!]
-\begin{tabular}{ l | c c | c c | c c | c}
+\begin{tabular}{ l | r r | r r | r r | r}
    preprocessing & 1+1 word && 2+2 words && 3+3 words  && random\\
 \hline\hline
 	& P  &  R & P  &  R & P  &  R &\\
@@ -507,8 +512,8 @@ Results are given in the tables below.
 
  \begin{table}[h!]
 \begin{footnotesize}
-\begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
+\begin{tabular}{ l | r r | r r | r r | r}
+preprocessing & \multicolumn{2}{l|}{1 sentence} & \multicolumn{2}{l|}{3 sentences} & \multicolumn{2}{l|}{5 sentences} & random\\
 \hline
 	& P  &  R & P  &  R & P  &  R & precision\\
 \hline\hline
@@ -532,8 +537,8 @@ It seems that the combination of filters reduces the word space too much, which 
 Same combinations were tested out on the word level document size, in order to confirm the findings from the previous table. Results are given in the table below. 
 \begin{table}[h!]
 \begin{footnotesize}
-\begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing & 1+1 word && 2+2 words && 3+3 words  && random\\
+\begin{tabular}{ l | r r | r r | r r | r}
+preprocessing & \multicolumn{2}{l|}{1+1 word} & \multicolumn{2}{l|}{2+2 words} & \multicolumn{2}{l|}{3+3 words} & random\\
 \hline\hline
 	& P  &  R & P  &  R & P  &  R &\\
 \hline
@@ -594,7 +599,7 @@ Results are given
 in the table below, with best results in bold.
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c c}
+\begin{tabular}{ l | r r r r r r r }
     &  1+1 & 2+2 & 3+3 & 4+4 & 5+5 & 6+6 & 7+7 \\
 \hline
 STEM (1 sentence)  & 93.09 & \textbf{94.69} & 93.93 & 93.47 & 93.02 & 93.02 & 92.87 \\
@@ -632,7 +637,7 @@ that for instance, in the first column are results of experiments performed on w
 Training is performed on the merged set of training and testing development, and testing is done on the unseen set.
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c c  }
+\begin{tabular}{ l | r r r r r r r  }
      & 2 & 3 & 4 & 5 & 6& 7 & 8  \\
  \hline
 Precision  & 92.49 & 97.08 & 87.87 & 97.57 & 64.71 & \textbf{98.49} & 46.15\\ 
@@ -710,11 +715,10 @@ STEM  & 90.6 & 100 & 96.58 & 100 & 95.73 & 100 & 13.96\\
 
 In the next round of experiments designed for tuning, combinations of preprocessing methods were experimented 
 with. First the combinations of methods were tried, for different values of sentence level for document size.
-
  \begin{table}[h!]
-\begin{footnotesize}
+\begin{small}
 \begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
+preprocessing & \multicolumn{2}{l|}{1 sentence} & \multicolumn{2}{l|}{3 sentences} & \multicolumn{2}{l|}{5 sentences} & random\\
 \hline
 	& P  &  R & P  &  R & P  &  R & precision\\
 \hline\hline
@@ -725,18 +729,17 @@ STEM+STOP+& 97.93 & 100 & 97.93 & 100 & \textbf{98.01} & 100 & 11.47 \\
 +MERGE+LOWCASE  &&&&&&&\\
 \end{tabular}
 \caption{Precision and Recall using combinations of preprocessing techniques, sentence level document size}
-\end{footnotesize}
+\end{small}
 \end{table}
 
 It seems that the combination of more preprocessing methods achieves an increase in accuracy with the PMI model. Also, It would appear that merging of Czech lexical variants does not contribute in this combination of 
-methods. Contrary to it, combinations where lowercasing appears seem to be giving good results. Lowercasing proved its mettle in individual tests of preprocessing methods.  
-Then the same test cases were repeated, only this time for the document size word level values. The reason why 
+methods. Contrary to it, combinations where lowercasing appears seem to be giving good results. Lowercasing proved its mettle in individual tests of preprocessing methods. Then the same test cases were repeated, only this time for the document size word level values. The reason why 
 these test cases are repeated is to validate the findings from the previous table. 
 
  \begin{table}[h!]
-\begin{footnotesize}
+\begin{small}
 \begin{tabular}{ l | c c | c c | c c | c}
-   preprocessing &  1 sentence && 3 sentences && 5 sentences  && random\\
+preprocessing & \multicolumn{2}{l|}{1+1 word} & \multicolumn{2}{l|}{2+2 words} & \multicolumn{2}{l|}{3+3 words} & random\\
 \hline
 	& P  &  R & P  &  R & P  &  R & precision\\
 \hline\hline
@@ -747,7 +750,7 @@ STEM+STOP+ & 95.25 & 100 & 97.93 & 100 & 97.67 & 100 & 11.47 \\
 +MERGE+LOWCASE  &&&&&&&\\
 \end{tabular}
 \caption{Precision and Recall using combinations of preprocessing techniques, word level document size}
-\end{footnotesize}
+\end{small}
 \end{table}
 
 
@@ -773,7 +776,7 @@ Results are given
 in the table below, and the best result is given in bold. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c c}
+\begin{tabular}{ l | r r r r r r r}
     &  1+1 & 2+2 & 3+3 & 4+4 & 5+5 & 6+6 & 7+7 \\
 \hline
 LOWCASE  & 95.54 & 97.75 & \textbf{98.01} & 97.93 & 97.93 & 97.93 & 97.93 \\
@@ -794,7 +797,7 @@ parameters to see how it performs on different sets of words with the same numbe
 that for instance, in the first column are results of experiments performed on words with 2 meanings attached to them.
 Training is performed on the merged set of training and testing development, and testing is done on the unseen set.
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c  }
+\begin{tabular}{ l | r r r r r r r  }
      & 2 & 3 & 4 & 5 & 6  \\
  \hline
 Precision  & 92.17 & 87.39 & 64.85 & 76.77 & 94.55\\ 
@@ -840,7 +843,7 @@ Like with the models tested before different document sizes and preprocessing me
 for the best performance of the RI model. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c  | c |c | c}
+\begin{tabular}{ l | r | r | r | r}
    preprocessing &  5 sentences & 3 sentences & 1 sentence  & random\\
 \hline
 	& P  &  P  &  P  &  \\
@@ -857,7 +860,7 @@ Recall and random prediction were the same for all document sizes, hence they we
 repeated for the document size of word level. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c  | c |c | c}
+\begin{tabular}{ l |  r | r | r | r}
    preprocessing &  3+3 words& 2+2 words& 1+1 word& random\\
 \hline
 	& P  &  P  &  P  &  \\
@@ -889,7 +892,7 @@ Results are given
 in the table below, and the best result is given in bold. 
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c c}
+\begin{tabular}{ l | r r r r r r r}
     &  1+1 & 2+2 & 3+3 & 4+4 & 5+5 & 6+6 & 7+7 \\
 \hline
 CLOSED CLASS  & 80.16 & 85.14 & \textbf{86.74} & 79.54 & 79.54& 79.54& 79.54\\
@@ -907,7 +910,7 @@ The best model is evaluated on ambiguous words with
 different counts of meanings attached to them.
 
 \begin{table}[h!]
-\begin{tabular}{ l | c c c c c c  }
+\begin{tabular}{ l | r r r r r r}
      & 2 & 3 & 4 & 5 & 6& 7     \\
  \hline
 Precision & 87.4 & 86.02 & 84.19 & 76.41 &80.5 & 45.48 \\
