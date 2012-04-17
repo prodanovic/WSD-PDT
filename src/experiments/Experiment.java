@@ -26,7 +26,7 @@ public class Experiment {
 		System.out.println("Welcome to the WSD system!");
 		while(true){
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("Please insert system parameters (leave blank if you want to use default arguments):");
+			System.out.println("1. Please insert system parameters (leave blank if you want to use default arguments):");
 			try {
 				String inputArguments= reader.readLine();
 				if(!inputArguments.equals(""))
@@ -35,7 +35,7 @@ public class Experiment {
 				logger=Log.getLogger(Arguments.initLogName());
 				
 				logger.fine(Arguments.modelNameForLog());
-				System.out.println("Please give the location of the file[in SGML format] you wish to train the system on (leave blank if you want to skip training):");
+				System.out.println("2. Please give the location of the file[in SGML format] you wish to train the system on (leave blank if you want to skip training):");
 				String inputFilePath = reader.readLine();
 				if(!inputFilePath.equals("")){
 					logger.fine(Arguments.preprocessingParamsForLog());
@@ -43,7 +43,7 @@ public class Experiment {
 					preprocess();
 				}
 				
-				System.out.println("Please give the location of the test file (ambiguous words should be marked in format \"word-number\"):");
+				System.out.println("3. Please give the location of the test file (ambiguous words should be marked in format \"word-number\"):");
 				String testFilePath = reader.readLine();
 				if(!testFilePath.equals("")){
 					evaluate(testFilePath);
@@ -59,6 +59,9 @@ public class Experiment {
 				System.out.println("Evaluation exception:");
 				e.printStackTrace();
 			}	
+			finally{
+				System.exit(0);
+			}
 		}
 	}
 

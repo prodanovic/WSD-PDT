@@ -1,1 +1,26 @@
-README 
+Welcome to the WSD system!
+Running of the system (on any OS) consists of running the WSD.jar with the command: 
+java -jar WSD.jar
+
+When the program is started, 3 simple steps need to be completed in order for the system to perform WSD. 
+1. insert the preprocessing and evaluation parameters. If this option is left blank the system will take 
+the default parameters. Please consult the table 8.1 in Chapter 8 of the thesis to see which are the expected
+data types for the parameters, as well what the default values for the parameters are
+
+2. give the system a path to the file which it will use for training. If the training was already performed
+this step can be skipped. The system expects a file in SGML format, with a tag set of PDT1.0.
+
+3. give the system a path to the file containing the test set. Test set file should hold one sentence per line
+, and ambiguous words should be give in the form "lemma-number", order for the system to be able to perform
+evaluation. 
+
+Results are displayed in the end. More detailed results are to be found in a log. More on logs and logs
+name format can be found in Chapter 8.2. of the thesis. 
+
+If you wish to re-create the experiments whose results are documented in the thesis you need to run the 
+classes TfIdfExperiment, PmiExperiment, RandomIndexingExperiment in the experiments package. These classes 
+represent batch evaluations, like the one where different document size were experimented with, or different
+evaluation context size. In order to run each of these batch evaluations individually, you need to comment
+out appropriate method in  the line 55 for each model. Every model is trained on the same text that is 
+cleaned from PDT SGML and prepared for pre-processing. 
+

@@ -22,7 +22,7 @@ University\footnote{http://www.muni.cz/}  in Brno. PDT was  inspired by the rese
 Penn Treebank\footnote{http://www.cis.upenn.edu/~treebank/} project. 
 
 PDT was generated in two major phases. In the first phase (1996--2000), the morphological and syntactic analytic  layers of annotation have been completed along with the preview of tectogrammatical layer annotation available as  PDT 1.0. During the second phase (2000--2004), the tectogrammatical layer of annotation was completed and PDT 2.0 was done.
-\\The structure of Prague Dependency Treebank (PDT) consists of three layers:
+\\The structure of the Prague Dependency Treebank (PDT) consists of three layers:
 \begin{itemize}
 \item morphological layer (lowest)-- full morphological annotation
 \item analytic  layer (middle) -- superficial (surface) syntactic annotation using dependency treebank; level conceptually close to the syntactic annotation used in the Penn Treebank 
@@ -162,7 +162,7 @@ In example above we can see how a brute force of stemming can sometimes fail bec
 \section{Train and test sets}\label{trainTestSet}
 
 After extracting the text from PDT and optional preprocessing normalization performed on text, text's 
-sentences are randomized and split into 3 separate files: $train, testDev, testFinal$. Training set holds 
+sentences are randomized and split into 3 separate files: $train$, $testDev$, $testFinal$. Training set holds 
 90\% of the number of sentences in the whole set, while $testDev$ holds about 5\% and $testFinal$ 
 about 5\%. First test file 
 ($testDev$) is used to evaluate during training phase, while the second ($ testFinal$) is used for 
