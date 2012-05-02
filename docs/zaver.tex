@@ -1,16 +1,11 @@
 %\chapter*{Závìr}
 
-\chapter*{Summary}
+\chapter*{Conclusion}
 The primary task of this Master's thesis was to perform Word Sense Disambiguation on the Prague 
-Dependency Treebank dataset. Through parameter tunning and comparing three different Vector Space Models,
-results comparable to some of the state--of--the--art approaches were achieved (on a different data 
-set). Findings of the thesis that stem from model comparing are that the models that do not perform
-any matrix reduction operation on the co--occurrence matrix are the ones giving better results. 
-Computation time for non-reducing models is also better. 
-
-Implementation of the system was made so that through passing of parameters through command line
-anyone can perform experiments without the need to look into the source code. Also, a data set can 
-be easily switched (for the system to be trained on and evaluated) also through passing the command
-line argument containing the location of the file that holds the data set. 
+Dependency Treebank dataset. A single methodology was crafted and applied to three different semantic models to ensure an objective comparison between the two models which perform TF--IDF and PMI weighting of the co-occurrence matrix, and one model which performs dimensionality reduction of the same matrix. This methodology served to tune the 
+models and find which preprocessing technique, document size and evaluation context size produce best results. 
+Results, though achieved on a different data set, are comparable to some of the state--of--the--art approaches form the Senseval/Semeval competitions. There are other approaches like(Yarowsky et. al 2001) that similarly to this approach use the cosine similarity to assign the word to its correct sense (in this case a centroid).However their approach is different
+in the way the classification is performed. Further more, it has not been attempted so far to employ RI on the WSD task, to the best of author's knowledge. 
+Major conclusion of this thesis is that the models that do not perform matrix reduction on the co-occurrence matrix outperform the approach that does (in this case Random Indexing). Another fact that appears to be the same for all three models is that the size of the document in the term--document matrix that helps produce the best results of the algorithm is 3+3 symmetric context around the polysemous word. It seems that when training with the document concentrated around polysemous word a model becomes more sensitive to such contexts and is ultimately a better discriminator in the evaluation.
 
 \addcontentsline{toc}{chapter}{Summary}
